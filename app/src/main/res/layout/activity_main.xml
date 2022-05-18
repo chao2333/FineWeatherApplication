@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainsunny"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_marginTop="17dp"
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <Button
+            android:id="@+id/topLocationButton"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/iconlocation" />
+
+        <TextView
+            android:id="@+id/topTextView"
+            android:layout_width="250dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/topSettingButton"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="25dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/iconsetting" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/upDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="80dp">
+
+
+    </RelativeLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
