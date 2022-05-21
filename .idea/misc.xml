@@ -4,18 +4,30 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1495" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/activity_search_item_yellow.xml" value="0.1385" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic___.xml" value="0.2185" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_iconlocation.xml" value="0.1245" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1495" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/iconlocation.xml" value="0.1495" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/iconlocationback.xml" value="0.1315" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/iconsetting.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/iconsetting1.xml" value="0.208" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/location_searchbk.xml" value="0.1455" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainactivitysunnyweatherbackground.xml" value="0.165" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainrainy.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainsunny.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/test.xml" value="0.1495" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_data.xml" value="0.1315" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_network.xml" value="0.1315" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_nextbuttonbk.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location.xml" value="0.264" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location_search.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_welcome.xml" value="0.2" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/layout.xml" value="0.23143115942028986" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/locationsearch_item.xml" value="0.264" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/welcome_nextbuttonbk.xml" value="0.6584302325581395" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/welcomenextbuttonbk.xml" value="0.20516304347826086" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

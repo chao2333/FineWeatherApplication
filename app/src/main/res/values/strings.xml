@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">晴天</string>
+    <string name="upDataTextViewupdataing">正在更新</string>
+    <string name="Welcomelayout1">欢迎使用晴天天气</string>
+    <string name="Welcomelayout2">极简纯净的天气客户端</string>
+    <string name="Welcomelayoutpermission">我们需要一些权限</string>
+    <string name="Welcomelayoutnext">继续</string>
+    <string name="Locationlayouttextview">城市管理</string>
+    <string name="LocationSearchtext">搜索全球位置</string>
+    <string name="LocationSearchButtontext">取消</string>
+    <string name="LocationSearchBEIJING">北京市</string>
+    <string name="LocationSearchSHANGHAI">上海市</string>
+    <string name="LocationSearchGUANGZHOU">广州市</string>
+    <string name="LocationSearchSHENZHEN">深圳市</string>
+    <string name="LocationSearchHANGZOU">杭州市</string>
+    <string name="LocationSearchSUZHOU">苏州市</string>
+    <string name="LocationSearchWUHAN">武汉市</string>
+    <string name="LocationSearchNANJING">南京市</string>
+    <string name="LocationSearchCHONGQING">重庆市</string>
+    <string name="LocationSearchCHENGDU">成都市</string>
+    <string name="LocationSearchTIANJIN">天津市</string>
+    <string name="LocationSearchWUXI">无锡市</string>
+    <string name="LocationSearchCHANGSHA">长沙市</string>
+    <string name="LocationSearchZHENGZHOU">郑州市</string>
+    <string name="LocationSearchNINGBO">宁波市</string>
 </resources>

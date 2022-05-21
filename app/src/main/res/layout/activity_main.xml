@@ -42,17 +42,16 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/iconsetting" />
     </RelativeLayout>
-
-    <RelativeLayout
+    <TextView
         android:id="@+id/upDataTextView"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:layout_marginEnd="1dp"
+        android:text="@string/upDataTextViewupdataing"
+        android:textColor="@color/upDataWhile"
+        android:layout_marginTop="42dp"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_marginTop="80dp">
-
-
-    </RelativeLayout>
-
-
+        android:layout_height="20dp"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
