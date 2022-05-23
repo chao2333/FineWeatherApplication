@@ -16,7 +16,8 @@
         android:theme="@style/Theme.晴天">
         <activity
             android:name=".ui.location.LocationSearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible"/>
         <activity
             android:name=".ui.WelcomeActivity"
             android:exported="false" />

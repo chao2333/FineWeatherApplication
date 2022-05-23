@@ -8,6 +8,7 @@ import android.os.Bundle
 import com.fineweather.android.ui.WelcomeActivity
 import com.fineweather.android.ui.location.LocationActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.R.anim.abc_fade_in as animAbc_fade_in
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

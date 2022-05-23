@@ -23,4 +23,7 @@
     <string name="LocationSearchCHANGSHA">长沙市</string>
     <string name="LocationSearchZHENGZHOU">郑州市</string>
     <string name="LocationSearchNINGBO">宁波市</string>
+    <string name="LocationSearchXIAN">西安市</string>
+    <string name="LocationSearchSHIJIAZHUANG">石家庄市</string>
+    <string name="LocationSearchQINGDAO">青岛市</string>
 </resources>

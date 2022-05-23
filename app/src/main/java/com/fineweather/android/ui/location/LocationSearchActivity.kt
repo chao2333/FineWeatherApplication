@@ -11,6 +11,8 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +28,9 @@ import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.ui.PlaceAdapter
 import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
+import java.util.*
+import kotlin.concurrent.schedule
+import kotlin.concurrent.thread
 
 
 class LocationSearchActivity : AppCompatActivity() {
@@ -34,7 +39,18 @@ class LocationSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location_search)
-        //更改activity->this
+        //不在activity生命周期中进行获取焦点和弹出软键盘
+        val imm:InputMethodManager= this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val size5=LocationSearchCHENGDU.textSize
+        LogUtil.d("searcheditable",size5.toString())
+        searchPlaceEdit.textSize=14.0f
+        searchPlaceEdit.postDelayed(Runnable() {
+            searchPlaceEdit.requestFocus()
+            val imm:InputMethodManager= this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+        },500)
+        //Recycle的赋值，设置livedata观察对象 更改activity->this
         val layoutManager=LinearLayoutManager(this)
         LocationSearchRecyclerview.layoutManager=layoutManager
         adapter= PlaceAdapter(this,viewModel.placelise)
@@ -68,13 +84,53 @@ class LocationSearchActivity : AppCompatActivity() {
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
-
-
+        //为每个按钮设置点击事件
+        LocationSearchCHONGQING.setOnClickListener { searchPlaceEdit.setText("重庆市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)}
+        LocationSearchSHANGHAISHI.setOnClickListener { searchPlaceEdit.setText("上海市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchBEIJING.setOnClickListener { searchPlaceEdit.setText("北京市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchCHENGDU.setOnClickListener { searchPlaceEdit.setText("成都市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchGUANGZHOU.setOnClickListener { searchPlaceEdit.setText("广州市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchSHENZHEN.setOnClickListener { searchPlaceEdit.setText("深圳市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchTIANJIN.setOnClickListener { searchPlaceEdit.setText("天津市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchWUHAN.setOnClickListener { searchPlaceEdit.setText("武汉市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchXIAN.setOnClickListener { searchPlaceEdit.setText("西安市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchSUZHOU.setOnClickListener { searchPlaceEdit.setText("苏州市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchZHENGZHOU.setOnClickListener { searchPlaceEdit.setText("郑州市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchHANGHZOU.setOnClickListener { searchPlaceEdit.setText("杭州市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchSHIJIAZHUANG.setOnClickListener { searchPlaceEdit.setText("石家庄市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchQINGDAO.setOnClickListener { searchPlaceEdit.setText("青岛市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+        LocationSearchCHANGSHA.setOnClickListener { searchPlaceEdit.setText("长沙市")
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
     }
-
-
-
-
     private fun getLastKnownLocation(): Location? {
         if (ActivityCompat.checkSelfPermission(
                 this,

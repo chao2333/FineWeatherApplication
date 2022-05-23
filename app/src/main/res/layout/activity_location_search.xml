@@ -27,7 +27,10 @@
             android:hint="@string/LocationSearchtext"
             android:inputType="textPostalAddress"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp" />
+            android:paddingEnd="10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            />
 
         <Button
             android:id="@+id/LocationSearchCancle"
@@ -54,15 +57,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp">
+
             <Button
-                android:id="@+id/LocationSearchBEIJINGSHI"
+                android:id="@+id/LocationSearchCHONGQING"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_marginEnd="55dp"
                 android:background="@drawable/location_searchbk"
-                android:text="@string/LocationSearchBEIJING" />
+                android:text="@string/LocationSearchCHONGQING" />
 
             <Button
                 android:id="@+id/LocationSearchSHANGHAISHI"
@@ -76,31 +80,32 @@
                 android:gravity="center"
                 android:text="@string/LocationSearchSHANGHAI" />
             <Button
-                android:id="@+id/LocationSearchGUANGZHOU"
+                android:id="@+id/LocationSearchBEIJING"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="54dp"
                 android:background="@drawable/location_searchbk"
-                android:text="@string/LocationSearchGUANGZHOU"
+                android:text="@string/LocationSearchBEIJING"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="70dp">
+
             <Button
-                android:id="@+id/LocationSearchSHENZHEN"
+                android:id="@+id/LocationSearchCHENGDU"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_marginEnd="55dp"
                 android:background="@drawable/location_searchbk"
-                android:text="@string/LocationSearchSHENZHEN" />
+                android:text="@string/LocationSearchCHENGDU" />
             <Button
-                android:id="@+id/LocationSearchHANGZHOU"
+                android:id="@+id/LocationSearchGUANGZHOU"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
@@ -108,22 +113,141 @@
                 android:layout_marginEnd="185dp"
                 android:background="@drawable/location_searchbk"
                 android:gravity="center"
-                android:text="@string/LocationSearchHANGZOU"
+                android:text="@string/LocationSearchGUANGZHOU"
                 style="@style/Widget.AppCompat.Button.Borderless"/>
+
             <Button
-                android:id="@+id/LocationSearchSUZHOU"
+                android:id="@+id/LocationSearchSHENZHEN"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="54dp"
                 android:background="@drawable/location_searchbk"
-                android:text="@string/LocationSearchSUZHOU"
-                style="@style/Widget.AppCompat.Button.Borderless"/>
+                android:text="@string/LocationSearchSHENZHEN" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="140dp">
+
+            <Button
+                android:id="@+id/LocationSearchTIANJIN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="55dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchTIANJIN" />
+
+            <Button
+                android:id="@+id/LocationSearchWUHAN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="185dp"
+                android:background="@drawable/location_searchbk"
+                android:gravity="center"
+                android:text="@string/LocationSearchWUHAN" />
+
+            <Button
+                android:id="@+id/LocationSearchXIAN"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="54dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchXIAN" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="210dp">
+
+            <Button
+                android:id="@+id/LocationSearchSUZHOU"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="55dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchSUZHOU" />
+
+            <Button
+                android:id="@+id/LocationSearchZHENGZHOU"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="185dp"
+                android:background="@drawable/location_searchbk"
+                android:gravity="center"
+                android:text="@string/LocationSearchZHENGZHOU" />
+
+            <Button
+                android:id="@+id/LocationSearchHANGHZOU"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="54dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchHANGZOU" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="280dp">
+
+            <Button
+                android:id="@+id/LocationSearchSHIJIAZHUANG"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="55dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchSHIJIAZHUANG" />
+
+            <Button
+                android:id="@+id/LocationSearchQINGDAO"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="37dp"
+                android:layout_marginEnd="185dp"
+                android:background="@drawable/location_searchbk"
+                android:gravity="center"
+                android:text="@string/LocationSearchQINGDAO" />
+
+            <Button
+                android:id="@+id/LocationSearchCHANGSHA"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="105dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="54dp"
+                android:background="@drawable/location_searchbk"
+                android:text="@string/LocationSearchCHANGSHA" />
+
         </RelativeLayout>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/LocationSearchRecycleviewLyout"
