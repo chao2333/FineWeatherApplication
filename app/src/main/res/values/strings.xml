@@ -26,4 +26,5 @@
     <string name="LocationSearchXIAN">西安市</string>
     <string name="LocationSearchSHIJIAZHUANG">石家庄市</string>
     <string name="LocationSearchQINGDAO">青岛市</string>
+    <string name="LocationSearchNOW">获取当前位置</string>
 </resources>

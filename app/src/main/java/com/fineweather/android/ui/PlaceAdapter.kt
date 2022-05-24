@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.locationsave_item.view.*
 
 class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
+
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
         val placeName:TextView=view.findViewById(R.id.placeName)
         val placeAddress:TextView=view.findViewById(R.id.placeAddress)
@@ -53,6 +54,7 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
             }
             db.insert("Location",null,insert1)
             Toast.makeText(FineWeatherApplication.context,"已经添加到我的城市",Toast.LENGTH_LONG).show()
+            dbHelper.close()
         }
     }
     override fun getItemCount()=placeList.size
@@ -92,6 +94,8 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
             persedit.putString("address",location.address)
             persedit.putString("lat",location.lat)
             persedit.putString("lng",location.lng)
+            //来源为搜索，false   来源为定位为true
+            persedit.putBoolean("sourcetype",false)
             persedit.apply()
             activity.finish()
             Toast.makeText(activity,"切换地点为${location.name}",Toast.LENGTH_LONG).show()

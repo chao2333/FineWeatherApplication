@@ -1,36 +1,34 @@
 package com.fineweather.android.ui.location
 
 import android.Manifest
-import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
+import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.ui.PlaceAdapter
 import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
 import java.util.*
-import kotlin.concurrent.schedule
-import kotlin.concurrent.thread
 
 
 class LocationSearchActivity : AppCompatActivity() {
@@ -85,6 +83,40 @@ class LocationSearchActivity : AppCompatActivity() {
             }
         })
         //为每个按钮设置点击事件
+        LocationSearchNOW.setOnClickListener {
+            if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+            }else{
+                val location=getLastKnownLocation()
+                if (location==null){
+                    Toast.makeText(this,"获取当前位置信息失败，请手动搜索",Toast.LENGTH_LONG).show()
+                }else{
+                    val lat=location.latitude.toString()
+                    val lng=location.longitude.toString()
+                    val pers=FineWeatherApplication.context.getSharedPreferences("ApplicationData",0)
+                    val persedit=pers.edit()
+                    persedit.putString("name","当前位置")
+                    persedit.putString("address","当前位置")
+                    persedit.putString("lat",lat)
+                    persedit.putString("lng",lng)
+                    persedit.putBoolean("sourcetype",true)
+                    persedit.apply()
+
+                    val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
+                    val db=dbHelper.writableDatabase
+                    val insert1= ContentValues().apply {
+                        put("AccurateLocation","当前位置")
+                        put("RoughLocation","当前位置")
+                        put("lat",lat)
+                        put("lng",lng)
+                    }
+                    db.insert("Location",null,insert1)
+                    Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+                    dbHelper.close()
+                    this.onBackPressed()
+                }
+            }
+        }
         LocationSearchCHONGQING.setOnClickListener { searchPlaceEdit.setText("重庆市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
             this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)}
@@ -127,9 +159,6 @@ class LocationSearchActivity : AppCompatActivity() {
         LocationSearchQINGDAO.setOnClickListener { searchPlaceEdit.setText("青岛市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
             this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
-        LocationSearchCHANGSHA.setOnClickListener { searchPlaceEdit.setText("长沙市")
-            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
-            this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
     }
     private fun getLastKnownLocation(): Location? {
         if (ActivityCompat.checkSelfPermission(
@@ -151,6 +180,9 @@ class LocationSearchActivity : AppCompatActivity() {
                 bestLocation = l
             }
         }
+
         return bestLocation
     }
+
 }
+
