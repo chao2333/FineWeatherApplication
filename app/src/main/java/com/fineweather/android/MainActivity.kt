@@ -11,16 +11,29 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.ui.WelcomeActivity
 import com.fineweather.android.ui.location.LocationActivity
+import com.fineweather.android.ui.place.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.main_threedayweatheritem.view.*
 import androidx.appcompat.R.anim.abc_fade_in as animAbc_fade_in
 
 class MainActivity : AppCompatActivity() {
+    private val model by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val test=model.getcurrent.value
+        upDataTextView.text=test.toString()
+        model.getcurrent.observe(this, Observer { test1:Int->
+            upDataTextView.text=test1.toString()
+        })
        topTextView.text=""
         //实现欢迎界面
         Welcome()

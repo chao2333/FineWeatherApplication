@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/mainsunny"
     android:fitsSystemWindows="true">
-
     <RelativeLayout
         android:layout_marginTop="17dp"
         android:id="@+id/top"
@@ -15,12 +14,12 @@
         android:layout_height="25dp">
         <Button
             android:id="@+id/topLocationButton"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
             android:background="@drawable/iconlocation" />
 
         <TextView
@@ -52,6 +51,29 @@
         android:layout_marginTop="42dp"
         android:layout_width="match_parent"
         android:layout_height="20dp"/>
+    <ScrollView
+        android:id="@+id/weatherLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:visibility="visible">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/main_temperature"/>
+            <include layout="@layout/main_threedayweatheritemgap"/>
+            <include layout="@layout/main_earlywarninginformation"/>
+            <include layout="@layout/main_threedayweatheritem"/>
+            <include layout="@layout/main_threedayweatheritem2"/>
+            <include layout="@layout/main_threedayweatheritem3"/>
+            <include layout="@layout/main_threedayweatherbutton"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

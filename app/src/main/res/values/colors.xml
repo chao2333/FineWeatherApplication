@@ -14,4 +14,5 @@
     <color name="bkRainyBegin">#B8B8B8</color>
     <color name="bkRainyEnd">#7E7E7E</color>
     <color name="location_search_location_yellow">#E2FDAF37</color>
+    <color name="MainTopTextColor">#e2e9f3</color>
 </resources>

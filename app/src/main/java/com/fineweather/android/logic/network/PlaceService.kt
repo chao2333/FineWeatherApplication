@@ -16,4 +16,4 @@ interface WeatherService{
     @GET("v2.6/${FineWeatherApplication.TOKEN}/{location}/weather?alert=true&realtime&dailysteps=15&hourlysteps=24")
     fun requestWeather(@Path("location") location:String): Call<WeatherResponse>
 }
-//https://api.caiyunapp.com/v2.6/qJq8YCdea1b5oTHw/109.374876,35.64708/weather?alert=true&realtime&dailysteps=15&hourlysteps=24
+//https://api.caiyunapp.com/v2.6/qJq8YCdea1b5oTHw/109.374876,35  .64708/weather?alert=true&realtime&dailysteps=15&hourlysteps=24
