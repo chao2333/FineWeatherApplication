@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.media.Image
 import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,12 +17,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.FineWeatherApplication
+import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
+import com.fineweather.android.logic.model.Daily
+import com.fineweather.android.logic.model.Hourly
 import com.fineweather.android.logic.model.LocationSaveItem
 import com.fineweather.android.logic.model.Place
 import kotlinx.android.synthetic.main.locationsave_item.view.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
@@ -115,6 +121,87 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
     }
 
 }
+
+
+class fifteenDayWeatherAdapter(val hourly: Hourly):
+        RecyclerView.Adapter<fifteenDayWeatherAdapter.ViewHolder>(){
+
+    inner class ViewHolder(view: View):RecyclerView.ViewHolder(view){
+        val Time:TextView=view.findViewById(R.id.fifteenDayListviewTime)
+        val Temperature:TextView=view.findViewById(R.id.fifteenDayListviewTemperature)
+        val TemIcon:ImageView=view.findViewById(R.id.fifteenDayListviewTemIcon)
+        val Wind:TextView=view.findViewById(R.id.fifteenDayListviewWind)
+        val Air:TextView=view.findViewById(R.id.fifteenDayListviewAir)
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): fifteenDayWeatherAdapter.ViewHolder {
+        val view=LayoutInflater.from(parent.context)
+            .inflate(R.layout.main_fifteendayweatherlistviewitem,parent,false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: fifteenDayWeatherAdapter.ViewHolder, position: Int) { //每个item滚动到屏幕内执行
+        val Time=hourly.temperature[position].datetime.split("T","+")
+        val fomate=DecimalFormat("#")
+        val Temperature=fomate.format(hourly.temperature[position].value).toString()
+        val Skycon=hourly.skycon[position].value
+        val wind=hourly.wind[position].speed
+        val air=hourly.air_quality.aqi[position].value.chn
+
+        holder.Time.text=Time[1]
+        holder.Temperature.text=Temperature+ context.getString(R.string.mainthreedaytemperaturemaxandmin2)
+        when(Skycon){
+            "CLEAR_DAY" -> holder.TemIcon.setImageResource(R.drawable.ic_weather_clear_day)
+            "CLEAR_NIGHT" -> holder.TemIcon.setImageResource(R.drawable.ic_weather_clear_night)
+            "PARTLY_CLOUDY_DAY" -> holder.TemIcon.setImageResource(R.drawable.ic_weather_partly_cloudy_day)
+            "PARTLY_CLOUDY_NIGHT" ->holder.TemIcon.setImageResource(R.drawable.ic_weather_partly_cloudy_night)
+            "CLOUDY"->holder.TemIcon.setImageResource(R.drawable.ic_weather_cloudy)
+            "LIGHT_HAZE"->holder.TemIcon.setImageResource(R.drawable.ic_weather_haze)
+            "MODERATE_HAZE"->holder.TemIcon.setImageResource(R.drawable.ic_weather_haze)
+            "HEAVY_HAZE"->holder.TemIcon.setImageResource(R.drawable.ic_weather_haze)
+            "LIGHT_RAIN"->holder.TemIcon.setImageResource(R.drawable.ic_weather_light_rain)
+            "MODERATE_RAIN"->holder.TemIcon.setImageResource(R.drawable.ic_weather_moderate_rain)
+            "HEAVY_RAIN"->holder.TemIcon.setImageResource(R.drawable.ic_weather_heavy_rain)
+            "STORM_RAIN"->holder.TemIcon.setImageResource(R.drawable.ic_weather_storm_rain)
+            "FOG"->holder.TemIcon.setImageResource(R.drawable.ic_weather_fog)
+            "LIGHT_SNOW"->holder.TemIcon.setImageResource(R.drawable.ic_weather_light_snow)
+            "MODERATE_SNOW"->holder.TemIcon.setImageResource(R.drawable.ic_weather_moderate_snow)
+            "HEAVY_SNOW"->holder.TemIcon.setImageResource(R.drawable.ic_weather_heavy_snow)
+            "STORM_SNOW"->holder.TemIcon.setImageResource(R.drawable.ic_weather_storm_snow)
+            "DUST"->holder.TemIcon.setImageResource(R.drawable.ic_weather_dust)
+            "SAND"->holder.TemIcon.setImageResource(R.drawable.ic_weather_sand)
+            "WIND"->holder.TemIcon.setImageResource(R.drawable.ic_weather_wind)
+        }
+        when(wind){
+            in 0.0..1.0 -> holder.Wind.text =context.getString(R.string.aa级)
+            in 1.1..5.5 ->holder.Wind.text =context.getString(R.string.ab级)
+            in 5.6..11.5 ->holder.Wind.text =context.getString(R.string.ac级)
+            in 11.6..19.5 ->holder.Wind.text =context.getString(R.string.ad级)
+            in 19.6..28.5 ->holder.Wind.text =context.getString(R.string.ae级)
+            in 28.6..38.5 ->holder.Wind.text =context.getString(R.string.af级)
+            in 38.6..49.5 ->holder.Wind.text =context.getString(R.string.ag级)
+            in 49.6..61.5 ->holder.Wind.text =context.getString(R.string.ah级)
+            in 61.6..74.5 ->holder.Wind.text =context.getString(R.string.ai级)
+            in 74.6..88.5 ->holder.Wind.text =context.getString(R.string.aj级)
+            in 88.6..102.5 ->holder.Wind.text =context.getString(R.string.ak级)
+            in 102.6..117.5 ->holder.Wind.text =context.getString(R.string.al级)
+            in 117.5..148.5 ->holder.Wind.text =context.getString(R.string.am级)
+            in 148.6..500.1 ->holder.Wind.text =context.getString(R.string.an级)
+        }
+        when(air){
+            in 0.0..50.0 ->holder.Air.text= context.getString(R.string.a优)
+            in 50.1..100.0 ->holder.Air.text= context.getString(R.string.a良)
+            in 100.1..150.0 ->holder.Air.text= context.getString(R.string.a轻度污染)
+            in 150.1..200.0 ->holder.Air.text= context.getString(R.string.a中度污染)
+            in 200.1..300.0 ->holder.Air.text= context.getString(R.string.a重度污染)
+            in 300.1..1000.0 ->holder.Air.text= context.getString(R.string.a严重污染)
+        }
+    }
+
+    override fun getItemCount()=24
+
+}
+
+
 
 
 

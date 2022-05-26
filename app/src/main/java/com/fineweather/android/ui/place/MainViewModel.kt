@@ -2,16 +2,23 @@ package com.fineweather.android.ui.place
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.fineweather.android.logic.Respository
+import com.fineweather.android.logic.model.Location
+import com.fineweather.android.logic.model.PlaceResponse
+import com.fineweather.android.logic.model.WeatherResponse
 
 class MainViewModel:ViewModel() {
-    private val a=MutableLiveData<Int>()
-    val getcurrent:LiveData<Int>
-            get() = a
-    init {
-        a.value=3
+    private val locationLiveData=MutableLiveData<String>()
+
+    val weatherLiveData=Transformations.switchMap(locationLiveData){
+        Respository.refreshWeather(it)
+
     }
-    fun rese(){
-        a.value=a.value!!+1
+
+    fun refreshWeather(location:String){
+        locationLiveData.value=location
     }
+
 }

@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:background="@color/black">
+    android:layout_height="210dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="@string/main_fifteendayweathertext"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/main_layout15WeatherListview"
+        tools:ignore="MissingConstraints"
+        android:layout_marginStart="32dp"
+        tools:layout_editor_absoluteX="32dp" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="16dp"
+        android:overScrollMode="never"
+        android:layout_marginTop="70dp"
         android:id="@+id/main_layout15WeatherListview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        android:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

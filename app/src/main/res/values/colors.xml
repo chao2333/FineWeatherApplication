@@ -15,4 +15,6 @@
     <color name="bkRainyEnd">#7E7E7E</color>
     <color name="location_search_location_yellow">#E2FDAF37</color>
     <color name="MainTopTextColor">#e2e9f3</color>
+    <color name="FifteenDayWeatherListViewItemTime">#9AFFFFFF</color>
+    <color name="FifteenDayWeatherListViewWind">#D2FFFFFF</color>
 </resources>
