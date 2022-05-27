@@ -17,4 +17,6 @@
     <color name="MainTopTextColor">#e2e9f3</color>
     <color name="FifteenDayWeatherListViewItemTime">#9AFFFFFF</color>
     <color name="FifteenDayWeatherListViewWind">#D2FFFFFF</color>
+    <color name="mainsunriseandset">#C4FFFFFF</color>
+    <color name="mainsunriseandset2">#B2FFFFFF</color>
 </resources>

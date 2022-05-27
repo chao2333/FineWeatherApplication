@@ -8,6 +8,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic___.xml" value="0.2185" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_iconlocation.xml" value="0.1245" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1495" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_airquality.xml" value="0.1355" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_test.xml" value="0.138" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_clear.xml" value="0.1415" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_clear_day.xml" value="0.138" />
@@ -38,6 +39,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/location_delete1.xml" value="0.196" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/location_delete2.xml" value="0.2025" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/location_searchbk.xml" value="0.1455" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_air_and_ultraviolet_bk.xml" value="0.136" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_eralywarlywarninginformationbk.xml" value="0.144" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_threedayweatherairbk.xml" value="0.1505" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_threedayweatherbk.xml" value="0.1505" />
@@ -57,9 +59,11 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/locationsave_item.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/locationsearch_item.xml" value="0.33" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_15dayweather.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_air_quality.xml" value="0.4" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_earlywarninginformation.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_earlywarninginformation2.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_fifteendayweatherlistviewitem.xml" value="0.72" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_sunriseandset.xml" value="0.536" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_temperature.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_threedayweather.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_threedayweatherbutton.xml" value="0.20108695652173914" />

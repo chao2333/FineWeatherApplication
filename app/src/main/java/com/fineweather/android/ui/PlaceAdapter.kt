@@ -232,3 +232,4 @@ class fifteenDayWeatherAdapter(val hourly: Hourly):
 
 
 
+

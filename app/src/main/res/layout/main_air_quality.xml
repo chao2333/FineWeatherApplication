@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_airultravioletlayout"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints" >
+
+        <TextView
+            android:id="@+id/main_airultravioletl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/main_airultravioletimagel1"
+            android:gravity="center"
+            android:text="空气良35"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:gravity="center"
+            android:src="@drawable/ic_main_airquality" />
+
+        <ImageView
+            android:id="@+id/main_airultravioletimagel1"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            android:src="@drawable/main_air_and_ultraviolet_bk" />
+
+        <ImageView
+            android:id="@+id/main_airultravioletimagel4"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="13dp"
+            android:layout_toEndOf="@+id/main_airultravioletimagel1"
+            android:gravity="center"
+            android:src="@drawable/ic_main_airultraviolet" />
+
+        <TextView
+            android:id="@+id/main_airultravioletr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
+            android:layout_toEndOf="@+id/main_airultravioletimagel5"
+            android:gravity="center"
+            android:text="无紫外线 0"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/main_airultravioletimagel5"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="186dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="9dp"
+            android:layout_toEndOf="@+id/main_airultravioletimagel1"
+            android:gravity="center"
+            android:src="@drawable/main_air_and_ultraviolet_bk" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

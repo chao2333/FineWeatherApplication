@@ -132,5 +132,28 @@
     <string name="mainthreedaydate7">周日</string>
     <string name="mainthreedaytemperaturemaxandmin1">°/</string>
     <string name="mainthreedaytemperaturemaxandmin2">°</string>
+    <string name="baifenbi">%</string>
     <string name="maintoptemperature">°C</string>
+    <string name="main_airquiltyandultravioletl">空气</string>
+    <string name="main_airquiltyandultraviolet1">无紫外线 0</string>
+    <string name="main_airquiltyandultraviolet2">紫外线</string>
+    <string name="main_airquiltyandultraviolet3">空气优</string>
+    <string name="main_airquiltyandultraviolet4">空气良</string>
+    <string name="space"> </string>
+    <string name="main_sunriseandsetrise">日出:</string>
+    <string name="main_sunriseandsetset">日落:</string>
+    <string name="main_sunriseandsethumidity">湿度</string>
+    <string name="main_sunriseandset2">体感</string>、
+    <string name="main_sunriseandset3">气压</string>
+    <string name="main_sunriseandset4">hPa</string>
+    <string name="direction1">日落:</string>
+    <string name="direction11">东北风</string>
+    <string name="direction12">东风</string>
+    <string name="direction13">东南风</string>
+    <string name="direction14">南风</string>
+    <string name="direction15">西南风</string>
+    <string name="direction16">西风</string>
+    <string name="direction17">西北风</string>
+    <string name="direction18">北风</string>
+
 </resources>

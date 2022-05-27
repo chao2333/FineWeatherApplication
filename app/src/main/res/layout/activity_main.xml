@@ -71,12 +71,14 @@
             <include layout="@layout/main_earlywarninginformation"/>
             <include layout="@layout/main_earlywarninginformation2"/>
 
+            <include layout="@layout/main_air_quality"/>
             <include layout="@layout/main_threedayweatheritem"/>
             <include layout="@layout/main_threedayweatheritem2"/>
             <include layout="@layout/main_threedayweatheritem3"/>
 
             <include layout="@layout/main_threedayweatherbutton"/>
             <include layout="@layout/main_15dayweather"/>
+            <include layout="@layout/main_sunriseandset"/>
 
         </LinearLayout>
     </ScrollView>
