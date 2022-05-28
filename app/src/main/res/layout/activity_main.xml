@@ -79,6 +79,7 @@
             <include layout="@layout/main_threedayweatherbutton"/>
             <include layout="@layout/main_15dayweather"/>
             <include layout="@layout/main_sunriseandset"/>
+            <include layout="@layout/main_lifeindex"/>
 
         </LinearLayout>
     </ScrollView>

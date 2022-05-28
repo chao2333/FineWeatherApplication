@@ -3,7 +3,6 @@ package com.fineweather.android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -21,6 +20,7 @@ import kotlinx.android.synthetic.main.main_15dayweather.*
 import kotlinx.android.synthetic.main.main_air_quality.*
 import kotlinx.android.synthetic.main.main_earlywarninginformation.*
 import kotlinx.android.synthetic.main.main_earlywarninginformation2.*
+import kotlinx.android.synthetic.main.main_lifeindex.*
 import kotlinx.android.synthetic.main.main_sunriseandset.*
 import kotlinx.android.synthetic.main.main_temperature.*
 import kotlinx.android.synthetic.main.main_threedayweatheritem.*
@@ -35,6 +35,7 @@ import kotlinx.android.synthetic.main.main_threedayweatheritemgap3.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 showearlyWarningInformation(weather.result.alert)
                 showairandultraviolet(weather.result.realtime)
                 showsunriseandset(weather.result.daily.astro[0],weather.result.realtime.wind,weather.result.realtime.humidity,weather.result.realtime.apparent_temperature,weather.result.realtime.pressure)
+                showlifeindex(weather.result.minutely.precipitation_2h,weather.result.daily.life_index.comfort[0],weather.result.daily.life_index.dressing[0],weather.result.daily.life_index.coldRisk[0].desc,weather.result.realtime.temperature,weather.result.realtime.skycon,weather.result.daily.life_index.carWashing[0].desc)
             } else {
                 Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
@@ -59,7 +61,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.refreshWeather("113.692596,34.598752")
         //实现欢迎界面
         Welcome()
+        //空气质量界面
+        main_airultravioletlayout.setOnClickListener {
+           // val intent5=Intent(this,main_air_ultraviolet::class.java)
+            //startActivity(intent5)
+            LogUtil.d("mainactivitytest","onclick")
+        }
         //设置界面跳转
+
         topSettingButton.setOnClickListener{
             coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
             val LocationIntent3= Intent(this, WelcomeActivity::class.java)
@@ -541,8 +550,53 @@ class MainActivity : AppCompatActivity() {
             in 148.6..500.1 ->main_sunandrise22.text=this.getString(R.string.an级)
         }
         main_sunandrise24.text=(humidity*100).toInt().toString()+this.getString(R.string.baifenbi)
-        main_sunandrise26.text=apparenttemperature.toString()+this.getString(R.string.maintoptemperature)
+        main_sunandrise26.text=apparenttemperature.toString()+this.getString(R.string.maintoptemperature2)
         main_sunandrise28.text=(pressure/100).toInt().toString()+this.getString(R.string.main_sunriseandset4)
+    }
+    private fun showlifeindex(precipitation_2h:ArrayList<Double>,comfortdesc:CommonUse3,dressdesc:CommonUse3,coldrisk:String,temperature:Int,skycon: String,washcar:String){
+        //是否需要带伞
+        var flag=false
+        for(index in precipitation_2h){
+            if (index!=0.0){
+                flag=true
+                break
+            }
+        }
+        if(flag){
+            lifeindexitem11.text=this.getString(R.string.main_lifeindex2)
+            lifeindexitem12.setImageResource(R.drawable.ic_main_lifeindex_umbrella)
+        }else{
+            lifeindexitem11.text=this.getString(R.string.main_lifeindex1)
+            lifeindexitem12.setImageResource(R.drawable.ic_main_lifeindex_noumbrella)
+        }
+        //舒适度
+        if (comfortdesc.index == "11"){
+            lifeindexitem31.text=this.getString(R.string.main_lifeindex3)
+        }else{
+            lifeindexitem31.text=this.getString(R.string.main_lifeindex4)+comfortdesc.desc
+        }
+        when(comfortdesc.index){
+            "0","1","2","3"->lifeindexitem32.setImageResource(R.drawable.ic_main_lifeindex_comfort_hot)
+            "4","5","6"->lifeindexitem32.setImageResource(R.drawable.ic_main_lifeindex_comfort_comfort)
+            "7","8","9","10","11","12","13"->lifeindexitem32.setImageResource(R.drawable.ic_main_lifeindex_comfort_cold)
+        }
+        //穿衣
+        when(dressdesc.index){
+            "0","1","2","3"->lifeindexitem22.setImageResource(R.drawable.ic_main_lifeindex_dress_hot)
+            "4","5","6"->lifeindexitem22.setImageResource(R.drawable.ic_main_lifeindex_dress_comfort)
+            "7","8"->lifeindexitem22.setImageResource(R.drawable.ic_main_lifeindex_dress_cold)
+        }
+        lifeindexitem21.text=this.getString(R.string.main_lifeindex5)+dressdesc.desc
+        //感冒
+        lifeindexitem41.text=coldrisk+this.getString(R.string.main_lifeindex9)
+        //晾晒
+        if((skycon=="CLEAR_DAY"&&temperature>18)||(skycon=="CLEAR_NIGHT"&&temperature>18)){
+            lifeindexitem51.text=this.getString(R.string.main_lifeindex6)
+        }else{
+            lifeindexitem51.text=this.getString(R.string.main_lifeindex7)
+        }
+        //洗车
+        lifeindexitem61.text=washcar+this.getString(R.string.main_lifeindex8)
     }
 
 

@@ -134,6 +134,7 @@
     <string name="mainthreedaytemperaturemaxandmin2">°</string>
     <string name="baifenbi">%</string>
     <string name="maintoptemperature">°C</string>
+    <string name="maintoptemperature2">°</string>
     <string name="main_airquiltyandultravioletl">空气</string>
     <string name="main_airquiltyandultraviolet1">无紫外线 0</string>
     <string name="main_airquiltyandultraviolet2">紫外线</string>
@@ -155,5 +156,17 @@
     <string name="direction16">西风</string>
     <string name="direction17">西北风</string>
     <string name="direction18">北风</string>
+    <string name="main_lifeindex1">无需带伞</string>
+    <string name="main_lifeindex2">需要带伞</string>
+    <string name="main_lifeindex3">刺骨的冷</string>
+    <string name="main_lifeindex4">舒适度·</string>
+    <string name="main_lifeindex5">穿衣·</string>
+    <string name="main_lifeindex6">适合晾晒</string>
+    <string name="main_lifeindex7">不适合晾晒</string>
+    <string name="main_lifeindex8">洗车</string>
+    <string name="main_lifeindex9">感冒</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="activity_main_air_quality1">空气质量</string>
+
 
 </resources>

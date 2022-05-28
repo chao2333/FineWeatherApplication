@@ -9,6 +9,18 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_iconlocation.xml" value="0.1245" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1495" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_airquality.xml" value="0.1355" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_carwash.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_coathanger.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_comfort_cold.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_comfort_comfort.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_comfort_hot.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_dress_cold.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_dress_comfort.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_dress_hot.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_dresshot.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_noumbrella.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_pill.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_umbrella.xml" value="0.2125" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_test.xml" value="0.138" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_clear.xml" value="0.1415" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_clear_day.xml" value="0.138" />
@@ -41,6 +53,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/location_searchbk.xml" value="0.1455" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_air_and_ultraviolet_bk.xml" value="0.136" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_eralywarlywarninginformationbk.xml" value="0.144" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_lifeindex_bk.xml" value="0.1795" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_threedayweatherairbk.xml" value="0.1505" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_threedayweatherbk.xml" value="0.1505" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/main_threedayweathercheckbuttonbk.xml" value="0.143" />
@@ -54,7 +67,12 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location.xml" value="0.264" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location_search.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_air_quality.xml" value="0.2390625" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_air_ultraviolet.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_ultraviolet.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_welcome.xml" value="0.2" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/fragment_first.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/fragment_second.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/layout.xml" value="0.23143115942028986" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/locationsave_item.xml" value="0.3509963768115942" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/locationsearch_item.xml" value="0.33" />
@@ -63,6 +81,8 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_earlywarninginformation.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_earlywarninginformation2.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_fifteendayweatherlistviewitem.xml" value="0.72" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_layout_airquality_ultraviolet.xml" value="1.261513157894737" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_lifeindex.xml" value="0.4" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_sunriseandset.xml" value="0.536" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_temperature.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_threedayweather.xml" value="0.25364583333333335" />

@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_airultravioletlayout"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints" >
+
 
         <TextView
             android:id="@+id/main_airultravioletl"
@@ -21,7 +21,6 @@
             android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/main_airultravioletimagel1"
             android:gravity="center"
-            android:text="空气良35"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -72,7 +71,6 @@
             android:layout_marginBottom="13dp"
             android:layout_toEndOf="@+id/main_airultravioletimagel5"
             android:gravity="center"
-            android:text="无紫外线 0"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
@@ -86,6 +84,20 @@
             android:layout_toEndOf="@+id/main_airultravioletimagel1"
             android:gravity="center"
             android:src="@drawable/main_air_and_ultraviolet_bk" />
+
+        <ImageView
+            android:id="@+id/main_airqualitybutton"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="19dp" />
+
+        <ImageView
+            android:id="@+id/main_ultravioletbutton"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

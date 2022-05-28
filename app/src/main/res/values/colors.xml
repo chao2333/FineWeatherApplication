@@ -19,4 +19,7 @@
     <color name="FifteenDayWeatherListViewWind">#D2FFFFFF</color>
     <color name="mainsunriseandset">#C4FFFFFF</color>
     <color name="mainsunriseandset2">#B2FFFFFF</color>
+    <color name="mainlifeindexcolor">#CBFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+
 </resources>
