@@ -3,6 +3,7 @@ package com.fineweather.android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.model.*
+import com.fineweather.android.ui.MainAirQualityActivity
 import com.fineweather.android.ui.WelcomeActivity
 import com.fineweather.android.ui.fifteenDayWeatherAdapter
 import com.fineweather.android.ui.location.LocationActivity
@@ -34,7 +36,6 @@ import kotlinx.android.synthetic.main.main_threedayweatheritemgap2.*
 import kotlinx.android.synthetic.main.main_threedayweatheritemgap3.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +54,34 @@ class MainActivity : AppCompatActivity() {
                 showairandultraviolet(weather.result.realtime)
                 showsunriseandset(weather.result.daily.astro[0],weather.result.realtime.wind,weather.result.realtime.humidity,weather.result.realtime.apparent_temperature,weather.result.realtime.pressure)
                 showlifeindex(weather.result.minutely.precipitation_2h,weather.result.daily.life_index.comfort[0],weather.result.daily.life_index.dressing[0],weather.result.daily.life_index.coldRisk[0].desc,weather.result.realtime.temperature,weather.result.realtime.skycon,weather.result.daily.life_index.carWashing[0].desc)
+                //空气质量详情界面
+                main_airqualitybutton.setOnClickListener {
+                    val airqualitydata=Airqualitydata()
+                    airqualitydata.time=weather.result.daily.astro[0].date
+                    airqualitydata.airquality=weather.result.realtime.air_quality.aqi.chn
+                    airqualitydata.pm25=weather.result.realtime.air_quality.pm25
+                    airqualitydata.pm10=weather.result.realtime.air_quality.pm10
+                    airqualitydata.so2=weather.result.realtime.air_quality.so2
+                    airqualitydata.no2=weather.result.realtime.air_quality.no2
+                    airqualitydata.o3=weather.result.realtime.air_quality.o3
+                    airqualitydata.co=weather.result.realtime.air_quality.co
+                    val aqiarraylist=weather.result.hourly.air_quality.aqi
+                    val aqiarraylist1=arrayListOf(0.0)
+                    val timearraylist1= arrayListOf("")
+                    for(index in 0..23){
+                        aqiarraylist1.add(aqiarraylist[index].value.chn)
+                        timearraylist1.add(aqiarraylist[index].datetime)
+                    }
+                    airqualitydata.aqichnlist=aqiarraylist1
+                    airqualitydata.timearraylist=timearraylist1
+
+                    LogUtil.d("mainactivitytest",aqiarraylist1.toString())
+                    LogUtil.d("mainactivitytest",timearraylist1.toString())
+
+                    val intent=Intent(this,MainAirQualityActivity::class.java)
+                    intent.putExtra("Airqualitydata",airqualitydata)
+                    startActivity(intent)
+                }
             } else {
                 Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
@@ -111,18 +140,9 @@ class MainActivity : AppCompatActivity() {
         val skycon1=daily.skycon[0].value
         val skycon2=daily.skycon[1].value
         val skycon3=daily.skycon[2].value
-        val date= Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
-        lateinit var systemTime:String
+        val systemTime1: CharSequence = DateFormat.format("EEEE", System.currentTimeMillis())
+        val systemTime=systemTime1.toString()
         //设置显示三天天气的图标和文字
-        when(date){
-            2->systemTime="周三"
-            3->systemTime="周四"
-            4->systemTime="周五"
-            5->systemTime="周六"
-            6->systemTime="周日"
-            7->systemTime="周一"
-            8->systemTime="周二"
-        }
         when(skycon1){
             "CLEAR_DAY" -> {
                 coordinatorlayout.mainthreedayweatheritem1l.text=this.getString(R.string.mainthreeday101)
@@ -297,7 +317,7 @@ class MainActivity : AppCompatActivity() {
                 coordinatorlayout.mainthreedayweathericon3l.setImageResource(R.drawable.ic_weather_clear_night)
             }
             "PARTLY_CLOUDY_DAY" -> {
-                coordinatorlayout.mainthreedayweatheritem3l.text=systemTime+this.getString(R.string.mainthreeday1021)
+                coordinatorlayout.mainthreedayweatheritem3l.text=systemTime +this.getString(R.string.mainthreeday1021)
                 coordinatorlayout.mainthreedayweathericon3l.setImageResource(R.drawable.ic_weather_partly_cloudy_day)
             }
             "PARTLY_CLOUDY_NIGHT" -> {

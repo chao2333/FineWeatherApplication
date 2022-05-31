@@ -3,11 +3,6 @@ package com.fineweather.android.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
-import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.media.Image
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -21,12 +16,9 @@ import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
-import com.fineweather.android.logic.model.Daily
 import com.fineweather.android.logic.model.Hourly
 import com.fineweather.android.logic.model.LocationSaveItem
 import com.fineweather.android.logic.model.Place
-import kotlinx.android.synthetic.main.locationsave_item.view.*
-import java.math.RoundingMode
 import java.text.DecimalFormat
 
 class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>):

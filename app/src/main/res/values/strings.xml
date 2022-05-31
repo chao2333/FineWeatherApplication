@@ -167,6 +167,14 @@
     <string name="main_lifeindex9">感冒</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="activity_main_air_quality1">空气质量</string>
+    <string name="qualitylayout_pollution1">PM2.5</string>
+    <string name="qualitylayout_pollution2">PM10</string>
+    <string name="qualitylayout_pollution3">SO₂</string>
+    <string name="qualitylayout_pollution4">NO₂</string>
+    <string name="qualitylayout_pollution5">O₃</string>
+    <string name="qualitylayout_pollution6">CO</string>
+    <string name="qualitylayout_pollution7">空气主要污染物</string>
+    <string name="qualitylayout_pollution8">24小时空气质量预报</string>
 
 
 </resources>

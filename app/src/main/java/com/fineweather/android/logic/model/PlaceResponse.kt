@@ -1,6 +1,8 @@
 package com.fineweather.android.logic.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 //Location
 data class PlaceResponse(val status:String,val query:String,val places:List<Place>)
 data class Place(val name: String, val location: Location,@SerializedName("formatted_address") val address: String)
@@ -36,3 +38,16 @@ data class Result(val alert:Alert,val realtime:Realtime,val minutely:Minutely,va
         data class Skycon(val date:String,val value: String)
         data class LifeIndexD(val ultraviolet:ArrayList<CommonUse3>,val carWashing:ArrayList<CommonUse3>,val dressing:ArrayList<CommonUse3>,val comfort:ArrayList<CommonUse3>,val coldRisk:ArrayList<CommonUse3>)
             data class CommonUse3(val date: String,val index:String,val desc: String)
+//Airquality界面需要的数据
+class Airqualitydata:Serializable{
+    var time:String=""
+    var airquality: Double=0.0
+    var pm25: Double=0.0
+    var pm10: Double=0.0
+    var so2: Double=0.0
+    var no2: Double=0.0
+    var o3: Double=0.0
+    var co: Double=0.0
+    var timearraylist=arrayListOf("")
+    var aqichnlist=arrayListOf(0.0)
+}

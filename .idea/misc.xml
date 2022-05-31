@@ -9,6 +9,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_iconlocation.xml" value="0.1245" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1495" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_airquality.xml" value="0.1355" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_airultraviolet.xml" value="0.1085" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_carwash.xml" value="0.2125" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_coathanger.xml" value="0.2125" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_comfort_cold.xml" value="0.2125" />
@@ -61,13 +62,14 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainrainy.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainsunny.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/test.xml" value="0.1495" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/testcustom.xml" value="0.186" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_data.xml" value="0.1315" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_network.xml" value="0.1315" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/welcome_nextbuttonbk.xml" value="0.12335359675785208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location.xml" value="0.264" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_location_search.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_air_quality.xml" value="0.2390625" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_air_quality.xml" value="0.4" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_air_ultraviolet.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_ultraviolet.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_welcome.xml" value="0.2" />
@@ -82,7 +84,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_earlywarninginformation2.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_fifteendayweatherlistviewitem.xml" value="0.72" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_layout_airquality_ultraviolet.xml" value="1.261513157894737" />
-        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_lifeindex.xml" value="0.4" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_lifeindex.xml" value="0.8800000000000001" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_sunriseandset.xml" value="0.536" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_temperature.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/main_threedayweather.xml" value="0.25364583333333335" />

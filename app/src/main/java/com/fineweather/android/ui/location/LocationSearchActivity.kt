@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
@@ -28,7 +27,6 @@ import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.ui.PlaceAdapter
 import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
-import java.util.*
 
 
 class LocationSearchActivity : AppCompatActivity() {
