@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="52dp"
+    android:id="@+id/mainthreedayweatheritem4"
     android:layout_marginTop="30dp">
 
     <Button
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_threedayweathercheckbuttonbk"

@@ -173,8 +173,9 @@
     <string name="qualitylayout_pollution4">NO₂</string>
     <string name="qualitylayout_pollution5">O₃</string>
     <string name="qualitylayout_pollution6">CO</string>
-    <string name="qualitylayout_pollution7">空气主要污染物</string>
+    <string name="qualitylayout_pollution7">主要污染物</string>
     <string name="qualitylayout_pollution8">24小时空气质量预报</string>
+    <string name="qualitylayout_data1">发布</string>
 
 
 </resources>

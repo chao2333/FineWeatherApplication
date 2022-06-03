@@ -21,5 +21,9 @@
     <color name="mainsunriseandset2">#B2FFFFFF</color>
     <color name="mainlifeindexcolor">#CBFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
-
+    <color name="Airquality_you">#13d080</color>
+    <color name="Airquality_liang">#fbb84d</color>
+    <color name="Airquality_pollution1">#FF5714</color>
+    <color name="Airquality_pollution2">#FF0000</color>
+    <color name="Airquality_pollution3">#C800DD</color>
 </resources>

@@ -50,7 +50,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
             android:layout_marginTop="3dp"
-            android:text="14:00发布"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
@@ -62,7 +61,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
             android:layout_marginTop="20dp"
-            android:text="51"
             android:textSize="51sp" />
 
         <TextView
@@ -76,14 +74,14 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/Airquality_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Airquality_time"
             android:layout_marginStart="12dp"
             android:layout_marginTop="52dp"
             android:layout_toEndOf="@+id/Airquality_airquality"
-            android:text="良"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:id="@+id/Airquality_detaillayout"
@@ -102,7 +100,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution1"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_pm25"
@@ -112,7 +110,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="16dp"
-                android:text="23"
                 android:textSize="23sp" />
 
             <TextView
@@ -120,10 +117,10 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="71dp"
+                android:layout_marginStart="73dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution2"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_pm10"
@@ -131,9 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="74dp"
+                android:layout_marginStart="71dp"
                 android:layout_marginTop="16dp"
-                android:text="99"
                 android:textSize="23sp" />
 
             <TextView
@@ -144,7 +140,7 @@
                 android:layout_marginStart="144dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution3"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_SO2"
@@ -154,7 +150,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="137dp"
                 android:layout_marginTop="16dp"
-                android:text="2.6"
                 android:textSize="23sp" />
 
             <TextView
@@ -165,7 +160,7 @@
                 android:layout_marginStart="199dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution4"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_NO2"
@@ -175,7 +170,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="196dp"
                 android:layout_marginTop="16dp"
-                android:text="22"
                 android:textSize="23sp" />
 
             <TextView
@@ -186,7 +180,7 @@
                 android:layout_marginStart="260dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution5"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_CO"
@@ -196,7 +190,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="245dp"
                 android:layout_marginTop="16dp"
-                android:text="217"
                 android:textSize="23sp" />
 
             <TextView
@@ -207,7 +200,7 @@
                 android:layout_marginStart="323dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution6"
-                android:textSize="12dp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/Airquality_O3"
@@ -217,7 +210,6 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="314dp"
                 android:layout_marginTop="16dp"
-                android:text="0.3"
                 android:textSize="23sp" />
 
 

@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.main_earlywarninginformation2.*
 import kotlinx.android.synthetic.main.main_lifeindex.*
 import kotlinx.android.synthetic.main.main_sunriseandset.*
 import kotlinx.android.synthetic.main.main_temperature.*
+import kotlinx.android.synthetic.main.main_threedayweatherbutton.*
 import kotlinx.android.synthetic.main.main_threedayweatheritem.*
 import kotlinx.android.synthetic.main.main_threedayweatheritem.view.*
 import kotlinx.android.synthetic.main.main_threedayweatheritem2.*
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 //空气质量详情界面
                 main_airqualitybutton.setOnClickListener {
                     val airqualitydata=Airqualitydata()
-                    airqualitydata.time=weather.result.daily.astro[0].date
+                    airqualitydata.time=weather.result.hourly.precipitation[0].datetime
                     airqualitydata.airquality=weather.result.realtime.air_quality.aqi.chn
                     airqualitydata.pm25=weather.result.realtime.air_quality.pm25
                     airqualitydata.pm10=weather.result.realtime.air_quality.pm10
@@ -92,12 +93,15 @@ class MainActivity : AppCompatActivity() {
         Welcome()
         //空气质量界面
         main_airultravioletlayout.setOnClickListener {
-           // val intent5=Intent(this,main_air_ultraviolet::class.java)
-            //startActivity(intent5)
             LogUtil.d("mainactivitytest","onclick")
         }
-        //设置界面跳转
+        //15日天气界面
 
+        mainthreedayweatheritem1.setOnClickListener { }
+        mainthreedayweatheritem2.setOnClickListener {  }
+        mainthreedayweatheritem3.setOnClickListener {  }
+        mainthreedayweatheritem4.setOnClickListener {  }
+        //设置界面跳转
         topSettingButton.setOnClickListener{
             coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
             val LocationIntent3= Intent(this, WelcomeActivity::class.java)

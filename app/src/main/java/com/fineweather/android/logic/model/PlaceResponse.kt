@@ -51,3 +51,6 @@ class Airqualitydata:Serializable{
     var timearraylist=arrayListOf("")
     var aqichnlist=arrayListOf(0.0)
 }
+class Fifteendays:Serializable{
+
+}
