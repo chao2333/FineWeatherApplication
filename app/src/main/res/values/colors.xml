@@ -23,7 +23,14 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="Airquality_you">#13d080</color>
     <color name="Airquality_liang">#fbb84d</color>
-    <color name="Airquality_pollution1">#FF5714</color>
+    <color name="Airquality_pollution1">#FF6527</color>
     <color name="Airquality_pollution2">#FF0000</color>
     <color name="Airquality_pollution3">#C800DD</color>
+    <color name="Fifteendays_date">#B3000000</color>
+    <color name="Fifteendays_week">#CB000000</color>
+    <color name="Fifteendays_wind">#BA000000</color>
+    <color name="Fifteendays_red">#FF2525</color>
+    <color name="Fifteendays_bule">#4242FF</color>
+    <color name="Fifteendays_background">#9C000000</color>
+    <color name="Fifteendays_detail_humidity">#B2000000</color>
 </resources>

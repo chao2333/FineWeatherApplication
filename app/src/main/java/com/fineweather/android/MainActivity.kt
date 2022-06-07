@@ -1,5 +1,6 @@
 package com.fineweather.android
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,12 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.model.*
-import com.fineweather.android.ui.MainAirQualityActivity
-import com.fineweather.android.ui.WelcomeActivity
-import com.fineweather.android.ui.fifteenDayWeatherAdapter
+import com.fineweather.android.ui.*
 import com.fineweather.android.ui.location.LocationActivity
 import com.fineweather.android.ui.place.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fifteendays_recyclerview_item.*
 import kotlinx.android.synthetic.main.main_15dayweather.*
 import kotlinx.android.synthetic.main.main_air_quality.*
 import kotlinx.android.synthetic.main.main_earlywarninginformation.*
@@ -35,6 +35,7 @@ import kotlinx.android.synthetic.main.main_threedayweatheritem3.view.*
 import kotlinx.android.synthetic.main.main_threedayweatheritemgap.*
 import kotlinx.android.synthetic.main.main_threedayweatheritemgap2.*
 import kotlinx.android.synthetic.main.main_threedayweatheritemgap3.*
+import kotlinx.android.synthetic.main.main_twohoursrain.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import kotlin.collections.ArrayList
@@ -83,24 +84,44 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("Airqualitydata",airqualitydata)
                     startActivity(intent)
                 }
+                //十五日天气界面
+                mainthreedayweatheritem1.setOnClickListener { fifteendays(weather.result.daily,this) }
+                mainthreedayweatheritem2.setOnClickListener { fifteendays(weather.result.daily,this)}
+                mainthreedayweatheritem3.setOnClickListener { fifteendays(weather.result.daily,this) }
+                mainthreedayweatheritem4.setOnClickListener { fifteendays(weather.result.daily,this)}
+                //两小时内是否有雨
+                for(index in 0..119){
+                    if(weather.result.minutely.precipitation_2h[index]!=0.0){
+                        main_twohoursrain.visibility=View.VISIBLE
+                        if (index>60){
+                            twohoursrain_button.text=this.getString(R.string.main_twohours1)+(index-60).toString()+this.getString(R.string.main_twohours2)
+                            break
+                        }
+                        if (index<=60){
+                            twohoursrain_button.text=(index).toString()+this.getString(R.string.main_twohours2)
+                            break
+                        }
+                    }
+                }
+                twohoursrain_button.setOnClickListener {
+                    val intent7=Intent(this,MainTwoHoursRainActivity::class.java)
+                    intent7.putExtra("twohoursraindata",weather.result.minutely.precipitation_2h)
+                    startActivity(intent7)
+                }
+
             } else {
                 Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
-        viewModel.refreshWeather("113.692596,34.598752")
+        viewModel.refreshWeather("102.551761,32.798063")
         //实现欢迎界面
-        Welcome()
+        welcome()
         //空气质量界面
         main_airultravioletlayout.setOnClickListener {
             LogUtil.d("mainactivitytest","onclick")
         }
-        //15日天气界面
 
-        mainthreedayweatheritem1.setOnClickListener { }
-        mainthreedayweatheritem2.setOnClickListener {  }
-        mainthreedayweatheritem3.setOnClickListener {  }
-        mainthreedayweatheritem4.setOnClickListener {  }
         //设置界面跳转
         topSettingButton.setOnClickListener{
             coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
@@ -114,7 +135,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(LocationIntent)
         }
     }
-    fun Welcome(){
+    private fun fifteendays(daily:Daily,activity:Activity){
+        val intent=Intent(activity,MainFifteenDaysActivity::class.java)
+        intent.putExtra("dailydata",daily)
+        startActivity(intent)
+    }
+    fun welcome(){
         val ApplicationDataPers=getSharedPreferences("ApplicationData",0)
         val editor=ApplicationDataPers.edit()
         val Firstload=ApplicationDataPers.getBoolean("Firstload",false)

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fifteenday_recycler_item"
+    android:layout_width="70dp"
+    android:layout_height="400dp">
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="13sp"
+        android:textColor="@color/Fifteendays_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_date2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/Fifteendays_date"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fifteenday_recycler_item_date" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_skycon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fifteenday_recycler_item_date2" />
+
+    <ImageView
+        android:id="@+id/fifteenday_recycler_item_icon"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fifteenday_recycler_item_skycon" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_high"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:textSize="14.5sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fifteenday_recycler_item_icon" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="11dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="•"
+        android:textColor="@color/Fifteendays_red"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fifteenday_recycler_item_high" />
+
+    <TextView
+        android:layout_width="11dp"
+        android:layout_height="20dp"
+android:gravity="center_horizontal"
+        android:text="•"
+        android:textColor="@color/Fifteendays_bule"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.46"
+        android:layout_marginBottom="-4dp"
+        app:layout_constraintBottom_toTopOf="@+id/fifteenday_recycler_item_low"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:textColor="@color/black"
+        android:textSize="14.5sp"
+        app:layout_constraintBottom_toTopOf="@+id/fifteenday_recycler_item_wind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:textColor="@color/Fifteendays_wind"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/fifteenday_recycler_item_pollution"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fifteenday_recycler_item_pollution"
+        android:layout_width="49dp"
+        android:layout_height="18dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/fifteenday_item_airquality_bk_default"
+        android:textSize="11sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

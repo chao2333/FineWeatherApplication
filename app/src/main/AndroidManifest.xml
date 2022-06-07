@@ -15,37 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.晴天">
         <activity
+            android:name=".ui.MainTwoHoursRainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainFifteenDaysActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.MainUltravioletActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainAirQualityActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.Main_AirQuality_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.Main_Ultraviolet_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.Main_AirUltraviolet"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main_air_ultraviolet"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.晴天.NoActionBar" />
         <activity
             android:name=".ui.location.LocationSearchActivity"
             android:exported="false"

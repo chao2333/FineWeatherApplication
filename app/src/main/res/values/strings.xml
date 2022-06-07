@@ -133,6 +133,7 @@
     <string name="mainthreedaytemperaturemaxandmin1">°/</string>
     <string name="mainthreedaytemperaturemaxandmin2">°</string>
     <string name="baifenbi">%</string>
+    <string name="kilometer">km</string>
     <string name="maintoptemperature">°C</string>
     <string name="maintoptemperature2">°</string>
     <string name="main_airquiltyandultravioletl">空气</string>
@@ -144,8 +145,10 @@
     <string name="main_sunriseandsetrise">日出:</string>
     <string name="main_sunriseandsetset">日落:</string>
     <string name="main_sunriseandsethumidity">湿度</string>
-    <string name="main_sunriseandset2">体感</string>、
+    <string name="main_sunriseandset2">体感</string>
     <string name="main_sunriseandset3">气压</string>
+    <string name="fifteendays_detail_visibility">能见度</string>
+    <string name="fifteendays_detail_cloudrate">云量</string>
     <string name="main_sunriseandset4">hPa</string>
     <string name="direction1">日落:</string>
     <string name="direction11">东北风</string>
@@ -176,6 +179,14 @@
     <string name="qualitylayout_pollution7">主要污染物</string>
     <string name="qualitylayout_pollution8">24小时空气质量预报</string>
     <string name="qualitylayout_data1">发布</string>
+    <string name="fifteendays_title">15日天气预报</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="main_twohours1">一小时</string>
+    <string name="main_twohours2">分钟后会下雨，出门记得带伞</string>
+    <string name="twohours_layout_1">2小时降水预报</string>
+    <string name="twohours_layout_2">单位:mm/h</string>
+    <string name="twohours_layout_3">2小时内会下雨，出门记得带伞</string>
 
 
 </resources>

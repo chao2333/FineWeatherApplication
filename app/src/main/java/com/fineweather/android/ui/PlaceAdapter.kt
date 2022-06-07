@@ -3,6 +3,7 @@ package com.fineweather.android.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -10,16 +11,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
-import com.fineweather.android.logic.model.Hourly
-import com.fineweather.android.logic.model.LocationSaveItem
-import com.fineweather.android.logic.model.Place
+import com.fineweather.android.logic.model.*
 import java.text.DecimalFormat
+import java.util.*
+
 
 class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
@@ -84,9 +86,7 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
         }
         holder.itemView.setOnClickListener {
             //设置卡片背景
-            // it.LocationSaveCardbk.setBackgroundResource(R.drawable.mainsunny)
-
-            val pers=FineWeatherApplication.context.getSharedPreferences("ApplicationData",0)
+            val pers=context.getSharedPreferences("ApplicationData",0)
             val persedit=pers.edit()
             persedit.putString("name",location.name)
             persedit.putString("address",location.address)
@@ -138,7 +138,6 @@ class fifteenDayWeatherAdapter(val hourly: Hourly):
         val Skycon=hourly.skycon[position].value
         val wind=hourly.wind[position].speed
         val air=hourly.air_quality.aqi[position].value.chn
-
         holder.Time.text=Time[1]
         holder.Temperature.text=Temperature+ context.getString(R.string.mainthreedaytemperaturemaxandmin2)
         when(Skycon){
@@ -187,12 +186,237 @@ class fifteenDayWeatherAdapter(val hourly: Hourly):
             in 200.1..300.0 ->holder.Air.text= context.getString(R.string.a重度污染)
             in 300.1..1000.0 ->holder.Air.text= context.getString(R.string.a严重污染)
         }
+
     }
 
     override fun getItemCount()=24
 
 }
 
+class FifteenDayLayoutAdapter(val daily: Daily,val activity: Activity):
+    RecyclerView.Adapter<FifteenDayLayoutAdapter.ViewHolder>(){
+    private val humidity1=activity.findViewById<TextView>(R.id.fifteenday_detail_humidity)
+    private val visibility1=activity.findViewById<TextView>(R.id.fifteenday_detail_visibility)
+    private val pressure1=activity.findViewById<TextView>(R.id.fifteenday_detail_pressure)
+    private val cloudrate1=activity.findViewById<TextView>(R.id.fifteenday_detail_cloudrate)
+    private val fifteenday_detail_date=activity.findViewById<TextView>(R.id.fifteenday_detail_date)
+    private var currentPosition=0
+    private val week= arrayListOf("今天")
+    inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
+        val date:TextView=view.findViewById(R.id.fifteenday_recycler_item_date)
+        val date2:TextView=view.findViewById(R.id.fifteenday_recycler_item_date2)
+        val skycon:TextView=view.findViewById(R.id.fifteenday_recycler_item_skycon)
+        val icon:ImageView=view.findViewById(R.id.fifteenday_recycler_item_icon)
+        val high:TextView=view.findViewById(R.id.fifteenday_recycler_item_high)
+        val low:TextView=view.findViewById(R.id.fifteenday_recycler_item_low)
+        val Wind:TextView=view.findViewById(R.id.fifteenday_recycler_item_wind)
+        val Air:TextView=view.findViewById(R.id.fifteenday_recycler_item_pollution)
+    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FifteenDayLayoutAdapter.ViewHolder {
+        val view=LayoutInflater.from(parent.context)
+            .inflate(R.layout.fifteendays_recyclerview_item,parent,false)
+
+        val a= Calendar.getInstance()
+        var b=a.get(Calendar.DAY_OF_WEEK)
+        if(b==1||b==2||b==3||b==4||b==5||b==6||b==7) {
+            b += 1
+            for (i in 0 until 14) {
+                b %= 7
+                when (b) {
+                    1 -> week.add("周日")
+                    2 -> week.add("周一")
+                    3 -> week.add("周二")
+                    4 -> week.add("周三")
+                    5 -> week.add("周四")
+                    6 -> week.add("周五")
+                    0 -> week.add("周六")
+                }
+                b += 1
+            }
+        }else{
+            for (i in 0 until 14) {
+                week.add(" ")
+            }
+        }
+        return ViewHolder(view)
+
+
+    }
+    override fun onBindViewHolder(holder: FifteenDayLayoutAdapter.ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        //设置星期几
+        holder.date.text=week[position]
+        //设置几月几日
+        val mad=daily.temperature[position].date.split("-","T")
+        var month=mad[1]
+        var day=mad[2]
+        if (month[0]=='0'){ month=month[1].toString() }
+        if (day[0]=='0'){ day=day[1].toString() }
+        holder.date2.text=month+"月"+day+"日"
+        //设置天气描述和图标
+        when(daily.skycon[position].value){
+            "CLEAR_DAY" -> {
+                holder.icon.setImageResource(R.drawable.ic_weather_clear_day)
+                holder.skycon.text=context.getString(R.string.mainthreeday1012)
+            }
+            "CLEAR_NIGHT" -> {
+                holder.icon.setImageResource(R.drawable.ic_weather_clear_night)
+                holder.skycon.text=context.getString(R.string.mainthreeday1012)
+            }
+            "PARTLY_CLOUDY_DAY" -> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_partly_cloudy_day)
+                holder.skycon.text=context.getString(R.string.mainthreeday1022)
+            }
+            "PARTLY_CLOUDY_NIGHT" -> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_partly_cloudy_night)
+                holder.skycon.text=context.getString(R.string.mainthreeday1022)
+            }
+            "CLOUDY"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_cloudy)
+                holder.skycon.text=context.getString(R.string.mainthreeday1032)
+            }
+            "LIGHT_HAZE"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_haze)
+                holder.skycon.text=context.getString(R.string.mainthreeday1042)
+
+            }
+            "MODERATE_HAZE"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_haze)
+                holder.skycon.text=context.getString(R.string.mainthreeday1052)
+            }
+            "HEAVY_HAZE"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_haze)
+                holder.skycon.text=context.getString(R.string.mainthreeday1062)
+            }
+            "LIGHT_RAIN"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_light_rain)
+                holder.skycon.text=context.getString(R.string.mainthreeday1072)
+            }
+            "MODERATE_RAIN"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_moderate_rain)
+                holder.skycon.text=context.getString(R.string.mainthreeday1082)
+            }
+            "HEAVY_RAIN"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_heavy_rain)
+                holder.skycon.text=context.getString(R.string.mainthreeday1092)
+            }
+            "STORM_RAIN"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_storm_rain)
+                holder.skycon.text=context.getString(R.string.mainthreeday1102)
+            }
+            "FOG"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_fog)
+                holder.skycon.text=context.getString(R.string.mainthreeday1112)
+            }
+            "LIGHT_SNOW"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_light_snow)
+                holder.skycon.text=context.getString(R.string.mainthreeday1122)
+            }
+            "MODERATE_SNOW"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_moderate_snow)
+                holder.skycon.text=context.getString(R.string.mainthreeday1132)
+            }
+
+            "HEAVY_SNOW"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_heavy_snow)
+                holder.skycon.text=context.getString(R.string.mainthreeday1142)
+            }
+            "STORM_SNOW"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_storm_snow)
+                holder.skycon.text=context.getString(R.string.mainthreeday1152)
+            }
+            "DUST"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_dust)
+                holder.skycon.text=context.getString(R.string.mainthreeday1162)
+            }
+            "SAND"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_sand)
+                holder.skycon.text=context.getString(R.string.mainthreeday1172)
+            }
+            "WIND"-> {
+                holder.icon.setImageResource(R.drawable.ic_weather_black_wind)
+                holder.skycon.text=context.getString(R.string.mainthreeday1182)
+            }
+        }
+        //设置最高温度和最低温度
+        holder.high.text=daily.temperature[position].max.toInt().toString()+ context.getString(R.string.maintoptemperature2)
+        holder.low.text=daily.temperature[position].min.toInt().toString()+ context.getString(R.string.maintoptemperature2)
+        //设置风速
+        when(daily.wind[position].max.speed){
+            in 0.0..1.0 -> holder.Wind.text =context.getString(R.string.aa级)
+            in 1.1..5.5 ->holder.Wind.text =context.getString(R.string.ab级)
+            in 5.6..11.5 ->holder.Wind.text =context.getString(R.string.ac级)
+            in 11.6..19.5 ->holder.Wind.text =context.getString(R.string.ad级)
+            in 19.6..28.5 ->holder.Wind.text =context.getString(R.string.ae级)
+            in 28.6..38.5 ->holder.Wind.text =context.getString(R.string.af级)
+            in 38.6..49.5 ->holder.Wind.text =context.getString(R.string.ag级)
+            in 49.6..61.5 ->holder.Wind.text =context.getString(R.string.ah级)
+            in 61.6..74.5 ->holder.Wind.text =context.getString(R.string.ai级)
+            in 74.6..88.5 ->holder.Wind.text =context.getString(R.string.aj级)
+            in 88.6..102.5 ->holder.Wind.text =context.getString(R.string.ak级)
+            in 102.6..117.5 ->holder.Wind.text =context.getString(R.string.al级)
+            in 117.5..148.5 ->holder.Wind.text =context.getString(R.string.am级)
+            in 148.6..500.1 ->holder.Wind.text =context.getString(R.string.an级)
+        }
+        //设置空气污染和背景
+        when(daily.air_quality.aqi[position].max.chn){
+            in 0.0..50.0 -> {
+                holder.Air.text = context.getString(R.string.a优)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_green)
+                }
+            }
+            in 50.1..100.0 -> {
+                holder.Air.text = context.getString(R.string.a良)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_yellow)
+                }
+            }
+            in 100.1..150.0 -> {
+                holder.Air.text = context.getString(R.string.a轻度污染)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_orange)
+                }
+            }
+            in 150.1..200.0 -> {
+                holder.Air.text = context.getString(R.string.a中度污染)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_red)
+                }
+            }
+            in 200.1..300.0 -> {
+                holder.Air.text = context.getString(R.string.a重度污染)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_purple)
+                }
+            }
+            in 300.1..1000.0 -> {
+                holder.Air.text = context.getString(R.string.a严重污染)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    holder.Air.background= AppCompatResources.getDrawable(context,R.drawable.fifteenday_item_airquality_bk_brown)
+                }
+            }
+        }
+        //设置每一个item点击事件
+        if(currentPosition==position){
+            holder.itemView.setBackgroundResource(R.drawable.fifteenday_item_select_bk)
+            fifteenday_detail_date.text=month+"月"+day+"日"
+            humidity1.text=(daily.humidity[position].avg*100).toInt().toString()+ context.getString(R.string.baifenbi)
+            visibility1.text=daily.visibility[position].avg.toInt().toString()+ context.getString(R.string.kilometer)
+            pressure1.text=(daily.pressure[position].avg/100).toInt().toString()+ context.getString(R.string.main_sunriseandset4)
+            cloudrate1.text=(daily.cloudrate[position].avg*100).toInt().toString()+ context.getString(R.string.baifenbi)
+        }else{
+            holder.itemView.setBackgroundResource(R.color.white)
+        }
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            currentPosition = position
+            notifyDataSetChanged()
+        })
+
+    }
+    override fun getItemCount()=15
+
+
+}
 
 
 
