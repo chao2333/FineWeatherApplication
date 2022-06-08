@@ -15,11 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.晴天">
         <activity
+            android:name=".ui.MainAlertActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainTwoHoursRainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainFifteenDaysActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.MainUltravioletActivity"
             android:exported="false" />

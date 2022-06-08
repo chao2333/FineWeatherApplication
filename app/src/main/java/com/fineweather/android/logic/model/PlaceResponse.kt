@@ -11,8 +11,8 @@ data class LocationSaveItem(val name: String,val address: String,val lat:String,
 //Weather
 data class WeatherResponse(val status: String,val result:Result)
 data class Result(val alert:Alert,val realtime:Realtime,val minutely:Minutely,val hourly:Hourly,val daily:Daily,@SerializedName("forecast_keypoint") val summary:String)
-    data class Alert(val status: String,val content:ArrayList<AlertDetail>)
-        data class AlertDetail(val status: String,val description:String,val title:String,val source:String,val location:String)
+    data class Alert(val status: String,val content:ArrayList<AlertDetail>):Serializable
+        data class AlertDetail(val status: String,val code:String,val description:String,val title:String,val source:String,val location:String):Serializable
     data class Realtime(val status: String,val temperature:Int,val humidity:Double,val cloudrate:Double,val skycon:String,val wind:Wind,val pressure:Double,val apparent_temperature:Double,val air_quality:AirQuality,val life_index:LifeIndex)
         data class Wind(val speed:Double,val direction:Double):Serializable
         data class AirQuality(val pm25:Double,val pm10:Double,val o3:Double,val so2:Double,val no2:Double,val co:Double,val aqi:AqiR,val description:Description)

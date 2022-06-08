@@ -17,16 +17,19 @@
         android:orientation="horizontal"
         android:background="@drawable/main_eralywarlywarninginformationbk"
         tools:ignore="MissingConstraints">
-
+        <ImageView
+            android:id="@+id/main_earlywarningb1_clickimage2"
+            android:layout_width="match_parent"
+            android:layout_height="105dp"/>
         <TextView
             android:id="@+id/main_earlywarningb2"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:maxLines="2"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="17dp"
             android:layout_below="@+id/main_earlywarningt2"
+            android:layout_marginStart="17dp"
             android:layout_marginTop="0dp"
+            android:layout_marginEnd="17dp"
+            android:maxLines="2"
 
             android:text="新郑市气象台发布大风黄新郑市气象台发布大风黄色预警新郑市气象台发布大风黄色预警新郑市气象台发布大风黄色预警新郑市气象台发布大风黄色预警色预警新郑市气象象台发布大风黄色预警台发布大风黄色预警新"
             android:textColor="@color/white"
@@ -42,14 +45,14 @@
             android:id="@+id/main_earlywarningt2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:singleLine="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
             android:gravity="center_vertical"
+            android:singleLine="true"
             android:text="新郑市气象台发布大风黄色预警|||级较重"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginStart="17dp"
-            android:layout_marginEnd="17dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

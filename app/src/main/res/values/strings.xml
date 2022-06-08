@@ -184,9 +184,39 @@
     <string name="day">日</string>
     <string name="main_twohours1">一小时</string>
     <string name="main_twohours2">分钟后会下雨，出门记得带伞</string>
+    <string name="main_twohours3">现在正在下雨，出门记得带伞</string>
     <string name="twohours_layout_1">2小时降水预报</string>
     <string name="twohours_layout_2">单位:mm/h</string>
     <string name="twohours_layout_3">2小时内会下雨，出门记得带伞</string>
+    <string name="alert_layout1">气象预警</string>
+    <string name="alert_layout_code1">台风</string>
+    <string name="alert_layout_code2">暴雨</string>
+    <string name="alert_layout_code3">暴雪</string>
+    <string name="alert_layout_code4">寒潮</string>
+    <string name="alert_layout_code5">大风</string>
+    <string name="alert_layout_code6">沙尘暴</string>
+    <string name="alert_layout_code7">高温</string>
+    <string name="alert_layout_code8">干旱</string>
+    <string name="alert_layout_code9">雷电</string>
+    <string name="alert_layout_code10">冰雹</string>
+    <string name="alert_layout_code11">霜冻</string>
+    <string name="alert_layout_code12">大雾</string>
+    <string name="alert_layout_code13">霾</string>
+    <string name="alert_layout_code14">道路结冰</string>
+    <string name="alert_layout_code15">森林火灾</string>
+    <string name="alert_layout_code16">雷雨大风</string>
+    <string name="alert_layout_code17">春季沙尘天气趋势预警	</string>
+    <string name="alert_layout_code18">沙尘</string>
+    <string name="alert_layout_color0">白色</string>
+    <string name="alert_layout_color1">蓝色</string>
+    <string name="alert_layout_color2">黄色</string>
+    <string name="alert_layout_color3">橙色</string>
+    <string name="alert_layout_color4">红色</string>
+    <string name="alert_layout">预警</string>
+
+
+
+
 
 
 </resources>

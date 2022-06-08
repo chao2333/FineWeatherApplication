@@ -98,8 +98,13 @@ class MainActivity : AppCompatActivity() {
                             break
                         }
                         if (index<=60){
-                            twohoursrain_button.text=(index).toString()+this.getString(R.string.main_twohours2)
-                            break
+                            if(index==0){
+                                twohoursrain_button.text=this.getString(R.string.main_twohours3)
+                                break
+                            }else{
+                                twohoursrain_button.text=(index).toString()+this.getString(R.string.main_twohours2)
+                                break
+                            }
                         }
                     }
                 }
@@ -108,13 +113,23 @@ class MainActivity : AppCompatActivity() {
                     intent7.putExtra("twohoursraindata",weather.result.minutely.precipitation_2h)
                     startActivity(intent7)
                 }
-
+                //预警界面
+                main_earlywarningb1_clickimage.setOnClickListener {
+                    val intent8=Intent(this,MainAlertActivity::class.java)
+                    intent8.putExtra("alertdata",weather.result.alert)
+                    startActivity(intent8)
+                }
+                main_earlywarningb1_clickimage2.setOnClickListener {
+                    val intent9=Intent(this,MainAlertActivity::class.java)
+                    intent9.putExtra("alertdata",weather.result.alert)
+                    startActivity(intent9)
+                }
             } else {
                 Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
-        viewModel.refreshWeather("102.551761,32.798063")
+        viewModel.refreshWeather("103.756947,24.637052")
         //实现欢迎界面
         welcome()
         //空气质量界面
@@ -531,6 +546,7 @@ class MainActivity : AppCompatActivity() {
                main_threedayweatheritemgap2.visibility=View.GONE
                earlyWarningInformation1.visibility = View.VISIBLE
                earlyWarningInformation2.visibility = View.GONE
+               LogUtil.d("mainactivitytest",alert.content.toString())
                main_earlywarningb1.text=alert.content[0].description
                main_earlywarningt1.text=alert.content[0].title
            }
@@ -538,9 +554,9 @@ class MainActivity : AppCompatActivity() {
                main_threedayweatheritemgap.visibility=View.GONE
                main_threedayweatheritemgap3.visibility=View.GONE
                main_threedayweatheritemgap2.visibility=View.VISIBLE
-
                earlyWarningInformation1.visibility = View.VISIBLE
                earlyWarningInformation2.visibility = View.VISIBLE
+
                main_earlywarningb1.text=alert.content[0].description
                main_earlywarningt1.text=alert.content[0].title
                main_earlywarningb2.text=alert.content[1].description

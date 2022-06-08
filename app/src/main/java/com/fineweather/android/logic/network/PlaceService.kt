@@ -54,3 +54,8 @@ locationManager.requestLocationUpdates(
         ) {
         }
     })*/
+fun main(){
+    val string="刚察县气象台6月8日13时08分发布刚察县冰雹橙色预警信号：预计8日13时08分至8日19时08分刚察县将出现冰雹天气，并可能造成雹灾。请有关单位和人员做好防范准备。"
+    val test=string.split("：")[1]
+    println(test)
+}
