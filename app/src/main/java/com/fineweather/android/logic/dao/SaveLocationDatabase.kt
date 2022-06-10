@@ -13,6 +13,7 @@ class SaveLocationDatabase(val context: Context,name:String,version:Int):
                 "AccurateLocation text,"+
                 "RoughLocation text,"+
                 "lat text,"+
+                "sourcetype INTEGER,"+
                 "lng text)"
     }
     //private val InsertSaveLocation="INSERT INTO Location(AccurateLocation,RoughLocation,lat,lng) VALUES('${AccurateLocation}','${RoughLocation}','${lat}','${lng}')"

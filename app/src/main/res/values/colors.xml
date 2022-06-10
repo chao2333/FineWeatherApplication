@@ -33,4 +33,8 @@
     <color name="Fifteendays_bule">#4242FF</color>
     <color name="Fifteendays_background">#9C000000</color>
     <color name="Fifteendays_detail_humidity">#B2000000</color>
+    <color name="alert_layout1">#2196F3</color>
+    <color name="alert_layout2">#FFC107</color>
+    <color name="alert_layout3">#FF6736</color>
+    <color name="alert_layout4">#FF0000</color>
 </resources>

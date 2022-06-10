@@ -1,7 +1,9 @@
 package com.fineweather.android.logic
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.logic.model.Place
 import com.fineweather.android.logic.model.WeatherResponse
 import com.fineweather.android.logic.network.FineWeatherNetwork
@@ -42,4 +44,6 @@ object Respository {
         }
         emit(result)
     }
+    fun getSqlite()=FineWeatherApplication.context.getSharedPreferences("ApplicationData",0)
+
 }

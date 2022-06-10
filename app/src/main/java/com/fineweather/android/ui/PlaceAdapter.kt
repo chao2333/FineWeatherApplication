@@ -12,13 +12,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.FineWeatherApplication.Companion.context
+import com.fineweather.android.MainActivity
 import com.fineweather.android.R
+import com.fineweather.android.logic.Respository
+import com.fineweather.android.logic.Respository.refreshWeather
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
+import com.fineweather.android.ui.place.MainViewModel
 import java.text.DecimalFormat
 import java.util.*
 
@@ -50,6 +55,7 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
                 put("RoughLocation",place.name)
                 put("lat",place.location.lat)
                 put("lng",place.location.lng)
+                put("sourcetype",0)
                 activity.onBackPressed()
             }
             db.insert("Location",null,insert1)
@@ -63,6 +69,7 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
 
 class LocationSaveAdapter(private val activity:Activity,private val savelist: ArrayList<LocationSaveItem>):
     RecyclerView.Adapter<LocationSaveAdapter.LocationSaveHolder>(){
+    val db=SaveLocationDatabase(activity,"LocationSave.db",1)
     inner class LocationSaveHolder(View:View):RecyclerView.ViewHolder(View){
         val locationSaveCardRough:TextView=View.findViewById(R.id.LocationSaveCardRough)
         val locationSaveCardAccu:TextView=View.findViewById(R.id.LocationSaveCardAccu)
@@ -92,15 +99,30 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
             persedit.putString("address",location.address)
             persedit.putString("lat",location.lat)
             persedit.putString("lng",location.lng)
-            //来源为搜索，false   来源为定位为true
-            persedit.putBoolean("sourcetype",false)
+            val location9=location.lng+","+location.lat
+            Respository.refreshWeather(location9)
+            //来源为搜索，0   来源为定位为1
+            var result=1
+            val cursor=db.writableDatabase.query("Location", arrayOf("sourcetype"),"lat=?", arrayOf(location.lat),null,null,null)
+            if(cursor.moveToNext()){
+                do {
+                    result=cursor.getInt(cursor.getColumnIndex("sourcetype"))
+                    break
+                }while (cursor.moveToNext())
+            }
+            if (result==0||result==1){
+                persedit.putInt("sourcetype",result)
+            }else{
+                persedit.putInt("sourcetype",1)
+            }
+            cursor.close()
             persedit.apply()
             activity.finish()
             Toast.makeText(activity,"切换地点为${location.name}",Toast.LENGTH_LONG).show()
         }
         //删除当前item
         holder.locationSaveImageView.setOnClickListener {
-            val dbHelperWrite=SaveLocationDatabase(activity,"LocationSave.db",1).writableDatabase
+            val dbHelperWrite=db.writableDatabase
             dbHelperWrite.execSQL("DELETE FROM Location WHERE RoughLocation='${location.name}'")
             savelist.remove(LocationSaveItem(location.name,location.address,location.lat,location.lng))
             notifyItemRemoved(position2)

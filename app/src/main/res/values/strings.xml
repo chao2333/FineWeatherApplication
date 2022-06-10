@@ -187,7 +187,7 @@
     <string name="main_twohours3">现在正在下雨，出门记得带伞</string>
     <string name="twohours_layout_1">2小时降水预报</string>
     <string name="twohours_layout_2">单位:mm/h</string>
-    <string name="twohours_layout_3">2小时内会下雨，出门记得带伞</string>
+    <string name="twohours_layout_3">2小时内有降雨，出门记得带伞</string>
     <string name="alert_layout1">气象预警</string>
     <string name="alert_layout_code1">台风</string>
     <string name="alert_layout_code2">暴雨</string>

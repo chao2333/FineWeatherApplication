@@ -91,15 +91,6 @@ class LocationSearchActivity : AppCompatActivity() {
                 }else{
                     val lat=location.latitude.toString()
                     val lng=location.longitude.toString()
-                    val pers=FineWeatherApplication.context.getSharedPreferences("ApplicationData",0)
-                    val persedit=pers.edit()
-                    persedit.putString("name","当前位置")
-                    persedit.putString("address","当前位置")
-                    persedit.putString("lat",lat)
-                    persedit.putString("lng",lng)
-                    persedit.putBoolean("sourcetype",true)
-                    persedit.apply()
-
                     val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
                     val db=dbHelper.writableDatabase
                     val insert1= ContentValues().apply {
@@ -107,6 +98,7 @@ class LocationSearchActivity : AppCompatActivity() {
                         put("RoughLocation","当前位置")
                         put("lat",lat)
                         put("lng",lng)
+                        put("sourcetype",1)
                     }
                     db.insert("Location",null,insert1)
                     Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()

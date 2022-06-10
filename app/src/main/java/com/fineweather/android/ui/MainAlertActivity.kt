@@ -1,8 +1,10 @@
 package com.fineweather.android.ui
 
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import com.fineweather.android.R
 import com.fineweather.android.logic.model.Alert
 import kotlinx.android.synthetic.main.activity_main_alert.*
@@ -44,10 +46,26 @@ class MainAlertActivity : AppCompatActivity() {
                 }
                 when(n){
                     0->string2=this.getString(R.string.alert_layout_color0)
-                    1->string2=this.getString(R.string.alert_layout_color1)
-                    2->string2=this.getString(R.string.alert_layout_color2)
-                    3->string2=this.getString(R.string.alert_layout_color3)
-                    4->string2=this.getString(R.string.alert_layout_color4)
+                    1-> {
+                        string2 = this.getString(R.string.alert_layout_color1)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout1))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk1,null)
+                    }
+                    2-> {
+                        string2 = this.getString(R.string.alert_layout_color2)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout2))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk2,null)
+                    }
+                    3-> {
+                        string2 = this.getString(R.string.alert_layout_color3)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout3))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk3,null)
+                    }
+                    4-> {
+                        string2 = this.getString(R.string.alert_layout_color4)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout4))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk4,null)
+                    }
                 }
                 val string4=string1+string2+string3
                 alertlayout_title1.text=string4
@@ -86,10 +104,26 @@ class MainAlertActivity : AppCompatActivity() {
                 }
                 when(n){
                     0->string2=this.getString(R.string.alert_layout_color0)
-                    1->string2=this.getString(R.string.alert_layout_color1)
-                    2->string2=this.getString(R.string.alert_layout_color2)
-                    3->string2=this.getString(R.string.alert_layout_color3)
-                    4->string2=this.getString(R.string.alert_layout_color4)
+                    1-> {
+                        string2 = this.getString(R.string.alert_layout_color1)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout1))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk1,null)
+                    }
+                    2-> {
+                        string2 = this.getString(R.string.alert_layout_color2)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout2))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk2,null)
+                    }
+                    3-> {
+                        string2 = this.getString(R.string.alert_layout_color3)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout3))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk3,null)
+                    }
+                    4-> {
+                        string2 = this.getString(R.string.alert_layout_color4)
+                        alertlayout_title1.setTextColor(this.resources.getColor(R.color.alert_layout4))
+                        alertlayout_layout1.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk4,null)
+                    }
                 }
                 val string4=string1+string2+string3
                 alertlayout_title1.text=string4
@@ -125,10 +159,26 @@ class MainAlertActivity : AppCompatActivity() {
                 }
                 when(n){
                     0->string2=this.getString(R.string.alert_layout_color0)
-                    1->string2=this.getString(R.string.alert_layout_color1)
-                    2->string2=this.getString(R.string.alert_layout_color2)
-                    3->string2=this.getString(R.string.alert_layout_color3)
-                    4->string2=this.getString(R.string.alert_layout_color4)
+                    1-> {
+                        string2 = this.getString(R.string.alert_layout_color1)
+                        alertlayout_title2.setTextColor(this.resources.getColor(R.color.alert_layout1))
+                        alertlayout_layout2.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk1,null)
+                    }
+                    2-> {
+                        string2 = this.getString(R.string.alert_layout_color2)
+                        alertlayout_title2.setTextColor(this.resources.getColor(R.color.alert_layout2))
+                        alertlayout_layout2.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk2,null)
+                    }
+                    3-> {
+                        string2 = this.getString(R.string.alert_layout_color3)
+                        alertlayout_title2.setTextColor(this.resources.getColor(R.color.alert_layout3))
+                        alertlayout_layout2.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk3,null)
+                    }
+                    4-> {
+                        string2 = this.getString(R.string.alert_layout_color4)
+                        alertlayout_title2.setTextColor(this.resources.getColor(R.color.alert_layout4))
+                        alertlayout_layout2.background=ResourcesCompat.getDrawable(resources,R.drawable.alert_layout_bk4,null)
+                    }
                 }
                 val string4=string1+string2+string3
                 alertlayout_title2.text=string4

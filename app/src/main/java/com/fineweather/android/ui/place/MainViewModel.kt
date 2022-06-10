@@ -20,5 +20,6 @@ class MainViewModel:ViewModel() {
     fun refreshWeather(location:String){
         locationLiveData.value=location
     }
+    fun getSharepreferences()=Respository.getSqlite()
 
 }
