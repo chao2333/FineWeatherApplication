@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.GnssAntennaInfo
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -27,7 +26,6 @@ import com.fineweather.android.ui.*
 import com.fineweather.android.ui.location.LocationActivity
 import com.fineweather.android.ui.place.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fifteendays_recyclerview_item.*
 import kotlinx.android.synthetic.main.main_15dayweather.*
 import kotlinx.android.synthetic.main.main_air_quality.*
 import kotlinx.android.synthetic.main.main_earlywarninginformation.*
@@ -118,6 +116,91 @@ class MainActivity : AppCompatActivity() {
                     }
                 }, 3000)
                 upDataTextView.text=this.getString(R.string.upDataTextViewupdataing2)
+                //设置主界面背景
+
+
+                val test1=(1..20).random()
+                val test2=(1..40).random()
+                LogUtil.d("mainactivitytestback",weather.result.realtime.skycon)
+                LogUtil.d("mainactivitytestback",test1.toString())
+                when(weather.result.realtime.skycon){
+                    "CLEAR_DAY","PARTLY_CLOUDY_DAY","LIGHT_HAZE","MODERATE_HAZE","HEAVY_HAZE","WIND"-> {
+                            if(test1<11){
+                                when(test1){
+                                    1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                    2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                    3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                    4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                    5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                    6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                    7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                    8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                    9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                    10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                }
+                            }
+
+                    }
+                    "CLEAR_NIGHT","PARTLY_CLOUDY_NIGHT"-> {
+                                when (test2) {
+                                    1 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                    2 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                    3 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                    4 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                    5 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                    6 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                    7 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                    8 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                    9 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                    10 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                    11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
+                                }
+                    }
+                    "LIGHT_RAIN","MODERATE_RAIN","HEAVY_RAIN","STORM_RAIN","FOG","CLOUDY"->{
+                        if(test2<20){
+                            when(test1){
+                                1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                11,12,13,14,15,16,17,18,19,->coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
+                            }
+                        }
+                    }
+                    "LIGHT_SNOW","MODERATE_SNOW","HEAVY_SNOW","STORM_SNOW"->{
+                        if (test2<20){
+                            when(test2){
+                                1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                11,12,13,14,15,16,17,18,19->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_snow)
+                            }
+                        }
+                    }
+                    "DUST","SAND"->{
+                        when(test2){
+                            1,2,3,4,5,6,7,8,9,10,18,19,20,21,22,23->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sand)
+                            11,12->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                            14,15->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                            16,17->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                        }
+
+                    }
+                }
+                //设置各个部件数值
                 showfifteendays(weather.result.hourly)
                 showthreedays(weather.result.daily)
                 showtop(weather.result.realtime.temperature,weather.result.realtime.skycon)
@@ -210,7 +293,7 @@ class MainActivity : AppCompatActivity() {
                     override fun run() {
                         upDataTextView.text=context.getString(R.string.space)
                     }
-                }, 3000)
+                }, 2300)
                 if(applicationDataPers.getBoolean("Firstload",false)){
                     Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 }
@@ -225,9 +308,8 @@ class MainActivity : AppCompatActivity() {
         }
         //设置界面跳转
         topSettingButton.setOnClickListener{
-            coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
-         //   val LocationIntent3= Intent(this, MainUltravioletActivity::class.java)
-           // startActivity(LocationIntent3)
+            val settingintent= Intent(this, SettingActivity::class.java)
+            startActivity(settingintent)
         }
         //定位界面跳转
         topLocationButton.setOnClickListener{

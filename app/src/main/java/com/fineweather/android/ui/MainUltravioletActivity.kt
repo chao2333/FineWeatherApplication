@@ -17,3 +17,9 @@ class MainUltravioletActivity : AppCompatActivity() {
 
     }
 }
+fun main(){
+    for(index in 1..10){
+        val test=(0..10).random()
+        println(test)
+    }
+}
