@@ -14,10 +14,13 @@ import android.text.format.DateFormat
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.fineweather.android.FineWeatherApplication.Companion.context
+import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.model.*
 import com.fineweather.android.ui.*
@@ -45,57 +48,60 @@ import kotlinx.android.synthetic.main.main_threedayweatheritemgap3.*
 import kotlinx.android.synthetic.main.main_twohoursrain.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
+    private var confirmupdate=""
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //获取持久化储存
         val applicationDataPers=viewModel.getSharepreferences()
+        //设置主界面顶部地点
+        topTextView.text=applicationDataPers.getString("name","")
         //获取当前坐标，看是定位位置还是搜索位置
         val flag1=applicationDataPers.getInt("sourcetype",0)
+        confirmupdate= applicationDataPers.getString("lat","").toString()
         var nowlng=""
         var nowlat=""
-        if (flag1==1){//1代表定位位置,需要获取最新定位,获取定位名,刷新信息
-
+        if (flag1==1){//1代表定位位置,需要获取最新定位,刷新信息
+            topTextView.text=this.getString(R.string.upDataTextViewGPS)
             val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this,"定位权限被拒绝，使用上一次位置信息",Toast.LENGTH_LONG).show()
-
             }else{
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 8f, object :
-                    LocationListener{
-                    override fun onLocationChanged(p0: Location) {
-                        // 当GPS定位信息发生改变时，更新位置
-                        LogUtil.d("nowLocationtest","速度"+p0.speed.toString()+",方向"+p0.bearing.toString()+",经度"+p0.longitude.toString()+",纬度"+p0.latitude.toString())
-                        nowlng=p0.longitude.toString()
-                        nowlat=p0.latitude.toString()
-                        val edit2=applicationDataPers.edit()
-                        edit2.putString("lat",nowlat)
-                        edit2.putString("lng",nowlng)
-                        edit2.apply()
-                        locationManager.removeUpdates(this)
+
+                if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                    if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 8f, object :
+                                LocationListener{
+                                override fun onLocationChanged(p0: Location) {
+                                    nowlng=p0.longitude.toString()
+                                    nowlat=p0.latitude.toString()
+                                    val edit2=applicationDataPers.edit()
+                                    edit2.putString("lat",nowlat)
+                                    edit2.putString("lng",nowlng)
+                                    edit2.putString("name","当前位置")
+                                    confirmupdate= nowlat
+                                    edit2.apply()
+                                    locationManager.removeUpdates(this)
+                                }
+                                override fun onProviderDisabled(provider: String) {
+                                }
+                                override fun onProviderEnabled(provider: String) {
+                                    // 当GPS LocationProvider可用时，更新位置
+                                }
+                                override fun onStatusChanged(
+                                    provider: String, status: Int,
+                                    extras: Bundle
+                                ) {
+                                }
+                            })
                     }
-                    override fun onProviderDisabled(provider: String) {
-                    }
-                    override fun onProviderEnabled(provider: String) {
-                        // 当GPS LocationProvider可用时，更新位置
-                    }
-                    override fun onStatusChanged(
-                        provider: String, status: Int,
-                        extras: Bundle
-                    ) {
-                    }
-                })
+                }
             }
-
-
-
-
-        }else if(flag1==0){//0代表搜索得到的位置,只需要刷新信息
-
         }
         val location8=applicationDataPers.getString("lng","")+","+applicationDataPers.getString("lat","")
         viewModel.refreshWeather(location8)
@@ -103,6 +109,15 @@ class MainActivity : AppCompatActivity() {
         viewModel.weatherLiveData.observe(this, Observer { result->
             val weather=result.getOrNull()
             if (weather != null) {
+                swipeRefresh.isRefreshing = false
+                LogUtil.d("onResumetest","refresh")
+                //设置顶部更新文字
+                Timer().schedule(object : TimerTask() {
+                    override fun run() {
+                        upDataTextView.text=context.getString(R.string.space)
+                    }
+                }, 3000)
+                upDataTextView.text=this.getString(R.string.upDataTextViewupdataing2)
                 showfifteendays(weather.result.hourly)
                 showthreedays(weather.result.daily)
                 showtop(weather.result.realtime.temperature,weather.result.realtime.skycon)
@@ -190,33 +205,50 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
+                upDataTextView.text=context.getString(R.string.upDataTextViewupdataing3)
+                Timer().schedule(object : TimerTask() {
+                    override fun run() {
+                        upDataTextView.text=context.getString(R.string.space)
+                    }
+                }, 3000)
+                if(applicationDataPers.getBoolean("Firstload",false)){
+                    Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
+                }
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
-
         //实现欢迎界面
-        val editor=applicationDataPers.edit()
         val firstload=applicationDataPers.getBoolean("Firstload",false)
-        editor.apply()
         if(!firstload){
             val welcomeIntent=Intent(this,WelcomeActivity::class.java)
             startActivity(welcomeIntent)
         }
-        editor.putBoolean("Firstload",true)
-        editor.apply()
         //设置界面跳转
         topSettingButton.setOnClickListener{
-            coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
-            val LocationIntent3= Intent(this, MainUltravioletActivity::class.java)
-            startActivity(LocationIntent3)
+            coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
+         //   val LocationIntent3= Intent(this, MainUltravioletActivity::class.java)
+           // startActivity(LocationIntent3)
         }
         //定位界面跳转
         topLocationButton.setOnClickListener{
-            coordinatorlayout.setBackgroundResource(R.drawable.mainsunny)
             val LocationIntent= Intent(this, LocationActivity::class.java)
             startActivity(LocationIntent)
         }
+        //下拉刷新的图标颜色
+        swipeRefresh.setColorSchemeResources(R.color.Welcomewhileblack)
+        //主页下拉监听
+        swipeRefresh.setOnRefreshListener {
+            refreshWeather()
+        }
+    }
+    //主页下拉刷新方法
+    fun refreshWeather(){
+        val lng=Respository.getSqlite().getString("lng","")
+        val lat=Respository.getSqlite().getString("lat","")
+        if (lng != null&&lat!=null) {
+            viewModel.refreshWeather("$lng,$lat")
+        }
+        swipeRefresh.isRefreshing = true
     }
     private fun fifteendays(daily:Daily,activity:Activity){
         val intent=Intent(activity,MainFifteenDaysActivity::class.java)
@@ -226,10 +258,72 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val pers=viewModel.getSharepreferences()
-        val refreshstring=pers.getString("lng","")+","+pers.getString("lat","")
-        viewModel.refreshWeather(refreshstring)
-        topTextView.text=pers.getString("name","")
+        LogUtil.d("onResumetest1",confirmupdate)
+        LogUtil.d("onResumetest2",pers.getString("lat","").toString())
+        if (confirmupdate!=pers.getString("lat","").toString()){
+            confirmupdate=pers.getString("lat","").toString()
+            val flag1=pers.getInt("sourcetype",0)
+            var nowlng=""
+            var nowlat=""
+            if (flag1==1){//1代表定位位置,需要获取最新定位,刷新信息
+                val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this,"定位权限被拒绝，使用上一次位置信息",Toast.LENGTH_LONG).show()
+                }else{
+
+                    if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                            val location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                            if (location!=null){
+                                nowlng=location.longitude.toString()
+                                nowlat=location.latitude.toString()
+                                val edit23=pers.edit()
+                                edit23.putString("lat",nowlat)
+                                edit23.putString("lng",nowlng)
+                                edit23.putString("name","当前定位")
+                                edit23.apply()
+                                LogUtil.d("welcomeactivitytest9", location.latitude.toString())
+                            }
+                            if(location==null){
+                                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 8f, object :
+                                    LocationListener{
+                                    override fun onLocationChanged(p0: Location) {
+                                        // 当GPS定位信息发生改变时，更新位置
+                                        //   LogUtil.d("nowLocationtest","速度"+p0.speed.toString()+",方向"+p0.bearing.toString()+",经度"+p0.longitude.toString()+",纬度"+p0.latitude.toString())
+                                        nowlng=p0.longitude.toString()
+                                        nowlat=p0.latitude.toString()
+                                        val edit2=pers.edit()
+                                        edit2.putString("lat",nowlat)
+                                        edit2.putString("lng",nowlng)
+                                        edit2.putString("name","当前定位")
+                                        edit2.apply()
+                                        locationManager.removeUpdates(this)
+                                    }
+                                    override fun onProviderDisabled(provider: String) {
+                                    }
+                                    override fun onProviderEnabled(provider: String) {
+                                        // 当GPS LocationProvider可用时，更新位置
+                                    }
+                                    override fun onStatusChanged(
+                                        provider: String, status: Int,
+                                        extras: Bundle
+                                    ) {
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+            LogUtil.d("mainactivityonresumetest",nowlat+nowlng)
+            val refreshstring=pers.getString("lng","")+","+pers.getString("lat","")
+            LogUtil.d("mainactivityonresumetest",refreshstring)
+            viewModel.refreshWeather(refreshstring)
+            topTextView.text=pers.getString("name","")
+        }
+
     }
+
     private fun showfifteendays(hourly: Hourly){
         val layoutManager=LinearLayoutManager(this)
         layoutManager.orientation= RecyclerView.HORIZONTAL
@@ -720,6 +814,4 @@ class MainActivity : AppCompatActivity() {
         //洗车
         lifeindexitem61.text=washcar+this.getString(R.string.main_lifeindex8)
     }
-
-
 }

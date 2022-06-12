@@ -105,8 +105,10 @@
                 android:layout_marginEnd="55dp"
                 android:background="@drawable/location_searchbk"
                 android:text="@string/LocationSearchCHENGDU" />
+
             <Button
                 android:id="@+id/LocationSearchGUANGZHOU"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
@@ -114,8 +116,7 @@
                 android:layout_marginEnd="185dp"
                 android:background="@drawable/location_searchbk"
                 android:gravity="center"
-                android:text="@string/LocationSearchGUANGZHOU"
-                style="@style/Widget.AppCompat.Button.Borderless"/>
+                android:text="@string/LocationSearchGUANGZHOU" />
 
             <Button
                 android:id="@+id/LocationSearchSHENZHEN"

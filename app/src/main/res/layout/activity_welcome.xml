@@ -5,28 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="100dp"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Welcomelayout1"/>
+        android:layout_height="246dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
-            android:textSize="18sp"
-            android:textColor="@color/Welcomewhileblack"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_marginStart="33dp"
-            android:text="@string/Welcomelayout2" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_marginTop="100dp"
+            android:text="@string/Welcomelayout1"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="143dp"
+            android:text="@string/Welcomelayout2"
+            android:textColor="@color/Welcomewhileblack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="180dp"
+            android:text="@string/Welcomelayoutpermission"
+            android:textColor="@color/Welcomewhileblack"
+            android:textSize="18sp" />
+
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -37,6 +56,7 @@
 
         <Button
             android:id="@+id/WelcomeButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -47,6 +67,20 @@
             android:background="@drawable/welcome_nextbuttonbk"
             android:text="@string/Welcomelayoutnext"
             android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/RefuseButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="48dp"
+            android:layout_toStartOf="@+id/WelcomeButton"
+            android:background="@drawable/welcome_refusebuttonbk"
+            android:text="@string/Welcomelayoutrefuse"
+            android:textColor="@color/black" />
     </RelativeLayout>
 
 

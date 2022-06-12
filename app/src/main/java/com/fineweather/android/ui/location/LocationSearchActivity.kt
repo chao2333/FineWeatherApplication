@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.View
@@ -21,7 +22,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fineweather.android.FineWeatherApplication
+import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.R
+import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.ui.PlaceAdapter
@@ -35,6 +38,9 @@ class LocationSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location_search)
+        //获取是否为开始界面进入，1为开始界面进入
+        val flag=intent.getIntExtra("firstload",0)
+        LogUtil.d("locationsearchtest",flag.toString())
         //不在activity生命周期中进行获取焦点和弹出软键盘
         val imm:InputMethodManager= this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         val size5=LocationSearchCHENGDU.textSize
@@ -49,7 +55,7 @@ class LocationSearchActivity : AppCompatActivity() {
         //Recycle的赋值，设置livedata观察对象 更改activity->this
         val layoutManager=LinearLayoutManager(this)
         LocationSearchRecyclerview.layoutManager=layoutManager
-        adapter= PlaceAdapter(this,viewModel.placelise)
+        adapter= PlaceAdapter(this,viewModel.placelise,intent.getIntExtra("firstload",0))
         LocationSearchRecyclerview.adapter=adapter
         ViewCompat.setTransitionName(searchPlaceEdit, "SearchTransitionAnimation")
         LocationSearchCancle.setOnClickListener {
@@ -84,13 +90,65 @@ class LocationSearchActivity : AppCompatActivity() {
         LocationSearchNOW.setOnClickListener {
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
+
             }else{
                 val location=getLastKnownLocation()
                 if (location==null){
-                    Toast.makeText(this,"获取当前位置信息失败，请手动搜索",Toast.LENGTH_LONG).show()
+
+                    val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 8f, object :
+                        LocationListener {
+                        override fun onLocationChanged(p0: Location) {
+
+                            val nowlng=p0.longitude.toString()
+                            val nowlat=p0.latitude.toString()
+                            val pers= Respository.getSqlite()
+                            if (intent.getIntExtra("firstload",0)==1&&pers!=null){
+                                val edit=pers.edit()
+                                edit.putString("lng",nowlng)
+                                edit.putString("lat",nowlat)
+                                edit.putString("name","当前位置")
+                                edit.putInt("sourcetype",1)
+                                edit.apply()
+                            }
+                            val dbHelper= SaveLocationDatabase(context,"LocationSave.db",1)
+                            val db=dbHelper.writableDatabase
+                            val insert1= ContentValues().apply {
+                                put("AccurateLocation","当前位置")
+                                put("RoughLocation","当前位置")
+                                put("lat",nowlat)
+                                put("lng",nowlng)
+                                put("sourcetype",1)
+                            }
+                            db.insert("Location",null,insert1)
+                            Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+                            dbHelper.close()
+                            locationManager.removeUpdates(this)
+                        }
+                        override fun onProviderDisabled(provider: String) {
+                        }
+                        override fun onProviderEnabled(provider: String) {
+                            // 当GPS LocationProvider可用时，更新位置
+                        }
+                        override fun onStatusChanged(
+                            provider: String, status: Int,
+                            extras: Bundle
+                        ) {
+                        }
+                    })
                 }else{
                     val lat=location.latitude.toString()
                     val lng=location.longitude.toString()
+                    val pers= Respository.getSqlite()
+                    if (intent.getIntExtra("firstload",0)==1&&pers!=null){
+                        val edit=pers.edit()
+                        edit.putString("lng",lng)
+                        edit.putString("lat",lat)
+                        edit.putString("name","当前位置")
+                        edit.putInt("sourcetype",1)
+                        edit.apply()
+                    }
                     val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
                     val db=dbHelper.writableDatabase
                     val insert1= ContentValues().apply {

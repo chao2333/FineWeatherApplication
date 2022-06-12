@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">晴天</string>
     <string name="upDataTextViewupdataing">正在更新</string>
+    <string name="upDataTextViewupdataing2">更新完成</string>
+    <string name="upDataTextViewupdataing3">更新失败</string>
+    <string name="upDataTextViewGPS">当前位置</string>
     <string name="Welcomelayout1">欢迎使用晴天天气</string>
     <string name="Welcomelayout2">极简纯净的天气客户端</string>
-    <string name="Welcomelayoutpermission">我们需要一些权限</string>
-    <string name="Welcomelayoutnext">继续</string>
+    <string name="Welcomelayoutpermission">我们需要位置权限为你提供服务</string>
+    <string name="Welcomelayoutnext">授权</string>
+    <string name="Welcomelayoutrefuse">暂不授权</string>
     <string name="Locationlayouttextview">城市管理</string>
-    <string name="LocationSearchtext">搜索全球位置</string>
+    <string name="LocationSearchtext">搜索全国位置</string>
     <string name="LocationSearchButtontext">取消</string>
     <string name="LocationSearchBEIJING">北京市</string>
     <string name="LocationSearchSHANGHAI">上海市</string>

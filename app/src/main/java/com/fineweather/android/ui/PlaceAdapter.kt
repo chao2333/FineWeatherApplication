@@ -28,9 +28,9 @@ import java.text.DecimalFormat
 import java.util.*
 
 
-class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>):
+class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>,private val firstload:Int):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
-
+    val pers= Respository.getSqlite()
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
         val placeName:TextView=view.findViewById(R.id.placeName)
         val placeAddress:TextView=view.findViewById(R.id.placeAddress)
@@ -48,6 +48,14 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
         holder.itemView.setOnClickListener {
             val position=holder.bindingAdapterPosition
             val location=placeList[position].location
+            if (firstload==1&&pers!=null){
+                val edit=pers.edit()
+                edit.putString("lng",place.location.lng)
+                edit.putString("lat",place.location.lat)
+                edit.putString("name",place.name)
+                edit.putInt("sourcetype",0)
+                edit.apply()
+            }
             val dbHelper=SaveLocationDatabase(activity,"LocationSave.db",1)
             val db=dbHelper.writableDatabase
             val insert1=ContentValues().apply {
