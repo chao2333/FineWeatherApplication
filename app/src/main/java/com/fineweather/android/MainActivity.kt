@@ -2,6 +2,7 @@ package com.fineweather.android
 
 import android.Manifest
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
+import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
 import com.fineweather.android.ui.*
 import com.fineweather.android.ui.location.LocationActivity
@@ -52,9 +54,13 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     private var confirmupdate=""
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    //判断是否第一次刷新天气，用来判断是否更换背景。只有第一次刷新天气才更换背景
+    var haveChanged=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        haveChanged=0
+        LogUtil.d("mainactivitytestbk",haveChanged.toString())
         //获取持久化储存
         val applicationDataPers=viewModel.getSharepreferences()
         //设置主界面顶部地点
@@ -107,6 +113,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.weatherLiveData.observe(this, Observer { result->
             val weather=result.getOrNull()
             if (weather != null) {
+                weatherLayout.visibility=View.VISIBLE
                 swipeRefresh.isRefreshing = false
                 LogUtil.d("onResumetest","refresh")
                 //设置顶部更新文字
@@ -114,34 +121,35 @@ class MainActivity : AppCompatActivity() {
                     override fun run() {
                         upDataTextView.text=context.getString(R.string.space)
                     }
-                }, 3000)
+                }, 2500)
                 upDataTextView.text=this.getString(R.string.upDataTextViewupdataing2)
-                //设置主界面背景
-
-
-                val test1=(1..20).random()
-                val test2=(1..40).random()
-                LogUtil.d("mainactivitytestback",weather.result.realtime.skycon)
-                LogUtil.d("mainactivitytestback",test1.toString())
-                when(weather.result.realtime.skycon){
-                    "CLEAR_DAY","PARTLY_CLOUDY_DAY","LIGHT_HAZE","MODERATE_HAZE","HEAVY_HAZE","WIND"-> {
-                            if(test1<11){
-                                when(test1){
-                                    1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
-                                    2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
-                                    3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
-                                    4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
-                                    5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
-                                    6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
-                                    7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
-                                    8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
-                                    9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
-                                    10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                //如果是动态背景，查看是否是第一次设置背景。如果是，下拉刷新天气时就不再更改背景   如果是，haveChanged=0，如果已经设置过背景，等于1
+                if (haveChanged==0){
+                    //设置主界面背景。如果mainbk是0，就在这里动态更改背景，如果不是0，在重写onResume方法中还会更改固定背景
+                    val mainbk=applicationDataPers.getInt("mainbk",0)
+                    if (mainbk==0){
+                        val test1=(1..20).random()
+                        val test2=(1..40).random()
+                        LogUtil.d("mainactivitytestbk5",test1.toString())
+                        when(weather.result.realtime.skycon){
+                            "CLEAR_DAY","PARTLY_CLOUDY_DAY","LIGHT_HAZE","MODERATE_HAZE","HEAVY_HAZE","WIND"-> {
+                                if(test1<11){
+                                    when(test1){
+                                        1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                        2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                        3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                        4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                        5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                        6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                        7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                        8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                        9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                        10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                    }
                                 }
-                            }
 
-                    }
-                    "CLEAR_NIGHT","PARTLY_CLOUDY_NIGHT"-> {
+                            }
+                            "CLEAR_NIGHT","PARTLY_CLOUDY_NIGHT"-> {
                                 when (test2) {
                                     1 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
                                     2 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
@@ -155,51 +163,56 @@ class MainActivity : AppCompatActivity() {
                                     10 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
                                     11, 12, 13, 14, 15,16,17,18,19,20,21,22,23,24 -> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
                                 }
-                    }
-                    "LIGHT_RAIN","MODERATE_RAIN","HEAVY_RAIN","STORM_RAIN","FOG","CLOUDY"->{
-                        if(test2<20){
-                            when(test1){
-                                1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
-                                2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
-                                3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
-                                4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
-                                5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
-                                6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
-                                7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
-                                8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
-                                9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
-                                10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
-                                11,12,13,14,15,16,17,18,19,->coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
                             }
-                        }
-                    }
-                    "LIGHT_SNOW","MODERATE_SNOW","HEAVY_SNOW","STORM_SNOW"->{
-                        if (test2<20){
-                            when(test2){
-                                1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
-                                2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
-                                3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
-                                4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
-                                5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
-                                6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
-                                7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
-                                8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
-                                9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
-                                10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
-                                11,12,13,14,15,16,17,18,19->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_snow)
+                            "LIGHT_RAIN","MODERATE_RAIN","HEAVY_RAIN","STORM_RAIN","FOG","CLOUDY"->{
+                                if(test2<20){
+                                    when(test1){
+                                        1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                        2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                        3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                        4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                        5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                        6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                        7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                        8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                        9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                        10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                        11,12,13,14,15,16,17,18,19,->coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
+                                    }
+                                }
                             }
-                        }
-                    }
-                    "DUST","SAND"->{
-                        when(test2){
-                            1,2,3,4,5,6,7,8,9,10,18,19,20,21,22,23->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sand)
-                            11,12->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
-                            14,15->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
-                            16,17->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
-                        }
+                            "LIGHT_SNOW","MODERATE_SNOW","HEAVY_SNOW","STORM_SNOW"->{
+                                if (test2<20){
+                                    when(test2){
+                                        1-> coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                                        2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                                        3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                        4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                                        5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                        6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                                        7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                                        8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                                        9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                        10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                                        11,12,13,14,15,16,17,18,19->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_snow)
+                                    }
+                                }
+                            }
+                            "DUST","SAND"->{
+                                when(test2){
+                                    1,2,3,4,5,6,7,8,9,10,18,19,20,21,22,23->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sand)
+                                    11,12->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                                    14,15->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                                    16,17->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                                }
 
+                            }
+                        }
                     }
+                    haveChanged =1
+                    LogUtil.d("mainactivitytestbk",haveChanged.toString())
                 }
+
                 //设置各个部件数值
                 showfifteendays(weather.result.hourly)
                 showthreedays(weather.result.daily)
@@ -281,20 +294,21 @@ class MainActivity : AppCompatActivity() {
                     when(weather.result.realtime.life_index.ultraviolet.index.toInt()){
                         0,1,2-> Toast.makeText(this, "紫外线很弱，无需防晒哦~", Toast.LENGTH_LONG).show()
                         3,4->Toast.makeText(this, "紫外线较弱，无需防晒哦~", Toast.LENGTH_LONG).show()
-                        5,6->Toast.makeText(this, "紫外线中等，外出可以做些防晒~", Toast.LENGTH_LONG).show()
+                        5,6->Toast.makeText(this, "紫外线中等，外出可以做些防晒哦~", Toast.LENGTH_LONG).show()
                         7,8->Toast.makeText(this, "紫外线较强，外出记得做好防晒~", Toast.LENGTH_LONG).show()
                         9,10->Toast.makeText(this, "紫外线很强，外出一定要做好防晒~", Toast.LENGTH_LONG).show()
                         11,12,13,14,15->Toast.makeText(this, "紫外线极强，应尽量避免外出", Toast.LENGTH_LONG).show()
                     }
                 }
             } else {
+                weatherLayout.visibility=View.GONE
                 upDataTextView.text=context.getString(R.string.upDataTextViewupdataing3)
                 Timer().schedule(object : TimerTask() {
                     override fun run() {
                         upDataTextView.text=context.getString(R.string.space)
                     }
                 }, 2300)
-                if(applicationDataPers.getBoolean("Firstload",false)){
+                if(applicationDataPers.getInt("checkdatabase",0)>3){
                     Toast.makeText(this, "无法获取天气信息，请稍后再试", Toast.LENGTH_SHORT).show()
                 }
                 result.exceptionOrNull()?.printStackTrace()
@@ -342,6 +356,7 @@ class MainActivity : AppCompatActivity() {
         val pers=viewModel.getSharepreferences()
         LogUtil.d("onResumetest1",confirmupdate)
         LogUtil.d("onResumetest2",pers.getString("lat","").toString())
+        //根据经度是否发生变化决定是否刷新天气，设置了如果经度发生变化，刷新天气后再让经度一样，减少了不必要的刷新天气
         if (confirmupdate!=pers.getString("lat","").toString()){
             confirmupdate=pers.getString("lat","").toString()
             val flag1=pers.getInt("sourcetype",0)
@@ -403,7 +418,61 @@ class MainActivity : AppCompatActivity() {
             viewModel.refreshWeather(refreshstring)
             topTextView.text=pers.getString("name","")
         }
-
+        //设置主页自定义主题
+        val mainbk=pers.getInt("mainbk",0)
+        if (mainbk!=0){
+            when(mainbk){
+                1->coordinatorlayout.setBackgroundResource(R.drawable.mainsunny)
+                2->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
+                3->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny2)
+                4->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunny3)
+                5->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon)
+                6->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnyafternoon2)
+                7->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnymountain)
+                8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnynocloud)
+                9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypeace)
+                10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
+                11->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
+                12->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
+                13->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sand)
+                14->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_snow)
+                15->coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
+            }
+        }
+        //设置前十次检查数据库，如果数据库为空，并且定位标题为“当前位置”，就往数据库里插入当前位置的数据
+        var checkdatabase=pers.getInt("checkdatabase",0)
+        val flag1=pers.getString("name","").toString()=="当前位置"
+        val flag2=pers.getString("name","").toString()=="当前定位"
+        if ((pers.getInt("checkdatabase",0)<7)&&(flag1||flag2)){
+            LogUtil.d("mainactivitytestdatabase","indatabase")
+            var databaselength=0
+            val lng1=pers.getString("lng","")
+            val lat1=pers.getString("lat","")
+            val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
+            val db=dbHelper.writableDatabase
+            val cursor = db.query("Location", null, null, null, null, null, null)
+            if (cursor.moveToFirst()) {
+                do {
+                   databaselength++
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
+            if (databaselength==0){
+                val insert1= ContentValues().apply {
+                    put("AccurateLocation","当前位置")
+                    put("RoughLocation","当前位置")
+                    put("lat",lat1)
+                    put("lng",lng1)
+                    put("sourcetype",1)
+                }
+                db.insert("Location",null,insert1)
+                dbHelper.close()
+            }
+            checkdatabase++
+            val edit3=pers.edit()
+            edit3.putInt("checkdatabase",checkdatabase)
+            edit3.apply()
+        }
     }
 
     private fun showfifteendays(hourly: Hourly){

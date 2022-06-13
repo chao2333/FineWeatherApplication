@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorlayout28"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_marginTop="17dp"
+        android:id="@+id/setting_theme_back"
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+
+        <Button
+            android:id="@+id/backMainActivity79"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/iconlocationback" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/setting_theme"
+            android:textColor="@color/Welcomewhileblack"
+            android:textSize="32sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_gensuitianqi"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme1"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunny"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunny"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_evening"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_evening"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunny2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunny2"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunny3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunny3"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnyafternoon"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnyafternoon"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnyafternoon2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnyafternoon2"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnymountain"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnymountain"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnynocloud"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnynocloud"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnypeace"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnypeace"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/setting_theme_sunnypinkandblue"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnypinkandblue"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/setting_theme_sunnysmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sunnysmall"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/setting_theme_night"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_night"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/setting_theme_sand"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_sand"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/setting_theme_snow"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_snow"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/setting_theme_rainy"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_theme_rainy"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

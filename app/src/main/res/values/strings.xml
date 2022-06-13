@@ -7,12 +7,15 @@
     <string name="Welcomelayout1">欢迎使用晴天天气</string>
     <string name="Welcomelayout2">极简纯净的天气客户端</string>
     <string name="Welcomelayoutpermission">我们需要位置权限为你提供服务</string>
+    <string name="Welcomelayoutpermission2">继续使用代表您同意</string>
+    <string name="Welcomelayoutpermission3">用户协议</string>
     <string name="Welcomelayoutnext">授权</string>
     <string name="Welcomelayoutrefuse">暂不授权</string>
     <string name="Locationlayouttextview">城市管理</string>
     <string name="Locationlayouttextview2">轻点下方切换位置</string>
     <string name="Settinglayouttextview">设置</string>
-    <string name="Setting_Privacypolicy">隐私政策</string>
+    <string name="Setting_Privacypolicy">用户协议</string>
+    <string name="Setting_About">关于我们</string>
     <string name="LocationSearchtext">搜索全国位置</string>
     <string name="LocationSearchButtontext">取消</string>
     <string name="LocationSearchBEIJING">北京市</string>
@@ -186,6 +189,8 @@
     <string name="qualitylayout_pollution7">主要污染物</string>
     <string name="qualitylayout_pollution8">24小时空气质量预报</string>
     <string name="qualitylayout_data1">发布</string>
+    <string name="qualitylayout_detail"> 0–50 优\n50–100 良\n100–150 轻度污染\n150–200 中度污染\n200–300 重度污染</string>
+    <string name="qualitylayout_detail2"> 0.03–0.25 小雨\n0.25–0.35 中雨\n0.35–0.48 大雨\n>=0.48 暴雨</string>
     <string name="fifteendays_title">15日天气预报</string>
     <string name="month">月</string>
     <string name="day">日</string>
@@ -221,10 +226,34 @@
     <string name="alert_layout_color4">红色</string>
     <string name="alert_layout">预警</string>
     <string name="Privacy_policy">
-隐私政策尊重并保护所有使用隐私政策网络服务用户的个人隐私权。为了给您提供更准确的服务，我们的隐私政策涵盖我们使用您的信息的方式。 您在使用本应用时之时，即视为您已经同意本隐私权政策全部内容。
+用户协议尊重并保护所有使用用户协议服务用户的个人隐私权。为了给您提供更准确的服务，我们的用户协议涵盖我们使用您的信息的方式。 您在使用本应用时之时，即视为您已经同意本用户协议全部内容。
 \n
-\n
-一、我们如何收集信息
+\n\n
+一、用户协议确认
+        \n
+晴天天气使用人（以下简称“用户”）应当基于了解本协议全部内容、在独立思考的基础上认可、同意本协议的全部条款并按照页面上的提示完成全部的程序，使用行为将视为完全接受本协议及晴天天气发布的各项规则、规范。
+ \n\n\n
+        二、服务内容\n
+        1. 鉴于网络服务的特殊性（包括但不限于不可抗力、网络稳定性、系统稳定性、技术故障、用户所在位置、用户关机、用户手机病毒或恶意的网络攻击行为及其他任何技术、互联网络、通信线路、内容侵权等原因），用户同意，晴天天气有权随时中断或终止部分或全部的天气服务，晴天天气将尽可能及时以合理方式通知用户，并尽可能在第一时间对此进行修复。但对因此导致用户不能发送和接受阅读信息、或接发错信息，晴天天气不承担任何责任，用户须承担以上风险。
+        \n
+        2.用户在使用晴天天气服务过程中，必须遵循以下原则:
+ \n
+(1) 遵守中国有关的法律和法规；
+ \n
+(2) 不得为任何非法目的而使用晴天天气；
+ \n
+(3) 遵守所有与网络服务有关的网络协议、规定和程序；
+ \n
+(4) 不得利用晴天天气系统进行任何可能对互联网的正常运转造成不利影响的行为；
+ \n
+(5) 不得利用晴天天气服务系统进行任何不利于晴天天气的行为。
+         \n
+        3.晴天天气提供天气服务中所包含的任何文本、图片、标识、音频资料均受著作权、商标权、专利权及其他财产权法律的保护。
+         \n
+        4. 未经相关权利人和晴天天气负责人的同意，上述资料均不得以任何方式被展示于其他任何第三方平台或被用于其他任何商业目的；用户不得擅自复制、修改、编纂上述内容、或创造与内容有关的衍生产品。
+ \n \n\n
+
+        三、我们如何收集信息
 \n
 我们根据合法、必要的原则，仅收集实现产品功能所必要的位置信息。我们不会收集、存储、传输、扩散您的其他任何信息。
 \n
@@ -234,8 +263,8 @@
 \n
 如您不想被访问，可以选择关闭设备或产品/服务中的相关功能，但可能会因此影响我们向您提供相关服务。
 \n
-\n
-二、我们如何使用收集的信息
+\n\n
+四、我们如何使用收集的信息
 \n
 我们严格遵守法律法规的规定及与用户的约定，将收集的信息用于以下用途。
 \n
@@ -245,16 +274,16 @@
 \n
 3. 根据法律法规在如下情形收集使用您的相关信息，此种情况下无须获得您的授权。
 \n
-与国家安全、国防安全有关的；
+(1)与国家安全、国防安全有关的；
 \n
-与公共安全、公共卫生、重大公共利益有关的；
+(2)与公共安全、公共卫生、重大公共利益有关的；
 \n
-与犯罪侦查、起诉、审判和判决执行等有关的；
+(3)与犯罪侦查、起诉、审判和判决执行等有关的；
 \n
-法律法规规定的其他情形。
+(4)法律法规规定的其他情形。
+\n\n
 \n
-\n
-三、我们如何共享、转让、公开披露你的个人信息
+五、我们如何共享、转让、公开披露你的个人信息
 \n
 我们充分知晓因违法共享、转让、公开披露个人信息对个人信息主体造成损害时所应承担的法律责任，对于你的个人信息的一切共享、转让、公开披露，我们将严格按照以下条款进行：
 \n
@@ -270,8 +299,8 @@
 \n
 我们不会获取和披露你的任何信息
 \n
-\n
-四、您如何管理您的个人信息
+\n\n
+六、您如何管理您的个人信息
 \n
 1. 您可以在使用我们服务的过程中，访问、修改和删除您提供的信息，也可按照通知指引与我们联系。
 \n
@@ -285,26 +314,60 @@
 \n
 3. 在以下情形中，按照法律法规要求，我们将无法响应你的请求：
 \n
-与国家安全、国防安全直接相关的。
+(1)与国家安全、国防安全直接相关的。
 \n
-与公共安全、公共卫生、重大公共利益直接相关的。
+(2)与公共安全、公共卫生、重大公共利益直接相关的。
 \n
-与犯罪侦查、起诉、审判和判决执行等直接相关的。
+(3)与犯罪侦查、起诉、审判和判决执行等直接相关的。
 \n
-有充分证据表明你存在主观恶意或滥用权利的。
+(4)有充分证据表明你存在主观恶意或滥用权利的。
 \n
-响应你的请求将导致你或其他个人、组织的合法权益受到严重损害的。
+(5)响应你的请求将导致你或其他个人、组织的合法权益受到严重损害的。
 \n
-涉及商业秘密的。
+(6)涉及商业秘密的。
         \n
+        \n\n
+七、本协议如何更新
+\n
+我们的用户协议将不定时更新。
+\n
+通常情况下，我们不会削减你按照本用户协议所应享有的权利。我们会在本页面上发布更新后的版本并且以弹框或与弹框同等显著的方式通知你本协议所做的任何变更，你同意后，即表示同意受经修订的本协议的约束。
+       \n
+        \n\n
+        八、其他条款
+         \n
+        1.本协议的订立、执行和解释及纠纷的解决均应适用中华人民共和国法律并受中华人民共和国法院管辖。如双方就本协议内容或执行发生任何纠纷或争议，首先应友好协商解决，协商不成的，任何一方均可向晴天天气所在地的有管辖权的人民法院提起诉讼。
         \n
-五、本政策如何更新
-\n
-我们的隐私政策将不定时更新。
-\n
-通常情况下，我们不会削减你按照本隐私政策所应享有的权利。我们会在本页面上发布更新后的版本并且以弹框或与弹框同等显著的方式通知你本政策所做的任何变更，你同意后，即表示同意受经修订的本政策的约束。
+        2.本协议的版权晴天天气所有，本协议各项条款内容的最终解释权及修改权归晴天天气所有。
 </string>
-    <string name="Privacy_policy1">隐私政策</string>
+    <string name="Privacy_policy1">用户协议</string>
+    <string name="setting_theme">主题</string>
+    <string name="setting_about">关于我们</string>
+    <string name="setting_version">版本号 V1.0.0</string>
+    <string name="setting_about_name">晴天天气</string>
+    <string name="setting_about_call">联系我们&amp;商务合作</string>
+    <string name="setting_about_join">加入QQ群</string>
+    <string name="setting_transfer1">本软件使用开源项目：</string>
+    <string name="setting_transfer2">MPAndroidChart</string>
+    <string name="setting_transfer3">部分气象数据来自：</string>
+    <string name="setting_transfer4">彩云天气</string>
+
+    <string name="setting_theme1">跟随天气（默认）</string>
+    <string name="setting_theme_sunny">晴空</string>
+    <string name="setting_theme_evening">晴晚</string>
+    <string name="setting_theme_sunny2">晴白</string>
+    <string name="setting_theme_sunny3">晴雪</string>
+    <string name="setting_theme_sunnyafternoon">晴霞</string>
+    <string name="setting_theme_sunnyafternoon2">晚风</string>
+    <string name="setting_theme_sunnymountain">远山</string>
+    <string name="setting_theme_sunnynocloud">晴远</string>
+    <string name="setting_theme_sunnypeace">晴静</string>
+    <string name="setting_theme_sunnypinkandblue">海暮</string>
+    <string name="setting_theme_sunnysmall">晴云</string>
+    <string name="setting_theme_night">静谧</string>
+    <string name="setting_theme_sand">扬沙</string>
+    <string name="setting_theme_snow">静雪</string>
+    <string name="setting_theme_rainy">阴云</string>
 
 
 </resources>

@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.晴天">
         <activity
+            android:name=".ui.setting.SettingAboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.SettingThemeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.setting.SettingPrivacypolicyActivity"
             android:exported="false" />
         <activity

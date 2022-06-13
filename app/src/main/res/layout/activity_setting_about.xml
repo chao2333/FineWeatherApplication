@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coordinatorlayout27"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_marginTop="17dp"
+        android:id="@+id/Location_back7"
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+
+        <Button
+            android:id="@+id/backMainActivity80"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/iconlocationback" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="50dp"
+        android:id="@+id/LocationTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/Setting_About"
+            android:textColor="@color/Welcomewhileblack"
+            android:textSize="32sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/setting_about_ic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/LocationTop"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="155dp"
+        android:src="@drawable/ic_sunrise" />
+
+    <TextView
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setting_about_ic"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="93dp"
+        android:text="@string/setting_about_name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setting_about_ic"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="67dp"
+        android:text="@string/setting_version"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/setting_about"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="422dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:text="@string/setting_about_call"
+        android:textColor="@color/black"
+        android:textSize="21sp" />
+
+    <ImageView
+        android:id="@+id/setting_about1"
+        android:layout_width="92dp"
+        android:layout_height="28dp"
+        android:layout_alignTop="@+id/setting_about"
+        android:layout_alignBottom="@+id/setting_about"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_setting_forward" />
+
+    <TextView
+        android:id="@+id/setting_about_join"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/setting_about"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="25dp"
+
+        android:layout_marginEnd="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/setting_about_join"
+        android:textColor="@color/black"
+        android:textSize="21sp" />
+
+    <ImageView
+        android:id="@+id/setting_about_join1"
+        android:layout_width="92dp"
+        android:layout_height="28dp"
+        android:layout_alignTop="@+id/setting_about_join"
+        android:layout_alignBottom="@+id/setting_about_join"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_setting_forward" />
+
+
+</RelativeLayout>

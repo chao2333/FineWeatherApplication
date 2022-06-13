@@ -1,6 +1,7 @@
 package com.fineweather.android.ui
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -12,10 +13,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
+import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.ui.location.LocationSearchActivity
+import com.fineweather.android.ui.setting.SettingPrivacypolicyActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -44,6 +48,10 @@ class WelcomeActivity : AppCompatActivity() {
             intent.putExtra("firstload",1)
             startActivity(intent)
             finish()
+        }
+        welcome_4.setOnClickListener {
+            val intent21=Intent(this,SettingPrivacypolicyActivity::class.java)
+            startActivity(intent21)
         }
     }
 

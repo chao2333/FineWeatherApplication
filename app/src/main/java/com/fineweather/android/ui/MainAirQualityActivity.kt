@@ -58,7 +58,7 @@ class MainAirQualityActivity : AppCompatActivity() {
         }//设置空气质量和描述字体颜色
         Airquality_pm25.text=Airqualitydata.pm25.toInt().toString()
         Airquality_pm10.text=Airqualitydata.pm10.toInt().toString()
-        Airquality_SO2.text=Airqualitydata.so2.toString()
+        Airquality_SO2.text=Airqualitydata.so2.toInt().toString()
         Airquality_NO2.text=Airqualitydata.no2.toInt().toString()
         Airquality_O3.text=Airqualitydata.o3.toInt().toString()
         Airquality_CO.text=Airqualitydata.co.toString()

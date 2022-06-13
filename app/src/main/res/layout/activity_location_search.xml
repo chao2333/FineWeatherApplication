@@ -263,6 +263,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/LocationSearchRecyclerview"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />

@@ -232,4 +232,20 @@
             android:layout_below="@+id/Airquality_detaillayout"
             android:layout_marginTop="80dp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LocationTop">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/qualitylayout_detail"
+            android:textSize="12sp" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
