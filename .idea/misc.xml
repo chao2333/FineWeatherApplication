@@ -38,6 +38,11 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_noumbrella.xml" value="0.2125" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_pill.xml" value="0.2125" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_main_lifeindex_umbrella.xml" value="0.2125" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_setting_about.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_setting_agreement.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_setting_donate.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_setting_forward.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_setting_theme.xml" value="0.168" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_test.xml" value="0.138" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_black_clear_day.xml" value="0.1535" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/ic_weather_black_clear_night.xml" value="0.1535" />
@@ -111,6 +116,9 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainactivitysunnyweatherbackground.xml" value="0.165" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainrainy.xml" value="0.208" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/mainsunny.xml" value="0.208" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/setting_donation.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/setting_wechat.xml" value="0.168" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/setting_zhifubao.xml" value="0.168" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/test.xml" value="0.1495" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/testcustom.xml" value="0.186" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/drawable/twohoursrain_main_bk.xml" value="0.17" />
@@ -129,6 +137,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_main_ultraviolet.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_setting_about.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_setting_donate.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_setting_privacypolicy.xml" value="0.2" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_setting_theme.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/activity_welcome.xml" value="0.2" />
@@ -162,6 +171,7 @@
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/welcome_nextbuttonbk.xml" value="0.6584302325581395" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/layout/welcomenextbuttonbk.xml" value="0.20516304347826086" />
         <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/chao/AndroidStudioProjects/2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.168" />
       </map>
     </option>
   </component>

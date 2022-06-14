@@ -472,6 +472,7 @@ class MainActivity : AppCompatActivity() {
             val edit3=pers.edit()
             edit3.putInt("checkdatabase",checkdatabase)
             edit3.apply()
+            dbHelper.close()
         }
     }
 

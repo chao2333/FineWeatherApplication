@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.晴天">
         <activity
+            android:name=".ui.setting.SettingDonateActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.setting.SettingAboutActivity"
             android:exported="false" />
         <activity

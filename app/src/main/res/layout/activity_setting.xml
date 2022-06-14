@@ -59,20 +59,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
 
+                <ImageView
+                    android:id="@+id/setting_theme3"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:src="@drawable/ic_setting_theme" />
+
                 <TextView
                     android:id="@+id/setting_theme"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="0dp"
-                    android:layout_marginEnd="1dp"
+                    android:layout_toEndOf="@+id/setting_theme3"
                     android:gravity="center_vertical"
                     android:text="@string/setting_theme"
                     android:textColor="@color/black"
-                    android:textSize="23sp" />
+                    android:textSize="21sp" />
 
                 <ImageView
                     android:id="@+id/setting_theme1"
@@ -91,20 +100,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
 
+                <ImageView
+                    android:id="@+id/Privacy_policy3"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:src="@drawable/ic_setting_agreement" />
+
                 <TextView
                     android:id="@+id/Privacy_policy"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="25dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/Privacy_policy3"
                     android:gravity="center_vertical"
                     android:text="@string/Privacy_policy1"
                     android:textColor="@color/black"
-                    android:textSize="23sp" />
+                    android:textSize="21sp" />
 
                 <ImageView
                     android:id="@+id/Privacy_policy1"
@@ -122,21 +142,31 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
+                <ImageView
+                    android:id="@+id/setting_about3"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:src="@drawable/ic_setting_about" />
 
                 <TextView
                     android:id="@+id/setting_about"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="25dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/setting_about3"
                     android:gravity="center_vertical"
                     android:text="@string/setting_about"
                     android:textColor="@color/black"
-                    android:textSize="23sp" />
+                    android:textSize="21sp" />
 
                 <ImageView
                     android:id="@+id/setting_about1"
@@ -150,7 +180,92 @@
                     android:layout_marginBottom="16dp"
                     android:src="@drawable/ic_setting_forward" />
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/setting_donation3"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="13dp"
+                    android:src="@drawable/ic_setting_donate" />
+
+                <TextView
+                    android:id="@+id/setting_donation"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_toEndOf="@+id/setting_donation3"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_donation"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+
+                <ImageView
+                    android:id="@+id/setting_donation1"
+                    android:layout_width="92dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginBottom="16dp"
+                    android:src="@drawable/ic_setting_forward" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/setting_zfb_layout"
+                android:background="@drawable/setting_donation"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:visibility="gone"
+                android:layout_height="51dp">
+
+                <ImageView
+                    android:id="@+id/setting_zfb"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/setting_zfb3"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="3dp"
+                    android:src="@drawable/setting_zhifubao" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_toEndOf="@+id/setting_zfb3"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_donation3"
+                    android:textColor="@color/black"
+                    android:textSize="21sp" />
+
+
+            </RelativeLayout>
         </LinearLayout>
+
+
     </ScrollView>
 
     <TextView

@@ -18,7 +18,7 @@ class SettingThemeActivity : AppCompatActivity() {
             val edit=pers.edit()
             edit.putInt("mainbk",0)
             edit.apply()
-            Toast.makeText(this,"下次重启本软件生效",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"重启本软件生效",Toast.LENGTH_SHORT).show()
         }
         setting_theme_sunny.setOnClickListener {
             val edit=pers.edit()

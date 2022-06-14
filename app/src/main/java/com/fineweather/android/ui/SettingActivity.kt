@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.fineweather.android.R
+import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.ui.setting.SettingAboutActivity
 import com.fineweather.android.ui.setting.SettingPrivacypolicyActivity
 import com.fineweather.android.ui.setting.SettingThemeActivity
@@ -52,6 +53,27 @@ class SettingActivity : AppCompatActivity() {
             val intent3 = Intent(Intent.ACTION_VIEW)
             intent3.data = Uri.parse("http://www.caiyunapp.com/")
             startActivity(intent3)
+        }
+        setting_donation.setOnClickListener {
+            LogUtil.d("settingactivitytest","onclick")
+           if(setting_zfb_layout.visibility==View.GONE){
+               setting_zfb_layout.visibility=View.VISIBLE
+           }else{
+               setting_zfb_layout.visibility=View.GONE
+           }
+        }
+        setting_donation1.setOnClickListener {
+            LogUtil.d("settingactivitytest","onclick")
+            if(setting_zfb_layout.visibility==View.GONE){
+                setting_zfb_layout.visibility=View.VISIBLE
+            }else{
+                setting_zfb_layout.visibility=View.GONE
+            }
+        }
+        setting_zfb.setOnClickListener{
+            val intent9 = Intent(Intent.ACTION_VIEW)
+            intent9.data = Uri.parse("https://qr.alipay.com/fkx12156yr0b1spje87a349")
+            startActivity(intent9)
         }
     }
 }

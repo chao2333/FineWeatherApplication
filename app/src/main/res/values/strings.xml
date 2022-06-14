@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">晴天</string>
+    <string name="app_name">晴天天气</string>
     <string name="upDataTextViewupdataing">正在更新</string>
     <string name="upDataTextViewupdataing2">更新完成</string>
     <string name="upDataTextViewupdataing3">更新失败</string>
@@ -16,6 +16,7 @@
     <string name="Settinglayouttextview">设置</string>
     <string name="Setting_Privacypolicy">用户协议</string>
     <string name="Setting_About">关于我们</string>
+    <string name="Setting_donate">捐赠</string>
     <string name="LocationSearchtext">搜索全国位置</string>
     <string name="LocationSearchButtontext">取消</string>
     <string name="LocationSearchBEIJING">北京市</string>
@@ -350,6 +351,9 @@
     <string name="setting_transfer1">本软件使用开源项目：</string>
     <string name="setting_transfer2">MPAndroidChart</string>
     <string name="setting_transfer3">部分气象数据来自：</string>
+    <string name="setting_donation">捐赠</string>
+    <string name="setting_donation3">支付宝支付</string>
+
     <string name="setting_transfer4">彩云天气</string>
 
     <string name="setting_theme1">跟随天气（默认）</string>
