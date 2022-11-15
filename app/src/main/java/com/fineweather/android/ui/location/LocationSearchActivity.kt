@@ -49,7 +49,7 @@ class LocationSearchActivity : AppCompatActivity() {
         searchPlaceEdit.postDelayed(Runnable() {
             searchPlaceEdit.requestFocus()
             val imm:InputMethodManager= this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
+            imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS )
             this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
         },500)
         //Recycle的赋值，设置livedata观察对象 更改activity->this

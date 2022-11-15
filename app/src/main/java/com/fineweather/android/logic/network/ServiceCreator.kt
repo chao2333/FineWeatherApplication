@@ -16,3 +16,13 @@ object ServiceCreator {
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
     inline fun <reified T> create(): T = create(T::class.java)
 }
+object ConnectServerCreator {
+    private const val BASE_URL="https://fineweatherapp.cooc.site/"
+    private val retrofit= Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
+    inline fun <reified T> create(): T = create(T::class.java)
+}
+

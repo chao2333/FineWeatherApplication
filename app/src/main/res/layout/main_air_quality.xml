@@ -53,10 +53,10 @@
             android:id="@+id/main_airultravioletimagel4"
             android:layout_width="21dp"
             android:layout_height="21dp"
-            android:layout_marginStart="190dp"
+            android:layout_alignStart="@+id/main_airultravioletimagel5"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="13dp"
-            android:layout_toEndOf="@+id/main_airultravioletimagel1"
             android:gravity="center"
             android:src="@drawable/ic_main_airultraviolet" />
 
@@ -65,11 +65,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="6dp"
             android:layout_marginTop="13dp"
+            android:layout_marginEnd="35dp"
             android:layout_marginBottom="13dp"
-            android:layout_toEndOf="@+id/main_airultravioletimagel5"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -78,10 +78,10 @@
             android:id="@+id/main_airultravioletimagel5"
             android:layout_width="27dp"
             android:layout_height="27dp"
-            android:layout_marginStart="186dp"
             android:layout_marginTop="9dp"
+            android:layout_marginEnd="6dp"
             android:layout_marginBottom="9dp"
-            android:layout_toEndOf="@+id/main_airultravioletimagel1"
+            android:layout_toStartOf="@+id/main_airultravioletr"
             android:gravity="center"
             android:src="@drawable/main_air_and_ultraviolet_bk" />
 
@@ -93,6 +93,7 @@
             android:layout_marginStart="19dp" />
 
         <ImageView
+            android:visibility="visible"
             android:id="@+id/main_ultravioletbutton"
             android:layout_width="170dp"
             android:layout_height="match_parent"

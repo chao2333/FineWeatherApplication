@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginStart
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,7 @@ import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
+import com.fineweather.android.logic.network.FineWeatherNetwork
 import com.fineweather.android.ui.*
 import com.fineweather.android.ui.location.LocationActivity
 import com.fineweather.android.ui.place.MainViewModel
@@ -59,6 +61,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         haveChanged=0
         LogUtil.d("mainactivitytestbk",haveChanged.toString())
         //获取持久化储存

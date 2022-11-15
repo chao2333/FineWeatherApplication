@@ -6,11 +6,11 @@
     <string name="upDataTextViewGPS">当前位置</string>
     <string name="Welcomelayout1">欢迎使用晴天天气</string>
     <string name="Welcomelayout2">极简纯净的天气客户端</string>
-    <string name="Welcomelayoutpermission">我们需要位置权限为你提供服务</string>
+    <string name="Welcomelayoutpermission">使用当前定位需要位置权限</string>
     <string name="Welcomelayoutpermission2">继续使用代表您同意</string>
     <string name="Welcomelayoutpermission3">用户协议</string>
-    <string name="Welcomelayoutnext">授权</string>
-    <string name="Welcomelayoutrefuse">暂不授权</string>
+    <string name="Welcomelayoutnext">使用当前定位</string>
+    <string name="Welcomelayoutrefuse">搜索全国位置</string>
     <string name="Locationlayouttextview">城市管理</string>
     <string name="Locationlayouttextview2">轻点下方切换位置</string>
     <string name="Settinglayouttextview">设置</string>
@@ -190,8 +190,8 @@
     <string name="qualitylayout_pollution7">主要污染物</string>
     <string name="qualitylayout_pollution8">24小时空气质量预报</string>
     <string name="qualitylayout_data1">发布</string>
-    <string name="qualitylayout_detail"> 0–50 优\n50–100 良\n100–150 轻度污染\n150–200 中度污染\n200–300 重度污染</string>
-    <string name="qualitylayout_detail2"> 0.03–0.25 小雨\n0.25–0.35 中雨\n0.35–0.48 大雨\n>=0.48 暴雨</string>
+    <string name="qualitylayout_detail"> 0–50 优\n50–100 良\n100–150 轻度污染\n150–200 中度污染\n200–300 重度污染\n\n</string>
+    <string name="qualitylayout_detail2"> 0.03–0.25 小雨\n0.25–0.35 中雨\n0.35–0.48 大雨\n>=0.48 暴雨\n\n</string>
     <string name="fifteendays_title">15日天气预报</string>
     <string name="month">月</string>
     <string name="day">日</string>
@@ -344,7 +344,7 @@
     <string name="Privacy_policy1">用户协议</string>
     <string name="setting_theme">主题</string>
     <string name="setting_about">关于我们</string>
-    <string name="setting_version">版本号 V1.0.0</string>
+    <string name="setting_version">版本号 V1.0</string>
     <string name="setting_about_name">晴天天气</string>
     <string name="setting_about_call">联系我们&amp;商务合作</string>
     <string name="setting_about_join">加入QQ群</string>

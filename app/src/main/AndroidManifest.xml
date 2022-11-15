@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.晴天">
-        <activity
-            android:name=".ui.setting.SettingDonateActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.setting.SettingAboutActivity"
             android:exported="false" />
@@ -25,9 +23,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.setting.SettingPrivacypolicyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.setting.Setting_Privacypolicy_Activity"
             android:exported="false" />
         <activity
             android:name=".ui.SettingActivity"
@@ -41,9 +36,6 @@
         <activity
             android:name=".ui.MainFifteenDaysActivity"
             android:exported="true" />
-        <activity
-            android:name=".ui.MainUltravioletActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.MainAirQualityActivity"
             android:exported="false" />

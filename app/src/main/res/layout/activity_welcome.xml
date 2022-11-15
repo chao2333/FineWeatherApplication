@@ -19,7 +19,7 @@
             android:layout_marginTop="100dp"
             android:text="@string/Welcomelayout1"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="33dp"
-            android:layout_marginTop="143dp"
+            android:layout_marginTop="145dp"
             android:text="@string/Welcomelayout2"
             android:textColor="@color/Welcomewhileblack"
             android:textSize="18sp" />
@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/WelcomeButton"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
@@ -60,16 +60,16 @@
         <Button
             android:id="@+id/RefuseButton"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="29dp"
             android:layout_marginBottom="48dp"
             android:layout_toStartOf="@+id/WelcomeButton"
-            android:background="@drawable/welcome_refusebuttonbk"
+            android:background="@drawable/welcome_nextbuttonbk"
             android:text="@string/Welcomelayoutrefuse"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/welcome_2"
@@ -78,7 +78,7 @@
             android:layout_above="@+id/RefuseButton"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="153dp"
+            android:layout_marginBottom="151dp"
             android:text="@string/Welcomelayoutpermission2"
             android:textColor="@color/Welcomewhileblack"
             android:textSize="18sp" />
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/RefuseButton"
             android:layout_marginStart="0dp"
-            android:layout_marginBottom="153dp"
+            android:layout_marginBottom="151dp"
             android:layout_toEndOf="@+id/welcome_2"
             android:text="@string/Welcomelayoutpermission3"
             android:textColor="@color/setting_transfer"
@@ -106,7 +106,7 @@
             android:layout_marginBottom="120dp"
             android:text="@string/Welcomelayoutpermission"
             android:textColor="@color/Welcomewhileblack"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
 

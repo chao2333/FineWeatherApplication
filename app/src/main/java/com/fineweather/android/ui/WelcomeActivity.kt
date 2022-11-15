@@ -29,6 +29,13 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         setContentView(R.layout.activity_welcome)
+        //生成设备唯唯一标识码
+        if (pers.getString("id","")==""){
+            val edit9=pers.edit()
+            val id=(0..99999999).random()
+            edit9.putInt("id",id)
+            edit9.apply()
+        }
         WelcomeButton.setOnClickListener{
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),11)

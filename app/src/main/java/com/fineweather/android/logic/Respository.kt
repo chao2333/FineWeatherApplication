@@ -1,9 +1,8 @@
 package com.fineweather.android.logic
 
-import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.fineweather.android.FineWeatherApplication
+import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.model.Place
 import com.fineweather.android.logic.model.WeatherResponse
 import com.fineweather.android.logic.network.FineWeatherNetwork
@@ -27,9 +26,18 @@ object Respository {
     }
     fun refreshWeather(Location:String)=liveData(Dispatchers.IO){
         val result=try {
-
             val realtimeResponse= FineWeatherNetwork.requestWeather(Location)
-            if (realtimeResponse.status=="ok"){
+            var severResponse=""
+            try {
+                severResponse=FineWeatherNetwork.ConnectServer(
+                    Respository.getSqlite().getString("lat","")!!,
+                    Respository.getSqlite().getString("lng","")!!,
+                    Respository.getSqlite().getString("address","")!!,
+                    Respository.getSqlite().getInt("id",0)!!).status
+            }catch (e:Exception){
+                print(e)
+            }
+            if (realtimeResponse.status=="ok"&&severResponse!="no"){
                 Result.success(realtimeResponse)
             }else{
                 Result.failure(
@@ -38,7 +46,6 @@ object Respository {
                     )
                 )
             }
-
         }catch (e:Exception){
             Result.failure<WeatherResponse>(e)
         }

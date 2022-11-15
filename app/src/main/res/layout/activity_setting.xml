@@ -268,48 +268,53 @@
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/setting_transfer1"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="114dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/setting_transfer3" />
-
-    <TextView
-        android:id="@+id/setting_transfer2"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/setting_transfer9"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="0dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/setting_transfer1"
-        android:text="@string/setting_transfer4"
-        android:textColor="@color/setting_transfer" />
+        android:layout_marginBottom="5dp">
 
-    <TextView
-        android:id="@+id/setting_transfer3"
-        android:layout_width="142dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/setting_transfer2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="5dp"
-        android:layout_toEndOf="@+id/setting_transfer4"
-        android:text="@string/setting_transfer2"
-        android:textColor="@color/setting_transfer" />
+        <TextView
+            android:id="@+id/setting_transfer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_transfer3" />
 
-    <TextView
-        android:id="@+id/setting_transfer4"
+        <TextView
+            android:id="@+id/setting_transfer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/setting_transfer1"
+            android:text="@string/setting_transfer4"
+            android:textColor="@color/setting_transfer" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setting_transfer9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/setting_transfer2"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/setting_transfer1" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="0dp">
+
+        <TextView
+            android:id="@+id/setting_transfer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_toEndOf="@+id/setting_transfer4"
+            android:text="@string/setting_transfer2"
+            android:textColor="@color/setting_transfer" />
+        <TextView
+            android:id="@+id/setting_transfer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/setting_transfer1" />
+    </RelativeLayout>
+
+
 </RelativeLayout>

@@ -61,13 +61,13 @@
             <Button
                 android:id="@+id/LocationSearchNOW"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:textColor="@color/bkSunnyEnd"
                 android:layout_width="105dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_marginEnd="55dp"
                 android:background="@drawable/location_searchbk"
-                android:text="@string/LocationSearchNOW" />
+                android:text="@string/LocationSearchNOW"
+                android:textColor="@color/bkSunnyEnd" />
 
             <Button
                 android:id="@+id/LocationSearchSHANGHAISHI"
