@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityOptionsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
@@ -12,12 +13,15 @@ import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.LocationSaveItem
 import com.fineweather.android.ui.LocationSaveAdapter
 import kotlinx.android.synthetic.main.activity_location.*
+import kotlin.concurrent.thread
 
 class LocationActivity : AppCompatActivity() {
+    private lateinit var locationViewModel: LocationViewModel
     @SuppressLint("Range")
     private lateinit var adapter: LocationSaveAdapter
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
+        locationViewModel=ViewModelProvider(this).get(LocationViewModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
         backMainActivity.setOnClickListener {
@@ -32,7 +36,7 @@ class LocationActivity : AppCompatActivity() {
         val LocationList=getList()
         val layoutManager=LinearLayoutManager(this)
         LocationSearchListview.layoutManager=layoutManager
-        adapter=LocationSaveAdapter(this,LocationList)
+        adapter=LocationSaveAdapter(this,LocationList,locationViewModel.database)
         LogUtil.d("databasesavetest1",LocationList.toString())
         LocationSearchListview.adapter=adapter
 
@@ -43,13 +47,32 @@ class LocationActivity : AppCompatActivity() {
         val LocationList=getList()
         val layoutManager=LinearLayoutManager(this)
         LocationSearchListview.layoutManager=layoutManager
-        adapter=LocationSaveAdapter(this,LocationList)
+        adapter=LocationSaveAdapter(this,LocationList,locationViewModel.database)
         LogUtil.d("databasesavetest1",LocationList.toString())
         LocationSearchListview.adapter=adapter
         super.onRestart()
     }
     @SuppressLint("Range")
     fun getList():ArrayList<LocationSaveItem>{
+        var acc:String;var rou:String;
+        var lat:String;
+        var lng:String;
+        val returnList=ArrayList<LocationSaveItem>()
+        returnList.add(LocationSaveItem("rou","acc","lat","lng"))
+        thread {
+            locationViewModel.database.queryAll().let {
+                for (i in it){
+                    acc=i.AccurateLocation
+                    rou=i.RoughLocation
+                    lat=i.lat
+                    lng=i.lng
+                    returnList.add(LocationSaveItem(rou,acc,lat,lng))
+                }
+            }
+        }
+        return returnList
+        /*
+        //没有使用ROOM数据库之前的逻辑
         val dbHelperWrite=SaveLocationDatabase(this,"LocationSave.db",1).writableDatabase
         val cursor=dbHelperWrite.query("Location",null,null,null,null,null,null)
         val LocationList= ArrayList<LocationSaveItem>()
@@ -66,5 +89,7 @@ class LocationActivity : AppCompatActivity() {
         }
         cursor.close()
         return LocationList
+
+         */
     }
 }

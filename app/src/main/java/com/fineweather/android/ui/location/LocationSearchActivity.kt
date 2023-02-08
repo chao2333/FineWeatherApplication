@@ -27,9 +27,11 @@ import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
+import com.fineweather.android.logic.model.LocationEntity
 import com.fineweather.android.ui.PlaceAdapter
 import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
+import kotlin.concurrent.thread
 
 
 class LocationSearchActivity : AppCompatActivity() {
@@ -55,7 +57,7 @@ class LocationSearchActivity : AppCompatActivity() {
         //Recycle的赋值，设置livedata观察对象 更改activity->this
         val layoutManager=LinearLayoutManager(this)
         LocationSearchRecyclerview.layoutManager=layoutManager
-        adapter= PlaceAdapter(this,viewModel.placelise,intent.getIntExtra("firstload",0))
+        adapter= PlaceAdapter(this,viewModel.placelise,intent.getIntExtra("firstload",0),viewModel.database)
         LocationSearchRecyclerview.adapter=adapter
         ViewCompat.setTransitionName(searchPlaceEdit, "SearchTransitionAnimation")
         LocationSearchCancle.setOnClickListener {
@@ -112,6 +114,11 @@ class LocationSearchActivity : AppCompatActivity() {
                                 edit.putInt("sourcetype",1)
                                 edit.apply()
                             }
+                            thread{
+                                viewModel.database.insert(LocationEntity("当前位置","当前位置", nowlat,nowlng,1))
+                            }
+                            Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+                            /*
                             val dbHelper= SaveLocationDatabase(context,"LocationSave.db",1)
                             val db=dbHelper.writableDatabase
                             val insert1= ContentValues().apply {
@@ -122,8 +129,9 @@ class LocationSearchActivity : AppCompatActivity() {
                                 put("sourcetype",1)
                             }
                             db.insert("Location",null,insert1)
-                            Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+
                             dbHelper.close()
+                             */
                             locationManager.removeUpdates(this)
                         }
                         override fun onProviderDisabled(provider: String) {
@@ -149,6 +157,11 @@ class LocationSearchActivity : AppCompatActivity() {
                         edit.putInt("sourcetype",1)
                         edit.apply()
                     }
+                    thread{
+                        viewModel.database.insert(LocationEntity("当前位置","当前位置", lat,lng,1))
+                    }
+                    Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+                    /*
                     val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
                     val db=dbHelper.writableDatabase
                     val insert1= ContentValues().apply {
@@ -159,8 +172,9 @@ class LocationSearchActivity : AppCompatActivity() {
                         put("sourcetype",1)
                     }
                     db.insert("Location",null,insert1)
-                    Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+
                     dbHelper.close()
+                     */
                     this.onBackPressed()
                 }
             }

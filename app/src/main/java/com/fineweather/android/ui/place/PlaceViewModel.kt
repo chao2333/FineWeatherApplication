@@ -18,5 +18,6 @@ class PlaceViewModel:ViewModel() {
     fun searchPlaces(query:String){
         searchLiveData.value=query
     }
+    val database=Respository.getLocationDao()
 
 }

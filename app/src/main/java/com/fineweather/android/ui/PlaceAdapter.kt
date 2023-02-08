@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -14,21 +15,27 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Dao
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.MainActivity
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.Respository.refreshWeather
+import com.fineweather.android.logic.dao.LocationDao
+import com.fineweather.android.logic.dao.LocationDatabase
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
 import com.fineweather.android.ui.place.MainViewModel
+import com.fineweather.android.ui.place.PlaceViewModel
+import kotlinx.android.synthetic.main.activity_location_search.*
 import java.text.DecimalFormat
 import java.util.*
+import kotlin.concurrent.thread
 
 
-class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>,private val firstload:Int):
+class PlaceAdapter(private val activity:Activity,private val placeList:List<Place>,private val firstload:Int,private val database: LocationDao):
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
     val pers= Respository.getSqlite()
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -56,6 +63,12 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
                 edit.putInt("sourcetype",0)
                 edit.apply()
             }
+            thread {
+                database.insert(LocationEntity(place.address,place.name,place.location.lat,place.location.lng,0))
+            }
+            Toast.makeText(FineWeatherApplication.context,"已经添加到我的城市",Toast.LENGTH_LONG).show()
+            activity.onBackPressed()
+            /*//没使用ROOM优化的代码
             val dbHelper=SaveLocationDatabase(activity,"LocationSave.db",1)
             val db=dbHelper.writableDatabase
             val insert1=ContentValues().apply {
@@ -64,20 +77,22 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
                 put("lat",place.location.lat)
                 put("lng",place.location.lng)
                 put("sourcetype",0)
-                activity.onBackPressed()
+
             }
             db.insert("Location",null,insert1)
-            Toast.makeText(FineWeatherApplication.context,"已经添加到我的城市",Toast.LENGTH_LONG).show()
             dbHelper.close()
+             */
+
+
         }
     }
     override fun getItemCount()=placeList.size
 }
 
 
-class LocationSaveAdapter(private val activity:Activity,private val savelist: ArrayList<LocationSaveItem>):
+class LocationSaveAdapter(private val activity:Activity,private val savelist: ArrayList<LocationSaveItem>,private val database:LocationDao):
     RecyclerView.Adapter<LocationSaveAdapter.LocationSaveHolder>(){
-    val db=SaveLocationDatabase(activity,"LocationSave.db",1)
+  //使用ROOM优化  val db=SaveLocationDatabase(activity,"LocationSave.db",1)
     inner class LocationSaveHolder(View:View):RecyclerView.ViewHolder(View){
         val locationSaveCardRough:TextView=View.findViewById(R.id.LocationSaveCardRough)
         val locationSaveCardAccu:TextView=View.findViewById(R.id.LocationSaveCardAccu)
@@ -110,6 +125,13 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
             val location9=location.lng+","+location.lat
             Respository.refreshWeather(location9)
             //来源为搜索，0   来源为定位为1
+            thread {
+                persedit.putInt("sourcetype",database.queryLat(location.lat))
+                persedit.apply()
+                LogUtil.d("sourcetype",database.queryLat(location.lat).toString())
+            }
+
+ /*使用ROOM优化
             var result=1
             val cursor=db.writableDatabase.query("Location", arrayOf("sourcetype"),"lat=?", arrayOf(location.lat),null,null,null)
             if(cursor.moveToNext()){
@@ -124,14 +146,21 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
                 persedit.putInt("sourcetype",1)
             }
             cursor.close()
+  */
             persedit.apply()
             activity.finish()
             Toast.makeText(activity,"切换地点为${location.name}",Toast.LENGTH_LONG).show()
         }
         //删除当前item
         holder.locationSaveImageView.setOnClickListener {
+            /*使用ROOM优化
             val dbHelperWrite=db.writableDatabase
             dbHelperWrite.execSQL("DELETE FROM Location WHERE RoughLocation='${location.name}'")
+
+             */
+            thread {
+                database.deleteOne(location.lat,location.lng)
+            }
             savelist.remove(LocationSaveItem(location.name,location.address,location.lat,location.lng))
             notifyItemRemoved(position2)
             notifyDataSetChanged()

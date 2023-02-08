@@ -52,6 +52,7 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private var confirmupdate=""
@@ -444,14 +445,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
         //设置前十次检查数据库，如果数据库为空，并且定位标题为“当前位置”，就往数据库里插入当前位置的数据
+
         var checkdatabase=pers.getInt("checkdatabase",0)
         val flag1=pers.getString("name","").toString()=="当前位置"
         val flag2=pers.getString("name","").toString()=="当前定位"
         if ((pers.getInt("checkdatabase",0)<7)&&(flag1||flag2)){
             LogUtil.d("mainactivitytestdatabase","indatabase")
-            var databaselength=0
+
             val lng1=pers.getString("lng","")
             val lat1=pers.getString("lat","")
+            thread{
+                val databaselength=viewModel.getLocationDao().queryAll().size
+                if(databaselength==0){
+                    viewModel.getLocationDao().insert(LocationEntity("当前位置","当前位置", lat1!!,lng1!!,1))
+                }
+            }
+
+            /*
             val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
             val db=dbHelper.writableDatabase
             val cursor = db.query("Location", null, null, null, null, null, null)
@@ -472,11 +482,13 @@ class MainActivity : AppCompatActivity() {
                 db.insert("Location",null,insert1)
                 dbHelper.close()
             }
+            dbHelper.close()
+            */
             checkdatabase++
             val edit3=pers.edit()
             edit3.putInt("checkdatabase",checkdatabase)
             edit3.apply()
-            dbHelper.close()
+
         }
     }
 
