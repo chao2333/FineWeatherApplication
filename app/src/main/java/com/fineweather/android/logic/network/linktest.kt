@@ -31,19 +31,5 @@ interface   WeatherService1{
     fun requestWeather(): Call<respone>
 }
 private val WeatherService2=ServiceCreator3.create<WeatherService1>()
-suspend fun requestWeather3()= WeatherService2.requestWeather().await()
-suspend fun main(){
-    val er= requestWeather3()
-    print(er.status)
-}
 
 data class respone(val status:String)
-fun hanve(){
-    var connection:HttpURLConnection?=null
-    val url = URL("http://fineweatherapp.cooc.site:8080/test.jsp?date=Data&mac=Mac")
-    for (i in 1..100000){
-        connection=url.openConnection() as HttpURLConnection
-        connection.inputStream
-        print("have save")
-    }
-}

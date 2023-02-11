@@ -1,10 +1,8 @@
 package com.fineweather.android.logic
 
-import android.content.Context
 import androidx.lifecycle.liveData
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.logic.dao.LocationDatabase
-import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.model.Place
 import com.fineweather.android.logic.model.WeatherResponse
 import com.fineweather.android.logic.network.FineWeatherNetwork
@@ -31,7 +29,7 @@ object Respository {
             val realtimeResponse= FineWeatherNetwork.requestWeather(Location)
             var severResponse=""
             try {
-                severResponse=FineWeatherNetwork.ConnectServer(
+                severResponse=FineWeatherNetwork.connectServer(
                     Respository.getSqlite().getString("lat","")!!,
                     Respository.getSqlite().getString("lng","")!!,
                     Respository.getSqlite().getString("address","")!!,

@@ -6,6 +6,7 @@ import android.content.Context
 
 class FineWeatherApplication:Application() {
     companion object {
+        const val AK="uTnRGBeog3pBSd9paHnn0EQFHU4PFqCl"
         const val TOKEN="qJq8YCdea1b5oTHw"
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
