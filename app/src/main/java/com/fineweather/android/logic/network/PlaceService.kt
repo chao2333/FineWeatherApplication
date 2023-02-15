@@ -1,6 +1,7 @@
 package com.fineweather.android.logic.network
 
 import com.fineweather.android.FineWeatherApplication
+import com.fineweather.android.logic.model.CoordinateResponse
 import com.fineweather.android.logic.model.PlaceResponse
 import com.fineweather.android.logic.model.WeatherResponse
 import retrofit2.Call
@@ -19,4 +20,8 @@ interface   WeatherService{
 interface ConnectSeverService{
     @GET("data")
     fun requestaccess(@Query("lat") lat:String, @Query("lng") lng:String, @Query("address") address:String, @Query("id") id:Int):Call<respone>
+}
+interface CoordinateService {
+    @GET("v3/")
+    fun getCoordinateReverse(@Query("ak") ak: String =FineWeatherApplication.AK, @Query("output") output:String="json", @Query("coordtype") coordtype:String="wgs84ll", @Query("location") location:String):Call<CoordinateResponse>
 }

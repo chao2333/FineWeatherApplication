@@ -53,6 +53,7 @@ import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
+import kotlin.math.ln
 
 class MainActivity : AppCompatActivity() {
     private var confirmupdate=""
@@ -63,6 +64,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //测试数据
+        thread {
+            val all=viewModel.getLocationDao().queryAll()
+            for (i in all){
+                LogUtil.d("maintest",i.lat+i.lng+i.AccurateLocation+i.RoughLocation)
+            }
+        }
 
         haveChanged=0
         LogUtil.d("mainactivitytestbk",haveChanged.toString())
@@ -113,8 +121,40 @@ class MainActivity : AppCompatActivity() {
             }
         }
         val location8=applicationDataPers.getString("lng","")+","+applicationDataPers.getString("lat","")
-        viewModel.refreshWeather(location8)
+        LogUtil.d("mainactivitycoordinate",location8)
+        //viewModel设置顶部坐标
+        viewModel.refreshCoordinate(applicationDataPers.getString("lat","")+","+applicationDataPers.getString("lng",""))
+        viewModel.coordinateLiveData1.observe(this,Observer{
+            val coordinate=it.getOrNull()
+            if (coordinate!==null&&coordinate.status=="0"){
+                val cont=coordinate.result.addressComponent
+                val fmat=coordinate.result.formatted_address
+                var lat=applicationDataPers.getString("lat","")
+                if (lat==null) lat=""
+                var lng=applicationDataPers.getString("lng","")
+                if (lng==null) lng=""
+                if (cont.street.isNotEmpty()){
+                    topTextView.text=cont.street
+                    changeDatabase(fmat,cont.street,lat,lng,1)
+                }else if (cont.town.isNotEmpty()){
+                    topTextView.text=cont.town
+                    changeDatabase(fmat,cont.town,lat,lng,1)
+                }else if (cont.district.isNotEmpty()){
+                    topTextView.text=cont.district
+                    changeDatabase(fmat,cont.district,lat,lng,1)
+                }else if (cont.city.isNotEmpty()){
+                    topTextView.text=cont.city
+                    changeDatabase(fmat,cont.city,lat,lng,1)
+                }else if (cont.province.isNotEmpty()){
+                    topTextView.text=cont.province
+                    changeDatabase(fmat,cont.province,lat,lng,1)
+                }else{
+                    topTextView.text="当前位置"
+                }
+            }
+        })
         //ViewModel设置天气数据
+        viewModel.refreshWeather(location8)
         viewModel.weatherLiveData.observe(this, Observer { result->
             val weather=result.getOrNull()
             if (weather != null) {
@@ -342,6 +382,22 @@ class MainActivity : AppCompatActivity() {
             refreshWeather()
         }
     }
+    //更改数据库和shareprefence中的位置数据
+    private fun changeDatabase(AccurateLocation:String,RoughLocation:String,lat:String,lng:String,sourcetype:Int){
+        //更改数据库数据
+        val insert=LocationEntity(AccurateLocation, RoughLocation, lat, lng, sourcetype)
+        thread {
+            LogUtil.d("maintestth",AccurateLocation+RoughLocation+lat+lng)
+            viewModel.getLocationDao().deleteOne(lat,lng)
+            viewModel.getLocationDao().insert(insert)
+        }
+        //更改sp数据
+        val sp=viewModel.getSharepreferences().edit()
+        sp.putString("address",AccurateLocation)
+        sp.putString("name",RoughLocation)
+        sp.apply()
+    }
+
     //主页下拉刷新方法
     fun refreshWeather(){
         val lng=Respository.getSqlite().getString("lng","")

@@ -19,6 +19,8 @@ interface LocationDao {
     @Query("delete from LocationEntity where lat=:lat and lng=:lng")
     fun deleteOne(lat:String,lng:String)
 
+    @Query("select id from LocationEntity where lat=:lat and lng=:lng")
+    fun queryId(lat:String,lng:String):Long
     @Query("select * from LocationEntity")
     fun queryAll():List<LocationEntity>
 
