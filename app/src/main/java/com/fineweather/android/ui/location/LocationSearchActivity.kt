@@ -3,6 +3,7 @@ package com.fineweather.android.ui.location
 import android.Manifest
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -23,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.FineWeatherApplication.Companion.context
+import com.fineweather.android.MainActivity
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
@@ -92,8 +94,9 @@ class LocationSearchActivity : AppCompatActivity() {
         LocationSearchNOW.setOnClickListener {
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
-
+                LogUtil.d("searchactivity5","inif2")
             }else{
+                LogUtil.d("searchactivity5","inelse")
                 val location=getLastKnownLocation()
                 if (location==null){
 
@@ -106,32 +109,20 @@ class LocationSearchActivity : AppCompatActivity() {
                             val nowlng=p0.longitude.toString()
                             val nowlat=p0.latitude.toString()
                             val pers= Respository.getSqlite()
-                            if (intent.getIntExtra("firstload",0)==1&&pers!=null){
+                           // if (intent.getIntExtra("firstload",0)==1&&pers!=null){
                                 val edit=pers.edit()
                                 edit.putString("lng",nowlng)
+                                LogUtil.d("searchactivity5",nowlng)
                                 edit.putString("lat",nowlat)
                                 edit.putString("name","当前位置")
                                 edit.putInt("sourcetype",1)
                                 edit.apply()
-                            }
+                          //  }
                             thread{
                                 viewModel.database.insert(LocationEntity("当前位置","当前位置", nowlat,nowlng,1))
                             }
+                            LogUtil.d("searchactivity5","in test1")
                             Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
-                            /*
-                            val dbHelper= SaveLocationDatabase(context,"LocationSave.db",1)
-                            val db=dbHelper.writableDatabase
-                            val insert1= ContentValues().apply {
-                                put("AccurateLocation","当前位置")
-                                put("RoughLocation","当前位置")
-                                put("lat",nowlat)
-                                put("lng",nowlng)
-                                put("sourcetype",1)
-                            }
-                            db.insert("Location",null,insert1)
-
-                            dbHelper.close()
-                             */
                             locationManager.removeUpdates(this)
                         }
                         override fun onProviderDisabled(provider: String) {
@@ -148,19 +139,22 @@ class LocationSearchActivity : AppCompatActivity() {
                 }else{
                     val lat=location.latitude.toString()
                     val lng=location.longitude.toString()
+                    LogUtil.d("searchactivity5","inelse2")
                     val pers= Respository.getSqlite()
-                    if (intent.getIntExtra("firstload",0)==1&&pers!=null){
+                    //if (intent.getIntExtra("firstload",0)==1&&pers!=null){
                         val edit=pers.edit()
                         edit.putString("lng",lng)
                         edit.putString("lat",lat)
+                        LogUtil.d("searchactivity5",lng)
                         edit.putString("name","当前位置")
                         edit.putInt("sourcetype",1)
                         edit.apply()
-                    }
+                   // }
                     thread{
                         viewModel.database.insert(LocationEntity("当前位置","当前位置", lat,lng,1))
                     }
                     Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
+                    LogUtil.d("searchactivity5","in toast")
                     /*
                     val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
                     val db=dbHelper.writableDatabase
@@ -178,6 +172,7 @@ class LocationSearchActivity : AppCompatActivity() {
                     this.onBackPressed()
                 }
             }
+            startActivity(Intent(context,MainActivity::class.java))
         }
         LocationSearchCHONGQING.setOnClickListener { searchPlaceEdit.setText("重庆市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)

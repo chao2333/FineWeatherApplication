@@ -58,7 +58,6 @@ class LocationActivity : AppCompatActivity() {
         var lat:String;
         var lng:String;
         val returnList=ArrayList<LocationSaveItem>()
-        returnList.add(LocationSaveItem("rou","acc","lat","lng"))
         thread {
             locationViewModel.database.queryAll().let {
                 for (i in it){

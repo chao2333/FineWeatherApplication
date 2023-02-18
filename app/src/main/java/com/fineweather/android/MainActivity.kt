@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                                     edit2.putString("lat",nowlat)
                                     edit2.putString("lng",nowlng)
                                     edit2.putString("name","当前位置")
+                                    viewModel.refreshCoordinate("$nowlat,$nowlng")
                                     confirmupdate= nowlat
                                     edit2.apply()
                                     locationManager.removeUpdates(this)
@@ -126,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.refreshCoordinate(applicationDataPers.getString("lat","")+","+applicationDataPers.getString("lng",""))
         viewModel.coordinateLiveData1.observe(this,Observer{
             val coordinate=it.getOrNull()
-            if (coordinate!==null&&coordinate.status=="0"){
+            if (coordinate!==null&&coordinate.status=="0"&&applicationDataPers.getInt("sourcetype",0)==1){
                 val cont=coordinate.result.addressComponent
                 val fmat=coordinate.result.formatted_address
                 var lat=applicationDataPers.getString("lat","")
@@ -417,6 +418,13 @@ class MainActivity : AppCompatActivity() {
         val pers=viewModel.getSharepreferences()
         LogUtil.d("onResumetest1",confirmupdate)
         LogUtil.d("onResumetest2",pers.getString("lat","").toString())
+        //如果定位是当前位置或当前定位，就刷新顶部定位
+        LogUtil.d("onResumetest2",pers.getString("name","").toString())
+        LogUtil.d("onResumetest2",pers.getString("address","").toString())
+        if(pers.getString("name","")=="当前定位"||pers.getString("name","")=="当前位置") {
+            viewModel.refreshCoordinate(pers.getString("lat","")+","+pers.getString("lng",""))
+            LogUtil.d("onResumetest2","inviewmodel")
+        }
         //根据经度是否发生变化决定是否刷新天气，设置了如果经度发生变化，刷新天气后再让经度一样，减少了不必要的刷新天气
         if (confirmupdate!=pers.getString("lat","").toString()){
             confirmupdate=pers.getString("lat","").toString()
@@ -516,30 +524,6 @@ class MainActivity : AppCompatActivity() {
                     viewModel.getLocationDao().insert(LocationEntity("当前位置","当前位置", lat1!!,lng1!!,1))
                 }
             }
-
-            /*
-            val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
-            val db=dbHelper.writableDatabase
-            val cursor = db.query("Location", null, null, null, null, null, null)
-            if (cursor.moveToFirst()) {
-                do {
-                   databaselength++
-                } while (cursor.moveToNext())
-            }
-            cursor.close()
-            if (databaselength==0){
-                val insert1= ContentValues().apply {
-                    put("AccurateLocation","当前位置")
-                    put("RoughLocation","当前位置")
-                    put("lat",lat1)
-                    put("lng",lng1)
-                    put("sourcetype",1)
-                }
-                db.insert("Location",null,insert1)
-                dbHelper.close()
-            }
-            dbHelper.close()
-            */
             checkdatabase++
             val edit3=pers.edit()
             edit3.putInt("checkdatabase",checkdatabase)
