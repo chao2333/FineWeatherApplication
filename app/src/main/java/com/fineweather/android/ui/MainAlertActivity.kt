@@ -13,6 +13,8 @@ class MainAlertActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_alert)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         val alertdata=intent.getSerializableExtra("alertdata") as Alert
         if (alertdata.content.size==1){
             alertlayout_layout1.visibility=View.VISIBLE

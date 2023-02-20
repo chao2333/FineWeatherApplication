@@ -30,6 +30,7 @@ import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.LocationEntity
+import com.fineweather.android.ui.CustomDensityUtil
 import com.fineweather.android.ui.PlaceAdapter
 import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
@@ -42,6 +43,8 @@ class LocationSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location_search)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         //获取是否为开始界面进入，1为开始界面进入
         val flag=intent.getIntExtra("firstload",0)
         LogUtil.d("locationsearchtest",flag.toString())

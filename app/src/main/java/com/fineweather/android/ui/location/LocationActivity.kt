@@ -11,6 +11,7 @@ import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.LocationSaveItem
+import com.fineweather.android.ui.CustomDensityUtil
 import com.fineweather.android.ui.LocationSaveAdapter
 import kotlinx.android.synthetic.main.activity_location.*
 import kotlin.concurrent.thread
@@ -24,6 +25,8 @@ class LocationActivity : AppCompatActivity() {
         locationViewModel=ViewModelProvider(this).get(LocationViewModel::class.java)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         backMainActivity.setOnClickListener {
             finish()
         }

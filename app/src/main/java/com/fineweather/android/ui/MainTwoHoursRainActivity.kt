@@ -19,6 +19,8 @@ class MainTwoHoursRainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_two_hours_rain)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         backMainActivity10.setOnClickListener {
             finish()
         }

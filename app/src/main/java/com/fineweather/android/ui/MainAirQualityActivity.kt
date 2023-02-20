@@ -24,6 +24,8 @@ class MainAirQualityActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_air_quality)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         val Airqualitydata=intent.getSerializableExtra("Airqualitydata") as Airqualitydata
         setchart(Airqualitydata,this)
         //显示主界面数据

@@ -16,6 +16,8 @@ class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         backMainActivity78.setOnClickListener {
             finish()
         }

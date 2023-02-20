@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
+import com.fineweather.android.ui.CustomDensityUtil
 import kotlinx.android.synthetic.main.activity_setting_about.*
 import java.net.HttpURLConnection
 import java.net.NetworkInterface
@@ -20,6 +21,8 @@ class SettingAboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_about)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         backMainActivity80.setOnClickListener {
             finish()
         }

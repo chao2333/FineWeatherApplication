@@ -14,6 +14,8 @@ class MainFifteenDaysActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_fifteen_days)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         val Daily=intent.getSerializableExtra("dailydata") as Daily
         val layoutManager=LinearLayoutManager(this)
         layoutManager.orientation= RecyclerView.HORIZONTAL

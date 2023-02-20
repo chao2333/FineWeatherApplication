@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
+import com.fineweather.android.ui.CustomDensityUtil
 import kotlinx.android.synthetic.main.activity_setting_theme.*
 
 class SettingThemeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_theme)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         val pers=Respository.getSqlite()
 
         //按照activity_setting_theme布局中主题的顺序，确定主题的编号

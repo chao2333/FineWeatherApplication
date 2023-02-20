@@ -5,12 +5,15 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.DisplayMetrics
+import android.view.Display
 import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -63,14 +66,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //测试数据
-        thread {
-            val all=viewModel.getLocationDao().queryAll()
-            for (i in all){
-                LogUtil.d("maintest",i.lat+i.lng+i.AccurateLocation+i.RoughLocation)
-            }
-        }
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
 
         haveChanged=0
         LogUtil.d("mainactivitytestbk",haveChanged.toString())
@@ -413,6 +410,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("dailydata",daily)
         startActivity(intent)
     }
+
     override fun onResume() {
         super.onResume()
         val pers=viewModel.getSharepreferences()

@@ -31,6 +31,8 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //进行屏幕适配
+        CustomDensityUtil.setCustomDensity(this,application)
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         setContentView(R.layout.activity_welcome)
         //生成设备唯唯一标识码

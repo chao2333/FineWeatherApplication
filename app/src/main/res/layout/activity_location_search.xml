@@ -16,7 +16,7 @@
 
         <EditText
             android:id="@+id/searchPlaceEdit"
-            android:layout_width="278dp"
+            android:layout_width="258dp"
             android:layout_height="45dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"

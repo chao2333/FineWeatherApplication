@@ -3,6 +3,8 @@ package com.fineweather.android
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.content.res.Resources
+import android.util.DisplayMetrics
 
 class FineWeatherApplication:Application() {
     companion object {
