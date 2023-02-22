@@ -55,18 +55,19 @@
         app:layout_constraintTop_toBottomOf="@+id/LocationTop" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/twohoursrain_chart"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/twohoursrain_chart"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_marginTop="128dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LocationTop" />
 
@@ -79,11 +80,162 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/twohoursrain_chart">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/qualitylayout_detail2"
-            android:textSize="12sp" />
+        <RelativeLayout
+            android:id="@+id/front6"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/bkSunnyBegin"
+                android:text="@string/qualitylayout_detail4"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail5"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/front7"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front6"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front3"
+                android:textColor="@color/rianFall_Yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail6"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front8"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front7"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front9"
+                android:textColor="@color/rianFall_Orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail7"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front12"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front8"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textColor="@color/rianFall_Red"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail8"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:textSize="13sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="0dp"
+        android:text="@string/qualitylayout_detail3"
+        app:layout_constraintBottom_toTopOf="@+id/twohoursrain_chart"
+        app:layout_constraintStart_toStartOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

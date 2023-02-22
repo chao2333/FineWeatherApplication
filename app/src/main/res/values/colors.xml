@@ -38,4 +38,8 @@
     <color name="alert_layout2">#FFC107</color>
     <color name="alert_layout3">#FF6736</color>
     <color name="alert_layout4">#FF0000</color>
+    <color name="rianFall_Blue">#002FA7</color>
+    <color name="rianFall_Yellow">#FFEB3B</color>
+    <color name="rianFall_Orange">#FF9800</color>
+    <color name="rianFall_Red">#FF5722</color>
 </resources>

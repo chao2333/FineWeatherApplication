@@ -132,10 +132,13 @@ class MainActivity : AppCompatActivity() {
                 var lng=applicationDataPers.getString("lng","")
                 if (lng==null) lng=""
                 if (cont.street.isNotEmpty()){
-                    topTextView.text=cont.street
+                    if (cont.town.isNotEmpty())topTextView.text=cont.town+" "+cont.street
+                    else if (cont.district.isNotEmpty())topTextView.text=cont.district+" "+cont.street
+                    else topTextView.text=cont.street
                     changeDatabase(fmat,cont.street,lat,lng,1)
                 }else if (cont.town.isNotEmpty()){
-                    topTextView.text=cont.town
+                    if (cont.district.isNotEmpty())topTextView.text=cont.district+" "+cont.town
+                    else topTextView.text=cont.town
                     changeDatabase(fmat,cont.town,lat,lng,1)
                 }else if (cont.district.isNotEmpty()){
                     topTextView.text=cont.district
@@ -153,12 +156,13 @@ class MainActivity : AppCompatActivity() {
         })
         //ViewModel设置天气数据
         viewModel.refreshWeather(location8)
+        LogUtil.d("mainactivitylocationtest",location8)
         viewModel.weatherLiveData.observe(this, Observer { result->
             val weather=result.getOrNull()
             if (weather != null) {
                 weatherLayout.visibility=View.VISIBLE
                 swipeRefresh.isRefreshing = false
-                LogUtil.d("onResumetest","refresh")
+                //LogUtil.d("onResumetest5",weather.status)
                 //设置顶部更新文字
                 Timer().schedule(object : TimerTask() {
                     override fun run() {
@@ -821,7 +825,7 @@ class MainActivity : AppCompatActivity() {
         }
         return ""
     }
-    private fun showtop(temperature:Int,skycon:String){
+    private fun showtop(temperature:Double,skycon:String){
         when(skycon) {
             "CLEAR_DAY" -> {
                 Main_TemperatureType.text=this.getString(R.string.mainthreeday1012)
@@ -975,7 +979,7 @@ class MainActivity : AppCompatActivity() {
         main_sunandrise26.text=apparenttemperature.toString()+this.getString(R.string.maintoptemperature2)
         main_sunandrise28.text=(pressure/100).toInt().toString()+this.getString(R.string.main_sunriseandset4)
     }
-    private fun showlifeindex(precipitation_2h:ArrayList<Double>,comfortdesc:CommonUse3,dressdesc:CommonUse3,coldrisk:String,temperature:Int,skycon: String,washcar:String){
+    private fun showlifeindex(precipitation_2h:ArrayList<Double>,comfortdesc:CommonUse3,dressdesc:CommonUse3,coldrisk:String,temperature:Double,skycon: String,washcar:String){
         //是否需要带伞
         var flag=false
         for(index in precipitation_2h){

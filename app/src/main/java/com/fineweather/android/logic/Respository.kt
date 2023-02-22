@@ -73,3 +73,6 @@ object Respository {
 
     }
 }
+suspend fun main(){
+    val t =FineWeatherNetwork.requestWeather("113.681442,34.591229")
+}

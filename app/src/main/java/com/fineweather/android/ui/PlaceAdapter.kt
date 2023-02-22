@@ -90,7 +90,7 @@ class PlaceAdapter(private val activity:Activity,private val placeList:List<Plac
 }
 
 
-class LocationSaveAdapter(private val activity:Activity,private val savelist: ArrayList<LocationSaveItem>,private val database:LocationDao):
+class LocationSaveAdapter(private val activity:Activity,private val savelist: ArrayList<LocationSaveItem2>,private val database:LocationDao):
     RecyclerView.Adapter<LocationSaveAdapter.LocationSaveHolder>(){
   //使用ROOM优化  val db=SaveLocationDatabase(activity,"LocationSave.db",1)
     inner class LocationSaveHolder(View:View):RecyclerView.ViewHolder(View){
@@ -110,6 +110,7 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
         val location=savelist[position2]
         holder.locationSaveCardAccu.text=location.address
         holder.locationSaveCardRough.text=location.name
+        val sourceType=location.sourceType
         holder.itemView.setOnLongClickListener {
             holder.locationSaveImageView.visibility=View.VISIBLE
             false
@@ -161,7 +162,7 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
             thread {
                 database.deleteOne(location.lat,location.lng)
             }
-            savelist.remove(LocationSaveItem(location.name,location.address,location.lat,location.lng))
+            savelist.remove(LocationSaveItem2(location.name,location.address,location.lat,location.lng,location.sourceType))
             notifyItemRemoved(position2)
             notifyDataSetChanged()
             holder.locationSaveImageView.visibility=GONE

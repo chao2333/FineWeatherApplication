@@ -35,6 +35,7 @@ android {
         viewBinding true
     }
     namespace 'com.fineweather.android'
+    buildToolsVersion '33.0.2'
 }
 
 dependencies {

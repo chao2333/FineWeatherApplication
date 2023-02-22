@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="1dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -117,7 +117,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="65dp"
+                android:layout_marginStart="66dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution2"
                 android:textSize="12sp" />
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="68dp"
+                android:layout_marginStart="66dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -137,7 +137,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="134dp"
+                android:layout_marginStart="130dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution3"
                 android:textSize="12sp" />
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="140dp"
+                android:layout_marginStart="130dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -157,7 +157,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="189dp"
+                android:layout_marginStart="185dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution4"
                 android:textSize="12sp" />
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="186dp"
+                android:layout_marginStart="185dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -177,7 +177,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="250dp"
+                android:layout_marginStart="247dp"
                 android:layout_marginBottom="11dp"
                 android:text="@string/qualitylayout_pollution5"
                 android:textSize="12sp" />
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="238dp"
+                android:layout_marginStart="247dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -210,7 +210,7 @@
                 android:layout_alignParentStart="true"
                 android:maxLines="1"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="302dp"
+                android:layout_marginStart="310dp"
                 android:layout_marginTop="16dp"
                 android:textSize="23sp" />
 
@@ -236,6 +236,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/container2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="5dp"
@@ -244,10 +245,183 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LocationTop">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/qualitylayout_detail"
-            android:textSize="12sp" />
+        <RelativeLayout
+            android:id="@+id/front20"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front21"
+                android:textColor="@color/Airquality_you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail11"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front25"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front20"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textColor="@color/Airquality_liang"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail12"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front28"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front25"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textColor="@color/Airquality_pollution1"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail13"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front31"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front28"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textColor="@color/Airquality_pollution2"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail14"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/front35"
+            android:layout_width="95dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/front31"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/front36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/qualitylayout_detail4"
+                android:textColor="@color/Airquality_pollution3"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/front37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="-1dp"
+                android:text="@string/qualitylayout_detail15"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

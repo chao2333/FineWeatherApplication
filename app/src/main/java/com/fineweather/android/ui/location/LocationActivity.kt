@@ -11,6 +11,7 @@ import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
 import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.LocationSaveItem
+import com.fineweather.android.logic.model.LocationSaveItem2
 import com.fineweather.android.ui.CustomDensityUtil
 import com.fineweather.android.ui.LocationSaveAdapter
 import kotlinx.android.synthetic.main.activity_location.*
@@ -56,11 +57,12 @@ class LocationActivity : AppCompatActivity() {
         super.onRestart()
     }
     @SuppressLint("Range")
-    fun getList():ArrayList<LocationSaveItem>{
+    fun getList():ArrayList<LocationSaveItem2>{
         var acc:String;var rou:String;
         var lat:String;
         var lng:String;
-        val returnList=ArrayList<LocationSaveItem>()
+        var sourceType:Int
+        val returnList=ArrayList<LocationSaveItem2>()
         thread {
             locationViewModel.database.queryAll().let {
                 for (i in it){
@@ -68,7 +70,8 @@ class LocationActivity : AppCompatActivity() {
                     rou=i.RoughLocation
                     lat=i.lat
                     lng=i.lng
-                    returnList.add(LocationSaveItem(rou,acc,lat,lng))
+                    sourceType=i.sourcetype
+                    returnList.add(LocationSaveItem2(rou,acc,lat,lng,sourceType))
                 }
             }
         }

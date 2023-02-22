@@ -187,11 +187,21 @@
     <string name="qualitylayout_pollution4">NO₂</string>
     <string name="qualitylayout_pollution5">O₃</string>
     <string name="qualitylayout_pollution6">CO</string>
-    <string name="qualitylayout_pollution7">主要污染物</string>
+    <string name="qualitylayout_pollution7">主要污染物  单位：μg/m³</string>
     <string name="qualitylayout_pollution8">24小时空气质量预报</string>
     <string name="qualitylayout_data1">发布</string>
-    <string name="qualitylayout_detail"> 0–50 优\n50–100 良\n100–150 轻度污染\n150–200 中度污染\n200–300 重度污染\n\n</string>
-    <string name="qualitylayout_detail2"> 0.03–0.25 小雨\n0.25–0.35 中雨\n0.35–0.48 大雨\n>=0.48 暴雨\n\n</string>
+    <string name="qualitylayout_detail11">优</string>
+    <string name="qualitylayout_detail12">良</string>
+    <string name="qualitylayout_detail13">轻度污染</string>
+    <string name="qualitylayout_detail14">中度污染</string>
+    <string name="qualitylayout_detail15">重度污染</string>
+    <string name="qualitylayout_detail2">小雨\n中雨\n大雨\n暴雨\n</string>
+    <string name="qualitylayout_detail4">■ \n</string>
+    <string name="qualitylayout_detail3">单位：毫米每小时</string>
+    <string name="qualitylayout_detail5">小雨</string>
+    <string name="qualitylayout_detail6">中雨</string>
+    <string name="qualitylayout_detail7">大雨</string>
+    <string name="qualitylayout_detail8">暴雨</string>
     <string name="fifteendays_title">15日天气预报</string>
     <string name="month">月</string>
     <string name="day">日</string>
