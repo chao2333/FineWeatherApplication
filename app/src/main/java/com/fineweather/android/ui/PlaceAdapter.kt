@@ -4,14 +4,17 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.os.Build
+import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -97,6 +100,8 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
         val locationSaveCardRough:TextView=View.findViewById(R.id.LocationSaveCardRough)
         val locationSaveCardAccu:TextView=View.findViewById(R.id.LocationSaveCardAccu)
         val locationSaveImageView:ImageView=View.findViewById(R.id.LocationSaveCardImageview)
+        val locationSaveFollowText:TextView=View.findViewById(R.id.LocationSaveCardFollow)
+        val locationSaveFollowImage:ImageView=View.findViewById(R.id.LocationSaveCardFollow2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationSaveHolder {
@@ -104,13 +109,17 @@ class LocationSaveAdapter(private val activity:Activity,private val savelist: Ar
         return LocationSaveHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("Range", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: LocationSaveHolder, position: Int) {
         val position2=holder.layoutPosition
         val location=savelist[position2]
         holder.locationSaveCardAccu.text=location.address
         holder.locationSaveCardRough.text=location.name
-        val sourceType=location.sourceType
+        if (location.sourceType==1){
+            holder.locationSaveFollowText.visibility= VISIBLE
+            holder.locationSaveFollowImage.visibility= VISIBLE
+        }
         holder.itemView.setOnLongClickListener {
             holder.locationSaveImageView.visibility=View.VISIBLE
             false

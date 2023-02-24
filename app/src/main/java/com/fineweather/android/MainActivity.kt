@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //进行屏幕适配
         CustomDensityUtil.setCustomDensity(this,application)
-
         haveChanged=0
         LogUtil.d("mainactivitytestbk",haveChanged.toString())
         //获取持久化储存
@@ -97,11 +96,13 @@ class MainActivity : AppCompatActivity() {
                                     val edit2=applicationDataPers.edit()
                                     edit2.putString("lat",nowlat)
                                     edit2.putString("lng",nowlng)
-                                    edit2.putString("name","当前位置")
+                                    edit2.putString("name","当前定位")
                                     viewModel.refreshCoordinate("$nowlat,$nowlng")
-                                    confirmupdate= nowlat
                                     edit2.apply()
+
+                                    confirmupdate= nowlat
                                     locationManager.removeUpdates(this)
+                                    return
                                 }
                                 override fun onProviderDisabled(provider: String) {
                                 }
@@ -125,6 +126,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.coordinateLiveData1.observe(this,Observer{
             val coordinate=it.getOrNull()
             if (coordinate!==null&&coordinate.status=="0"&&applicationDataPers.getInt("sourcetype",0)==1){
+                refreshWeather()
                 val cont=coordinate.result.addressComponent
                 val fmat=coordinate.result.formatted_address
                 var lat=applicationDataPers.getString("lat","")
@@ -384,24 +386,28 @@ class MainActivity : AppCompatActivity() {
             refreshWeather()
         }
     }
+    //测试数据
+
     //更改数据库和shareprefence中的位置数据
     private fun changeDatabase(AccurateLocation:String,RoughLocation:String,lat:String,lng:String,sourcetype:Int){
         //更改数据库数据
         val insert=LocationEntity(AccurateLocation, RoughLocation, lat, lng, sourcetype)
         thread {
             LogUtil.d("maintestth",AccurateLocation+RoughLocation+lat+lng)
-            viewModel.getLocationDao().deleteOne(lat,lng)
+            viewModel.getLocationDao().deleteAll()
             viewModel.getLocationDao().insert(insert)
+            //更改sp数据
+            val sp=viewModel.getSharepreferences().edit()
+            sp.putString("address",AccurateLocation)
+            sp.putString("name",RoughLocation)
+            sp.apply()
         }
-        //更改sp数据
-        val sp=viewModel.getSharepreferences().edit()
-        sp.putString("address",AccurateLocation)
-        sp.putString("name",RoughLocation)
-        sp.apply()
+
+
     }
 
     //主页下拉刷新方法
-    fun refreshWeather(){
+    private fun refreshWeather(){
         val lng=Respository.getSqlite().getString("lng","")
         val lat=Respository.getSqlite().getString("lat","")
         if (lng != null&&lat!=null) {
@@ -888,7 +894,7 @@ class MainActivity : AppCompatActivity() {
                 Main_TemperatureType.text=this.getString(R.string.mainthreeday1182)
             }
         }
-        Main_Temperature.text=temperature.toString()
+        Main_Temperature.text=temperature.toInt().toString()
     }
     private fun showearlyWarningInformation(alert:Alert){
         LogUtil.d("clicktest1",alert.content.size.toString())

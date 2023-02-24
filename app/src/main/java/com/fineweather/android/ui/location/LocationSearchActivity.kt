@@ -1,6 +1,7 @@
 package com.fineweather.android.ui.location
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -47,7 +48,7 @@ class LocationSearchActivity : AppCompatActivity() {
         CustomDensityUtil.setCustomDensity(this,application)
         //获取是否为开始界面进入，1为开始界面进入
         val flag=intent.getIntExtra("firstload",0)
-        LogUtil.d("locationsearchtest",flag.toString())
+        LogUtil.d("locationsearchtest","1")
         //不在activity生命周期中进行获取焦点和弹出软键盘
         val imm:InputMethodManager= this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         val size5=LocationSearchCHENGDU.textSize
@@ -61,6 +62,8 @@ class LocationSearchActivity : AppCompatActivity() {
         },500)
         //Recycle的赋值，设置livedata观察对象 更改activity->this
         val layoutManager=LinearLayoutManager(this)
+
+        LogUtil.d("locationsearchtest","2")
         LocationSearchRecyclerview.layoutManager=layoutManager
         adapter= PlaceAdapter(this,viewModel.placelise,intent.getIntExtra("firstload",0),viewModel.database)
         LocationSearchRecyclerview.adapter=adapter
@@ -68,6 +71,7 @@ class LocationSearchActivity : AppCompatActivity() {
         LocationSearchCancle.setOnClickListener {
             onBackPressed()
         }
+        LogUtil.d("locationsearchtest","3")
         searchPlaceEdit.addTextChangedListener{ editable->
             val content=editable.toString()
             LogUtil.d("searcheditable",content)
@@ -93,13 +97,12 @@ class LocationSearchActivity : AppCompatActivity() {
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
+        LogUtil.d("locationsearchtest","4")
         //为每个按钮设置点击事件
         LocationSearchNOW.setOnClickListener {
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
-                LogUtil.d("searchactivity5","inif2")
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),111)
             }else{
-                LogUtil.d("searchactivity5","inelse")
                 val location=getLastKnownLocation()
                 if (location==null){
 
@@ -142,13 +145,11 @@ class LocationSearchActivity : AppCompatActivity() {
                 }else{
                     val lat=location.latitude.toString()
                     val lng=location.longitude.toString()
-                    LogUtil.d("searchactivity5","inelse2")
                     val pers= Respository.getSqlite()
                     //if (intent.getIntExtra("firstload",0)==1&&pers!=null){
                         val edit=pers.edit()
                         edit.putString("lng",lng)
                         edit.putString("lat",lat)
-                        LogUtil.d("searchactivity5",lng)
                         edit.putString("name","当前位置")
                         edit.putInt("sourcetype",1)
                         edit.apply()
@@ -157,7 +158,6 @@ class LocationSearchActivity : AppCompatActivity() {
                         viewModel.database.insert(LocationEntity("当前位置","当前位置", lat,lng,1))
                     }
                     Toast.makeText(FineWeatherApplication.context,"已经添加当前位置到我的城市",Toast.LENGTH_LONG).show()
-                    LogUtil.d("searchactivity5","in toast")
                     /*
                     val dbHelper= SaveLocationDatabase(this,"LocationSave.db",1)
                     val db=dbHelper.writableDatabase
@@ -175,7 +175,7 @@ class LocationSearchActivity : AppCompatActivity() {
                     this.onBackPressed()
                 }
             }
-            startActivity(Intent(context,MainActivity::class.java))
+
         }
         LocationSearchCHONGQING.setOnClickListener { searchPlaceEdit.setText("重庆市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
@@ -244,5 +244,96 @@ class LocationSearchActivity : AppCompatActivity() {
         return bestLocation
     }
 
-}
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            111 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(
+                        FineWeatherApplication.context,
+                        "授权失败，请手动选择位置",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    val location = getLastKnownLocation()
+                    if (location == null) {
+                        val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+                        locationManager.requestLocationUpdates(
+                            LocationManager.GPS_PROVIDER,
+                            1000,
+                            8f,
+                            object :
+                                LocationListener {
+                                override fun onLocationChanged(p0: Location) {
+                                    val nowlng = p0.longitude.toString()
+                                    val nowlat = p0.latitude.toString()
+                                    val pers = Respository.getSqlite()
+                                    val edit = pers.edit()
+                                    edit.putString("lng", nowlng)
+                                    edit.putString("lat", nowlat)
+                                    edit.putString("name", "当前位置")
+                                    edit.putInt("sourcetype", 1)
+                                    edit.apply()
+                                    thread {
+                                        viewModel.database.insert(
+                                            LocationEntity(
+                                                "当前位置",
+                                                "当前位置",
+                                                nowlat,
+                                                nowlng,
+                                                1
+                                            )
+                                        )
+                                    }
+                                    Toast.makeText(
+                                        FineWeatherApplication.context,
+                                        "已经添加当前位置到我的城市",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    locationManager.removeUpdates(this)
+                                }
+
+                                override fun onProviderDisabled(provider: String) {
+                                }
+
+                                override fun onProviderEnabled(provider: String) {
+                                    // 当GPS LocationProvider可用时，更新位置
+                                }
+
+                                override fun onStatusChanged(
+                                    provider: String, status: Int,
+                                    extras: Bundle
+                                ) {
+                                }
+                            })
+                    } else {
+                        val lat = location.latitude.toString()
+                        val lng = location.longitude.toString()
+                        val pers = Respository.getSqlite()
+                        val edit = pers.edit()
+                        edit.putString("lng", lng)
+                        edit.putString("lat", lat)
+                        edit.putString("name", "当前位置")
+                        edit.putInt("sourcetype", 1)
+                        edit.apply()
+                        // }
+                        thread {
+                            viewModel.database.insert(LocationEntity("当前位置", "当前位置", lat, lng, 1))
+                        }
+                        Toast.makeText(
+                            FineWeatherApplication.context,
+                            "已经添加当前位置到我的城市",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            }
+        }
+
+    }}
 

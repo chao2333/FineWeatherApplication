@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="120dp"
     android:layout_margin="12dp"
+    app:strokeWidth="5dp"
+    app:strokeColor="@color/Airquality_liang"
     app:cardCornerRadius="29dp">
     <TextView
         android:id="@+id/LocationSaveCardRough"
@@ -23,6 +25,35 @@
         android:layout_marginStart="18dp"
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="14sp"/>
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/LocationSaveCardFollow2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="88dp"
+            android:src="@drawable/locationfollow" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/LocationSaveCardFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="88dp"
+            android:layout_toEndOf="@+id/LocationSaveCardFollow2"
+            android:text="@string/locationSaveFellow"
+            android:textColor="@color/bkSunnyBegin"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/itemRelativeLayout"

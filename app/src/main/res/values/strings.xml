@@ -11,8 +11,8 @@
     <string name="Welcomelayoutpermission3">用户协议</string>
     <string name="Welcomelayoutnext">使用当前定位</string>
     <string name="Welcomelayoutrefuse">搜索全国位置</string>
-    <string name="Locationlayouttextview">城市管理</string>
-    <string name="Locationlayouttextview2">轻点下方切换位置</string>
+    <string name="Locationlayouttextview">位置管理</string>
+    <string name="Locationlayouttextview2">轻点切换,长按删除</string>
     <string name="Settinglayouttextview">设置</string>
     <string name="Setting_Privacypolicy">用户协议</string>
     <string name="Setting_About">关于我们</string>
@@ -382,6 +382,7 @@
     <string name="setting_theme_sand">扬沙</string>
     <string name="setting_theme_snow">静雪</string>
     <string name="setting_theme_rainy">阴云</string>
+    <string name="locationSaveFellow">此位置根据定位自动更新</string>
 
 
 </resources>

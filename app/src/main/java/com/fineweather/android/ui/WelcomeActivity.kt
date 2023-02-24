@@ -150,7 +150,4 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
     }
-    suspend fun search(location:String): CoordinateResponse {
-        return FineWeatherNetwork.coordinateService(location)
-    }
 }

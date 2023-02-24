@@ -26,6 +26,9 @@ interface LocationDao {
 
     @Query("select sourcetype from LocationEntity where lat=:lat")
     fun queryLat(lat:String):Int
+
+    @Query("delete from LocationEntity where sourcetype=1")
+    fun deleteAll()
 }
 
 @Database(version = 1, entities = [LocationEntity::class])
