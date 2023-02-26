@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -77,7 +75,6 @@
             <include layout="@layout/main_threedayweatheritemgap3"/>
             <include layout="@layout/main_threedayweatheritemgap"/>
             <include layout="@layout/main_threedayweatheritemgap2"/>
-
             <include layout="@layout/main_earlywarninginformation"/>
             <include layout="@layout/main_earlywarninginformation2"/>
             <include layout="@layout/main_twohoursrain"/>
@@ -85,12 +82,21 @@
             <include layout="@layout/main_threedayweatheritem"/>
             <include layout="@layout/main_threedayweatheritem2"/>
             <include layout="@layout/main_threedayweatheritem3"/>
-
             <include layout="@layout/main_threedayweatherbutton"/>
             <include layout="@layout/main_15dayweather"/>
             <include layout="@layout/main_sunriseandset"/>
             <include layout="@layout/main_lifeindex"/>
-
+            <TextView
+                android:id="@+id/main_paragraph"
+                android:gravity="center"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="3dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14sp"/>
+            <include layout="@layout/main_threedayweatheritemgap2"/>
         </LinearLayout>
     </ScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

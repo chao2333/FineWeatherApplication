@@ -2,23 +2,20 @@ package com.fineweather.android
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
+import android.content.res.Configuration
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
-import android.util.DisplayMetrics
-import android.view.Display
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginStart
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,9 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
-import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
-import com.fineweather.android.logic.network.FineWeatherNetwork
 import com.fineweather.android.ui.*
 import com.fineweather.android.ui.location.LocationActivity
 import com.fineweather.android.ui.place.MainViewModel
@@ -54,9 +49,7 @@ import kotlinx.android.synthetic.main.main_twohoursrain.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
-import kotlin.math.ln
 
 class MainActivity : AppCompatActivity() {
     private var confirmupdate=""
@@ -66,6 +59,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /*
+        val currentNightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (currentNightMode) {
+            Configuration.UI_MODE_NIGHT_NO -> {LogUtil.d("nightmodtest1","夜间模式未启用")}
+            Configuration.UI_MODE_NIGHT_YES -> {
+
+                LogUtil.d("nightmodtest1","夜间模式启用")
+            } // 夜间模式启用，我们使用的是深色主题
+        }
+
+         */
         //进行屏幕适配
         CustomDensityUtil.setCustomDensity(this,application)
         haveChanged=0
@@ -176,7 +181,7 @@ class MainActivity : AppCompatActivity() {
                 if (haveChanged==0){
                     //设置主界面背景。如果mainbk是0，就在这里动态更改背景，如果不是0，在重写onResume方法中还会更改固定背景
                     val mainbk=applicationDataPers.getInt("mainbk",0)
-                    if (mainbk==0){
+                    if (mainbk==0 && !isNightMode(this)){
                         val test1=(1..20).random()
                         val test2=(1..40).random()
                         LogUtil.d("mainactivitytestbk5",test1.toString())
@@ -226,7 +231,9 @@ class MainActivity : AppCompatActivity() {
                                         8->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnypinkandblue)
                                         9->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_sunnysmall)
                                         10->coordinatorlayout.setBackgroundResource(R.drawable.main_bk_evening)
-                                        11,12,13,14,15,16,17,18,19,->coordinatorlayout.setBackgroundResource(R.drawable.mainrainy)
+                                        11, 12, 13, 14, 15, 16, 17, 18, 19 -> coordinatorlayout.setBackgroundResource(
+                                            R.drawable.mainrainy
+                                        )
                                     }
                                 }
                             }
@@ -385,8 +392,34 @@ class MainActivity : AppCompatActivity() {
         swipeRefresh.setOnRefreshListener {
             refreshWeather()
         }
+        //主页最下方文案
+        val randomMain = (0..10).shuffled().last()
+        LogUtil.d("mainrandom",randomMain.toString())
+        when(randomMain){
+            1->main_paragraph.text=application.getString(R.string.main_paragraph1)
+            2->main_paragraph.text=application.getString(R.string.main_paragraph2)
+            3->main_paragraph.text=application.getString(R.string.main_paragraph3)
+            4->main_paragraph.text=application.getString(R.string.main_paragraph4)
+            5->main_paragraph.text=application.getString(R.string.main_paragraph5)
+            6->main_paragraph.text=application.getString(R.string.main_paragraph6)
+            7->main_paragraph.text=application.getString(R.string.main_paragraph7)
+            8->main_paragraph.text=application.getString(R.string.main_paragraph8)
+            9->main_paragraph.text=application.getString(R.string.main_paragraph9)
+            10->main_paragraph.text=application.getString(R.string.main_paragraph10)
+        }
+        //设置黑暗模式
+        if (isNightMode(this))  coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
+        LogUtil.d("nightmodtest2",isNightMode(this).toString())
     }
-    //测试数据
+    //判断黑暗模式是否开启
+    private fun isNightMode(context: Context): Boolean {
+        try {
+            return context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
+        } catch (_: Exception) {
+        }
+        return false
+    }
+
 
     //更改数据库和shareprefence中的位置数据
     private fun changeDatabase(AccurateLocation:String,RoughLocation:String,lat:String,lng:String,sourcetype:Int){
@@ -424,14 +457,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val pers=viewModel.getSharepreferences()
-        LogUtil.d("onResumetest1",confirmupdate)
-        LogUtil.d("onResumetest2",pers.getString("lat","").toString())
         //如果定位是当前位置或当前定位，就刷新顶部定位
-        LogUtil.d("onResumetest2",pers.getString("name","").toString())
-        LogUtil.d("onResumetest2",pers.getString("address","").toString())
         if(pers.getString("name","")=="当前定位"||pers.getString("name","")=="当前位置") {
             viewModel.refreshCoordinate(pers.getString("lat","")+","+pers.getString("lng",""))
-            LogUtil.d("onResumetest2","inviewmodel")
         }
         //根据经度是否发生变化决定是否刷新天气，设置了如果经度发生变化，刷新天气后再让经度一样，减少了不必要的刷新天气
         if (confirmupdate!=pers.getString("lat","").toString()){
@@ -456,7 +484,6 @@ class MainActivity : AppCompatActivity() {
                                 edit23.putString("lng",nowlng)
                                 edit23.putString("name","当前定位")
                                 edit23.apply()
-                                LogUtil.d("welcomeactivitytest9", location.latitude.toString())
                             }
                             if(location==null){
                                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 8f, object :
@@ -522,8 +549,6 @@ class MainActivity : AppCompatActivity() {
         val flag1=pers.getString("name","").toString()=="当前位置"
         val flag2=pers.getString("name","").toString()=="当前定位"
         if ((pers.getInt("checkdatabase",0)<7)&&(flag1||flag2)){
-            LogUtil.d("mainactivitytestdatabase","indatabase")
-
             val lng1=pers.getString("lng","")
             val lat1=pers.getString("lat","")
             thread{
@@ -538,6 +563,9 @@ class MainActivity : AppCompatActivity() {
             edit3.apply()
 
         }
+        //设置黑暗模式
+        if (isNightMode(this))  coordinatorlayout.setBackgroundResource(R.drawable.main_bk_night)
+        LogUtil.d("nightmodtest2",isNightMode(this).toString())
     }
 
     private fun showfifteendays(hourly: Hourly){

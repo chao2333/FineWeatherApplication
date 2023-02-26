@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fineweather.android.R
 import com.fineweather.android.logic.dao.LogUtil
-import com.fineweather.android.logic.dao.SaveLocationDatabase
-import com.fineweather.android.logic.model.LocationSaveItem
 import com.fineweather.android.logic.model.LocationSaveItem2
 import com.fineweather.android.ui.CustomDensityUtil
 import com.fineweather.android.ui.LocationSaveAdapter

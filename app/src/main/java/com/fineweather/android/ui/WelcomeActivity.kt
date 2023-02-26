@@ -13,18 +13,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.fineweather.android.FineWeatherApplication
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
-import com.fineweather.android.logic.dao.LogUtil
-import com.fineweather.android.logic.dao.SaveLocationDatabase
-import com.fineweather.android.logic.model.CoordinateResponse
-import com.fineweather.android.logic.network.FineWeatherNetwork
 import com.fineweather.android.ui.location.LocationSearchActivity
 import com.fineweather.android.ui.setting.SettingPrivacypolicyActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_welcome.*
-import kotlinx.coroutines.runBlocking
 
 class WelcomeActivity : AppCompatActivity() {
     val pers = Respository.getSqlite()
@@ -36,7 +29,7 @@ class WelcomeActivity : AppCompatActivity() {
         val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
         setContentView(R.layout.activity_welcome)
         //生成设备唯唯一标识码
-        if (pers.getString("id", "") == "") {
+        if (pers.getInt("id", 0) ==0) {
             val edit9 = pers.edit()
             val id = (0..99999999).random()
             edit9.putInt("id", id)

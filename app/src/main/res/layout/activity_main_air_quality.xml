@@ -69,7 +69,7 @@
             android:layout_below="@+id/Airquality_TopTextView"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="157dp"
+            android:layout_marginTop="147dp"
             android:text="@string/qualitylayout_pollution7"
             android:textSize="15sp" />
 
@@ -90,130 +90,190 @@
             android:layout_below="@+id/Airquality_TopTextView"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="181dp">
+            android:layout_marginTop="171dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution1"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/Airquality_pm25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout1"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="66dp"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution2"
-                android:textSize="12sp" />
+                android:layout_marginStart="0dp">
 
-            <TextView
-                android:id="@+id/Airquality_pm10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution1"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/Airquality_pm25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:text="11"
+                    android:textSize="23sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout2"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="66dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="130dp"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution3"
-                android:textSize="12sp" />
+                android:layout_toEndOf="@+id/Airquality_innerLayout1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution2"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/Airquality_pm10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="23sp" />
 
-            <TextView
-                android:id="@+id/Airquality_SO2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout3"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="130dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="185dp"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution4"
-                android:textSize="12sp" />
+                android:layout_toEndOf="@+id/Airquality_innerLayout2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution3"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/Airquality_SO2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="23sp" />
 
-            <TextView
-                android:id="@+id/Airquality_NO2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout4"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="185dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="247dp"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution5"
-                android:textSize="12sp" />
+                android:layout_toEndOf="@+id/Airquality_innerLayout3">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution4"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/Airquality_NO2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="23sp" />
 
-            <TextView
-                android:id="@+id/Airquality_CO"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout5"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="247dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="310dp"
-                android:maxLines="1"
-                android:layout_marginBottom="11dp"
-                android:text="@string/qualitylayout_pollution6"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/Airquality_O3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:maxLines="1"
+                android:layout_toEndOf="@+id/Airquality_innerLayout4">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution5"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/Airquality_O3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="23sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Airquality_innerLayout6"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="310dp"
-                android:layout_marginTop="16dp"
-                android:textSize="23sp" />
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/Airquality_innerLayout5">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/qualitylayout_pollution6"
+                    android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/Airquality_CO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="23sp" />
 
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -223,16 +283,16 @@
             android:layout_below="@+id/Airquality_detaillayout"
             android:layout_alignParentStart="true"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="30dp"
             android:text="@string/qualitylayout_pollution8"
             android:textSize="15sp" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/airquality_chart"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:layout_below="@+id/Airquality_detaillayout"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="56dp" />
     </RelativeLayout>
 
     <RelativeLayout

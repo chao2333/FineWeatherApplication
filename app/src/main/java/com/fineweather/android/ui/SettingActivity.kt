@@ -79,3 +79,7 @@ class SettingActivity : AppCompatActivity() {
         }
     }
 }
+fun main(){
+    val randomMain=(1..12).random()
+    println(randomMain)
+}

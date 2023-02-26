@@ -24,12 +24,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fineweather.android.FineWeatherApplication
-import com.fineweather.android.FineWeatherApplication.Companion.context
-import com.fineweather.android.MainActivity
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
 import com.fineweather.android.logic.dao.LogUtil
-import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.LocationEntity
 import com.fineweather.android.ui.CustomDensityUtil
 import com.fineweather.android.ui.PlaceAdapter
@@ -175,7 +172,7 @@ class LocationSearchActivity : AppCompatActivity() {
                     this.onBackPressed()
                 }
             }
-
+                finish()
         }
         LocationSearchCHONGQING.setOnClickListener { searchPlaceEdit.setText("重庆市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
@@ -219,6 +216,7 @@ class LocationSearchActivity : AppCompatActivity() {
         LocationSearchQINGDAO.setOnClickListener { searchPlaceEdit.setText("青岛市")
             imm.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS)
             this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN) }
+
     }
     private fun getLastKnownLocation(): Location? {
         if (ActivityCompat.checkSelfPermission(
@@ -331,6 +329,7 @@ class LocationSearchActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         ).show()
                     }
+
                 }
             }
         }

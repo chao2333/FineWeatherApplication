@@ -76,97 +76,149 @@
         android:text="05:00"
         android:textColor="@color/mainsunriseandset" />
 
-    <TextView
-        android:id="@+id/main_sunandrise21"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+    <RelativeLayout
+        android:id="@+id/main_sunRiseLayout1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="37dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/mainsunriseandset2"
-        android:textSize="13sp" />
+        android:layout_marginStart="22dp"
+        android:layout_marginBottom="20dp">
 
-    <TextView
-        android:id="@+id/main_sunandrise22"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/main_sunandrise21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainsunriseandset2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/main_sunandrise22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_sunandrise21"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/main_sunRiseLayout2"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_sunandrise21"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/main_sunandrise23"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="125dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/main_sunriseandsethumidity"
-        android:textColor="@color/mainsunriseandset2"
-        android:textSize="13sp" />
+        android:layout_toEndOf="@+id/main_sunRiseLayout1">
 
-    <TextView
-        android:id="@+id/main_sunandrise24"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/main_sunandrise23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_horizontal"
+            android:text="@string/main_sunriseandsethumidity"
+            android:textColor="@color/mainsunriseandset2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/main_sunandrise24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_sunandrise23"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_sunRiseLayout3"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_sunandrise21"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/main_sunandrise25"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="212dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/main_sunriseandset2"
-        android:textColor="@color/mainsunriseandset2"
-        android:textSize="13sp" />
+        android:layout_toEndOf="@+id/main_sunRiseLayout2">
 
-    <TextView
-        android:id="@+id/main_sunandrise26"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/main_sunandrise25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_horizontal"
+            android:text="@string/main_sunriseandset2"
+            android:textColor="@color/mainsunriseandset2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/main_sunandrise26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_sunandrise25"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_sunRiseLayout4"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/main_sunandrise21"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="204dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/main_sunandrise27"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="301dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/main_sunriseandset3"
-        android:textColor="@color/mainsunriseandset2"
-        android:textSize="13sp" />
+        android:layout_toEndOf="@+id/main_sunRiseLayout3">
 
-    <TextView
-        android:id="@+id/main_sunandrise28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/main_sunandrise21"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="10dp"
-        android:text="500hPa"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/main_sunandrise27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:text="@string/main_sunriseandset3"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainsunriseandset2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/main_sunandrise28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/main_sunandrise27"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
 </RelativeLayout>
 

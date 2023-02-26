@@ -1,157 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp">
+
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="360dp"
         android:layout_height="230dp"
-        android:src="@drawable/main_lifeindex_bk"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:src="@drawable/main_lifeindex_bk"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/lifeindexitem11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:textColor="@color/mainlifeindexcolor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifeindexitem12" />
 
-    <ImageView
-        android:id="@+id/lifeindexitem12"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="28dp"
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm1"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView">
 
+        <TextView
+            android:id="@+id/lifeindexitem11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
+        <ImageView
+            android:id="@+id/lifeindexitem12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/lifeindexitem11"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp" />
+    </RelativeLayout>
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm2"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintStart_toEndOf="@+id/main_lifeIndexFrm1"
+        app:layout_constraintTop_toTopOf="@+id/imageView">
 
-    <TextView
-        android:id="@+id/lifeindexitem21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:textColor="@color/mainlifeindexcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifeindexitem22" />
+        <TextView
+            android:id="@+id/lifeindexitem31"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
 
-    <ImageView
-        android:id="@+id/lifeindexitem22"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
+        <ImageView
+            android:id="@+id/lifeindexitem32"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/lifeindexitem31"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp" />
+    </RelativeLayout>
 
-        android:layout_marginEnd="60dp"
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm3"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintStart_toEndOf="@+id/main_lifeIndexFrm2"
+        app:layout_constraintTop_toTopOf="@+id/imageView">
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/lifeindexitem21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/lifeindexitem31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        <ImageView
+            android:id="@+id/lifeindexitem22"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/lifeindexitem21"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp" />
+    </RelativeLayout>
 
-        android:layout_marginTop="20dp"
-        android:textColor="@color/mainlifeindexcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lifeindexitem32"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm4"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView">
 
-    <ImageView
-        android:id="@+id/lifeindexitem32"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
+        <TextView
+            android:id="@+id/lifeindexitem41"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
 
+        <ImageView
+            android:id="@+id/lifeindexitem42"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_main_lifeindex_pill"
+            android:layout_above="@+id/lifeindexitem41"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp" />
+    </RelativeLayout>
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm5"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/main_lifeIndexFrm4">
 
-    <TextView
-        android:id="@+id/lifeindexitem41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginBottom="24dp"
+        <TextView
+            android:id="@+id/lifeindexitem51"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
 
-        android:textColor="@color/mainlifeindexcolor"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/lifeindexitem52"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/lifeindexitem51"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp"
+            android:src="@drawable/ic_main_lifeindex_coathanger" />
+    </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/lifeindexitem42"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_main_lifeindex_pill"
-        app:layout_constraintBottom_toTopOf="@+id/lifeindexitem41"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:id="@+id/main_lifeIndexFrm6"
+        android:layout_width="120dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/main_lifeIndexFrm5">
 
-    <TextView
-        android:id="@+id/lifeindexitem51"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        <TextView
+            android:id="@+id/lifeindexitem61"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="11dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/mainlifeindexcolor"
+            android:textSize="14sp" />
 
-        android:textColor="@color/mainlifeindexcolor"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/lifeindexitem52"
-        android:layout_width="43dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="18dp"
-        android:src="@drawable/ic_main_lifeindex_coathanger"
-        app:layout_constraintBottom_toTopOf="@+id/lifeindexitem51"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/lifeindexitem61"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="24dp"
-        android:textColor="@color/mainlifeindexcolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/lifeindexitem62"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_main_lifeindex_carwash"
-        app:layout_constraintBottom_toTopOf="@+id/lifeindexitem61"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/lifeindexitem62"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_above="@+id/lifeindexitem61"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="17dp"
+            android:src="@drawable/ic_main_lifeindex_carwash" />
+    </RelativeLayout>
 
 
 

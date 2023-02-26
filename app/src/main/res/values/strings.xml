@@ -354,7 +354,7 @@
     <string name="Privacy_policy1">用户协议</string>
     <string name="setting_theme">主题</string>
     <string name="setting_about">关于我们</string>
-    <string name="setting_version">版本号 V1.0</string>
+    <string name="setting_version">版本号 V1.0.0</string>
     <string name="setting_about_name">晴天天气</string>
     <string name="setting_about_call">联系我们&amp;商务合作</string>
     <string name="setting_about_join">加入QQ群</string>
@@ -383,6 +383,18 @@
     <string name="setting_theme_snow">静雪</string>
     <string name="setting_theme_rainy">阴云</string>
     <string name="locationSaveFellow">此位置根据定位自动更新</string>
+    <string name="main_paragraph1"> 心怀浪漫宇宙，也珍惜人间日常 </string>
+    <string name="main_paragraph2"> 如果下次遇见你，希望是在晴天里 </string>
+    <string name="main_paragraph3"> 云朵偷喝了放在屋顶的酒，于是它脸红变成了晚霞 </string>
+    <string name="main_paragraph4"> 走在风中，今天阳光突然好温柔 </string>
+    <string name="main_paragraph5"> 云层之上有一家便利店，贩卖着粉色的温柔 </string>
+    <string name="main_paragraph6"> 心如花木，向阳而生 </string>
+    <string name="main_paragraph7"> 且听风吟，静待花开 </string>
+    <string name="main_paragraph8"> 热爱可抵岁月漫长 </string>
+    <string name="main_paragraph9"> 保持热爱，奔赴山海 </string>
+    <string name="main_paragraph10"> 这吹不出褶的平静日子也在闪闪发光 </string>
+
+
 
 
 </resources>

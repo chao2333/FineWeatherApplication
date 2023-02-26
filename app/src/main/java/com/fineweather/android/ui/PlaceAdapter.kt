@@ -24,14 +24,9 @@ import com.fineweather.android.FineWeatherApplication.Companion.context
 import com.fineweather.android.MainActivity
 import com.fineweather.android.R
 import com.fineweather.android.logic.Respository
-import com.fineweather.android.logic.Respository.refreshWeather
 import com.fineweather.android.logic.dao.LocationDao
-import com.fineweather.android.logic.dao.LocationDatabase
 import com.fineweather.android.logic.dao.LogUtil
-import com.fineweather.android.logic.dao.SaveLocationDatabase
 import com.fineweather.android.logic.model.*
-import com.fineweather.android.ui.place.MainViewModel
-import com.fineweather.android.ui.place.PlaceViewModel
 import kotlinx.android.synthetic.main.activity_location_search.*
 import java.text.DecimalFormat
 import java.util.*
