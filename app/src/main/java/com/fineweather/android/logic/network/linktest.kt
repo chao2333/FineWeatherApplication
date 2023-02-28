@@ -26,10 +26,4 @@ object ServiceCreator3 {
     fun <T> create(serviceClass: Class<T>): T = retrofit.create(serviceClass)
     inline fun <reified T> create(): T = create(T::class.java)
 }
-interface   WeatherService1{
-    @GET("data?lat=111111&lng=222222&address=中国河南省%20郑州市%20新郑市&id=2662123")
-    fun requestWeather(): Call<respone>
-}
-private val WeatherService2=ServiceCreator3.create<WeatherService1>()
-
 data class respone(val status:String)

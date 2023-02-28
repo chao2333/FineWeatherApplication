@@ -36,32 +36,42 @@ class WelcomeActivity : AppCompatActivity() {
             edit9.apply()
         }
         WelcomeButton.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(
-                    this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    11
-                )
+            if (welcomeCheckBox.isChecked){
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                        11
+                    )
+                }
+                val edit2 = pers.edit()
+                edit2.putBoolean("Firstload", true)
+                edit2.putInt("sourcetype", 1)
+                edit2.apply()
+            }else{
+                Toast.makeText(this,"请阅读并同意用户协议和隐私政策",Toast.LENGTH_SHORT).show()
             }
-            val edit2 = pers.edit()
-            edit2.putBoolean("Firstload", true)
-            edit2.putInt("sourcetype", 1)
-            edit2.apply()
+
 
         }
         RefuseButton.setOnClickListener {
-            val edit = pers.edit()
-            edit.putBoolean("Firstload", true)
-            edit.apply()
-            Toast.makeText(this, "请手动添加地点", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LocationSearchActivity::class.java)
-            intent.putExtra("firstload", 1)
-            startActivity(intent)
-            finish()
+            if (welcomeCheckBox.isChecked){
+                val edit = pers.edit()
+                edit.putBoolean("Firstload", true)
+                edit.apply()
+                Toast.makeText(this, "请手动添加地点", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LocationSearchActivity::class.java)
+                intent.putExtra("firstload", 1)
+                startActivity(intent)
+                finish()
+            }else{
+                Toast.makeText(this,"请阅读并同意用户协议和隐私政策",Toast.LENGTH_SHORT).show()
+            }
+
         }
         welcome_4.setOnClickListener {
             val intent21 = Intent(this, SettingPrivacypolicyActivity::class.java)

@@ -7,14 +7,14 @@
     <string name="Welcomelayout1">欢迎使用晴天天气</string>
     <string name="Welcomelayout2">极简纯净的天气客户端</string>
     <string name="Welcomelayoutpermission">使用当前定位需要位置权限</string>
-    <string name="Welcomelayoutpermission2">继续使用代表您同意</string>
-    <string name="Welcomelayoutpermission3">用户协议</string>
+    <string name="Welcomelayoutpermission2">已阅读并同意</string>
+    <string name="Welcomelayoutpermission3">用户协议和隐私政策</string>
     <string name="Welcomelayoutnext">使用当前定位</string>
     <string name="Welcomelayoutrefuse">搜索全国位置</string>
     <string name="Locationlayouttextview">位置管理</string>
     <string name="Locationlayouttextview2">轻点切换,长按删除</string>
     <string name="Settinglayouttextview">设置</string>
-    <string name="Setting_Privacypolicy">用户协议</string>
+    <string name="Setting_Privacypolicy">用户协议和隐私政策</string>
     <string name="Setting_About">关于我们</string>
     <string name="Setting_donate">捐赠</string>
     <string name="LocationSearchtext">搜索全国位置</string>
@@ -237,7 +237,15 @@
     <string name="alert_layout_color4">红色</string>
     <string name="alert_layout">预警</string>
     <string name="Privacy_policy">
-用户协议尊重并保护所有使用用户协议服务用户的个人隐私权。为了给您提供更准确的服务，我们的用户协议涵盖我们使用您的信息的方式。 您在使用本应用时之时，即视为您已经同意本用户协议全部内容。
+本政策仅适用于朱永超（开发者名称）晴天天气软件产品
+\n
+最近更新日期：2023年2月27日
+\n
+如果您有任何问题、意见或建议，请通过以下联系方式与我们联系
+\n
+邮箱：ycyc20@qq.com
+\n
+晴天天气尊重并保护所有用户的个人隐私权。为了给您提供更准确的服务，我们的用户协议涵盖我们使用您的信息的方式。 您在使用本应用时之时，即视为您已经同意本用户协议全部内容。
 \n
 \n\n
 一、用户协议确认
@@ -282,16 +290,6 @@
 1. 满足您的个性化需求 ：例如，查看当前定位位置天气时，我们将获取您的位置。
 \n
 2. 获取您选择的位置或者当前定位位置，以便获取天气信息
-\n
-3. 根据法律法规在如下情形收集使用您的相关信息，此种情况下无须获得您的授权。
-\n
-(1)与国家安全、国防安全有关的；
-\n
-(2)与公共安全、公共卫生、重大公共利益有关的；
-\n
-(3)与犯罪侦查、起诉、审判和判决执行等有关的；
-\n
-(4)法律法规规定的其他情形。
 \n\n
 \n
 五、我们如何共享、转让、公开披露你的个人信息
